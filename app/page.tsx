@@ -26,6 +26,8 @@ export default function TraceholdPilotLanding() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [isScrolledPastProduct, setIsScrolledPastProduct] = useState(false)
+  const [currentStep, setCurrentStep] = useState(0)
+  const [isPaused, setIsPaused] = useState(false)
 
   useEffect(() => {
     // Set playback rate after component mounts (as per Stack Overflow solution)
@@ -36,11 +38,19 @@ export default function TraceholdPilotLanding() {
     // Set up global callback for Turnstile
     window.handleCaptchaChange = handleCaptchaChange
 
+    // Auto-carousel for steps (only when not paused)
+    const interval = setInterval(() => {
+      if (!isPaused) {
+        setCurrentStep(prev => (prev + 1) % 3)
+      }
+    }, 4000) // Change every 4 seconds
+
     return () => {
-      // Clean up global callback
+      // Clean up global callback and interval
       delete window.handleCaptchaChange
+      clearInterval(interval)
     }
-  }, [])
+  }, [isPaused])
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value, type } = e.target
@@ -57,6 +67,10 @@ export default function TraceholdPilotLanding() {
 
   const handleCaptchaChange = (token: string) => {
     setFormData(prev => ({ ...prev, captchaToken: token }))
+  }
+
+  const goToStep = (step: number) => {
+    setCurrentStep(step)
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -181,7 +195,7 @@ export default function TraceholdPilotLanding() {
         </div>
       </section>
 
-      {/* How it works */}
+      {/* How it works - Video Carousel */}
       <section id="how" className="py-20 relative z-10">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
@@ -191,20 +205,79 @@ export default function TraceholdPilotLanding() {
             </div>
             <p className="text-white/70 text-lg max-w-2xl mx-auto">A simple three-step process to digitize and secure your Bill of Lading</p>
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { step: "1", title: "Create", desc: "Fill a standardized template and assign roles." },
-              { step: "2", title: "Register", desc: "Store the cryptographic hash on blockchain; evidence on IPFS." },
-              { step: "3", title: "Transfer / Endorse", desc: "Endorse and transfer ownership digitally with full traceability." },
-            ].map((s, i) => (
-              <div key={i} className="rounded-2xl border border-white/10 p-8 bg-gray-phantom/20 backdrop-blur text-center">
-                <div className="h-16 w-16 rounded-xl bg-white text-neutral-900 grid place-content-center font-bold text-xl mx-auto mb-6 shadow-lg">
-                  {s.step}
+          
+          {/* Video Carousel Container */}
+          <div className="relative max-w-6xl mx-auto">
+            {/* Video Background */}
+            <div 
+              className="relative aspect-video rounded-2xl overflow-hidden bg-gray-phantom/20 backdrop-blur border border-white/10"
+              onMouseEnter={() => setIsPaused(true)}
+              onMouseLeave={() => setIsPaused(false)}
+            >
+              {[
+                { 
+                  title: "Create", 
+                  desc: "Fill a standardized template and assign roles.",
+                  video: "/assets/cargo-1.mp4"
+                },
+                { 
+                  title: "Register", 
+                  desc: "Store the cryptographic hash on blockchain; evidence on IPFS.",
+                  video: "/assets/cargo-2.mp4"
+                },
+                { 
+                  title: "Transfer / Endorse", 
+                  desc: "Endorse and transfer ownership digitally with full traceability.",
+                  video: "/assets/plane-1.mp4"
+                },
+              ].map((s, i) => (
+                <div 
+                  key={i}
+                  className={`absolute inset-0 transition-opacity duration-1000 ${
+                    currentStep === i ? 'opacity-100' : 'opacity-0'
+                  }`}
+                >
+                  {/* Background Video */}
+                  <video
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="w-full h-full object-cover"
+                    style={{ filter: 'blur(0.5px)' }}
+                  >
+                    <source src={s.video} type="video/mp4" />
+                  </video>
+                  
+                  {/* Dark Overlay */}
+                  <div className="absolute inset-0 bg-black/60"></div>
+                  
+                  {/* Content Overlay */}
+                  <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-8">
+                    <h3 className="font-semibold text-4xl md:text-5xl mb-6 text-white">{s.title}</h3>
+                    <p className="text-white/90 text-xl md:text-2xl max-w-3xl leading-relaxed">{s.desc}</p>
+                  </div>
                 </div>
-                <h3 className="font-semibold text-xl mb-4">{s.title}</h3>
-                <p className="text-white/70">{s.desc}</p>
+              ))}
+            </div>
+            
+            {/* Navigation Controls */}
+            <div className="flex justify-center mt-8">
+              {/* Step Indicators */}
+              <div className="flex gap-4">
+                {[0, 1, 2].map((step) => (
+                  <button
+                    key={step}
+                    onClick={() => goToStep(step)}
+                    className={`w-4 h-4 rounded-full transition-all duration-300 ${
+                      currentStep === step 
+                        ? 'bg-white scale-125' 
+                        : 'bg-white/40 hover:bg-white/60'
+                    }`}
+                  />
+                ))}
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </section>
