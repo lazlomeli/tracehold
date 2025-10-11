@@ -29,6 +29,7 @@ export default function TraceholdPilotLanding() {
   const [currentStep, setCurrentStep] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
   const [isHovered, setIsHovered] = useState(false)
+  const [readingProgress, setReadingProgress] = useState(0)
 
   useEffect(() => {
     // Set playback rate after component mounts (as per Stack Overflow solution)
@@ -52,6 +53,33 @@ export default function TraceholdPilotLanding() {
       clearInterval(interval)
     }
   }, [isPaused])
+
+  // Reading progress animation
+  useEffect(() => {
+    let progressInterval: NodeJS.Timeout | null = null
+    
+    if (isHovered) {
+      // Start reading progress animation
+      setReadingProgress(0)
+      progressInterval = setInterval(() => {
+        setReadingProgress(prev => {
+          if (prev >= 100) {
+            return 100
+          }
+          return prev + 0.3 // Slower speed (was 0.8)
+        })
+      }, 50) // Update every 50ms
+    } else {
+      // Reset when not hovering
+      setReadingProgress(0)
+    }
+
+    return () => {
+      if (progressInterval) {
+        clearInterval(progressInterval)
+      }
+    }
+  }, [isHovered])
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value, type } = e.target
@@ -131,7 +159,7 @@ export default function TraceholdPilotLanding() {
           }`}
           style={{ filter: 'blur(1px)' }}
         >
-          <source src="/assets/blockchain.mp4" type="video/mp4" />
+          <source src="/assets/blockchain-2.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
         <div 
@@ -192,6 +220,85 @@ export default function TraceholdPilotLanding() {
                 <p className="text-white/70 text-sm">{f.desc}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* The Problem */}
+      <section id="problem" className="py-20 relative z-10">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <p className="text-xs uppercase tracking-widest text-tracehold-sky-blue/80 mb-4">Section 2 — The Problem</p>
+            <h2 className="text-3xl md:text-4xl font-semibold mb-6">Paper slows down trade — and costs billions.</h2>
+            <p className="text-white/70 text-lg max-w-3xl mx-auto">Every year, global trade wastes billions managing paper-based Bills of Lading that depend on printed, couriered documents.</p>
+          </div>
+          
+          {/* Problem Cards */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            {[
+              { 
+                title: "McKinsey Research", 
+                desc: "Digitalizing B/L could save $6.5B in direct costs and unlock $30-40B in trade growth." 
+              },
+              { 
+                title: "DCSA Analysis", 
+                desc: "eB/Ls could eliminate 10-30% of total trade documentation costs." 
+              },
+              { 
+                title: "Current Reality", 
+                desc: "99% of Bills of Lading are still issued on paper despite massive costs." 
+              },
+              { 
+                title: "Daily Impact", 
+                desc: "Every delay, lost document, and manual verification means lost efficiency." 
+              },
+            ].map((problem, i) => (
+              <div key={i} className="rounded-2xl border border-red-500/20 p-6 bg-red-500/5 backdrop-blur">
+                <h3 className="font-semibold mb-3 text-red-400">{problem.title}</h3>
+                <p className="text-white/70 text-sm">{problem.desc}</p>
+              </div>
+            ))}
+          </div>
+            
+          {/* Visual Split Layout */}
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Paper Chaos */}
+            <div className="rounded-2xl border border-red-500/20 p-8 bg-red-500/5 backdrop-blur">
+              <div className="text-center">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-red-500/20 flex items-center justify-center">
+                  <svg className="w-8 h-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-semibold mb-3 text-red-400">Paper Chaos</h3>
+                <ul className="text-white/70 text-sm space-y-2 text-left">
+                  <li>• Days of courier delays</li>
+                  <li>• Hundreds in processing costs</li>
+                  <li>• Manual verification errors</li>
+                  <li>• Lost or damaged documents</li>
+                  <li>• Multiple parties, multiple delays</li>
+                </ul>
+              </div>
+            </div>
+            
+            {/* Digital Flow */}
+            <div className="rounded-2xl border border-green-500/20 p-8 bg-green-500/5 backdrop-blur">
+              <div className="text-center">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-green-500/20 flex items-center justify-center">
+                  <svg className="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-semibold mb-3 text-green-400">Digital Flow</h3>
+                <ul className="text-white/70 text-sm space-y-2 text-left">
+                  <li>• Instant digital transfers</li>
+                  <li>• Minimal processing costs</li>
+                  <li>• Automated verification</li>
+                  <li>• Tamper-proof records</li>
+                  <li>• Seamless party integration</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -281,12 +388,30 @@ export default function TraceholdPilotLanding() {
                     }`}>
                       <div className="max-w-5xl mx-auto w-full">
                         <div className="max-h-full overflow-y-auto scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent pr-4">
-                          <p 
-                            className="text-white/95 text-xl md:text-2xl text-left" 
+                          <div 
+                            className="text-xl md:text-2xl text-left"
                             style={{ lineHeight: '1.8em' }}
                           >
-                            {s.detailedDesc}
-                          </p>
+                            {s.detailedDesc.split(' ').map((word, wordIndex) => {
+                              const totalWords = s.detailedDesc.split(' ').length
+                              const progressPerWord = 100 / totalWords
+                              const wordProgress = wordIndex * progressPerWord
+                              const isHighlighted = readingProgress >= wordProgress
+                              
+                              return (
+                                <span
+                                  key={wordIndex}
+                                  className={`transition-colors duration-500 ${
+                                    isHighlighted 
+                                      ? 'text-white/95' 
+                                      : 'text-white/50'
+                                  }`}
+                                >
+                                  {word}{wordIndex < totalWords - 1 ? ' ' : ''}
+                                </span>
+                              )
+                            })}
+                          </div>
                         </div>
                       </div>
                     </div>
