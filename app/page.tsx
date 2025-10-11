@@ -28,6 +28,7 @@ export default function TraceholdPilotLanding() {
   const [isScrolledPastProduct, setIsScrolledPastProduct] = useState(false)
   const [currentStep, setCurrentStep] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
+  const [isHovered, setIsHovered] = useState(false)
 
   useEffect(() => {
     // Set playback rate after component mounts (as per Stack Overflow solution)
@@ -211,23 +212,32 @@ export default function TraceholdPilotLanding() {
             {/* Video Background */}
             <div 
               className="relative aspect-video rounded-2xl overflow-hidden bg-gray-phantom/20 backdrop-blur border border-white/10"
-              onMouseEnter={() => setIsPaused(true)}
-              onMouseLeave={() => setIsPaused(false)}
+              onMouseEnter={() => {
+                setIsPaused(true)
+                setIsHovered(true)
+              }}
+              onMouseLeave={() => {
+                setIsPaused(false)
+                setIsHovered(false)
+              }}
             >
               {[
                 { 
                   title: "Create", 
                   desc: "Fill a standardized template and assign roles.",
+                  detailedDesc: "Every shipment begins with a document — and with Tracehold, that document is born digital. Instead of drafting or scanning endless paper forms, users fill a standardized Bill of Lading template that automatically includes every required field and regulation-ready format. Each participant — shipper, carrier, consignee, or agent — is assigned a defined role and digital identity, ensuring accountability from the very first entry. Once the document is created, it's digitally signed and verified, ready to move through the trade network without the friction of manual checks or courier delays. What used to take days to prepare now takes minutes — standardized, compliant, and immediately verifiable.",
                   video: "/assets/cargo-1.mp4"
                 },
                 { 
                   title: "Register", 
                   desc: "Store the cryptographic hash on blockchain; evidence on IPFS.",
+                  detailedDesc: "After creation, Tracehold takes care of the most critical part: registration and proof. Each digital Bill of Lading is hashed cryptographically and anchored to the blockchain, generating a tamper-proof record that cannot be altered or lost. This registration creates an immutable timestamp — verifiable proof of origin and authenticity. At the same time, a copy of the evidence is stored on IPFS, a decentralized network ensuring that the document remains accessible and verifiable anywhere, at any time. This step transforms a simple document into a trusted digital asset — transparent, auditable, and legally robust.",
                   video: "/assets/cargo-2.mp4"
                 },
                 { 
                   title: "Transfer / Endorse", 
                   desc: "Endorse and transfer ownership digitally with full traceability.",
+                  detailedDesc: "Once registered, the Bill of Lading is ready to travel — digitally, securely, and with complete traceability. Using Tracehold's platform, the document can be endorsed and transferred from one party to another, with every action recorded on-chain. Ownership passes seamlessly from shipper to carrier to consignee, and each endorsement carries its own cryptographic signature, forming an unbroken chain of custody. Stakeholders can verify ownership and document integrity instantly — without relying on couriers, emails, or manual tracking. Every transfer is visible, every signature verifiable, and every step trusted by code, not paperwork.",
                   video: "/assets/plane-1.mp4"
                 },
               ].map((s, i) => (
@@ -243,19 +253,43 @@ export default function TraceholdPilotLanding() {
                     muted
                     loop
                     playsInline
-                    className="w-full h-full object-cover"
-                    style={{ filter: 'blur(0.5px)' }}
+                    className={`w-full h-full object-cover transition-all duration-500 ${
+                      isHovered ? 'blur-md' : 'blur-[0.5px]'
+                    }`}
                   >
                     <source src={s.video} type="video/mp4" />
                   </video>
                   
                   {/* Dark Overlay */}
-                  <div className="absolute inset-0 bg-black/60"></div>
+                  <div className={`absolute inset-0 transition-all duration-500 ${
+                    isHovered ? 'bg-black/80' : 'bg-black/60'
+                  }`}></div>
                   
                   {/* Content Overlay */}
                   <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-8">
-                    <h3 className="font-semibold text-4xl md:text-5xl mb-6 text-white">{s.title}</h3>
-                    <p className="text-white/90 text-xl md:text-2xl max-w-3xl leading-relaxed">{s.desc}</p>
+                    {/* Default view */}
+                    <div className={`transition-all duration-500 ${
+                      !isHovered ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform -translate-y-4 pointer-events-none'
+                    }`}>
+                      <h3 className="font-semibold text-4xl md:text-5xl mb-6 text-white">{s.title}</h3>
+                      <p className="text-white/90 text-xl md:text-2xl max-w-3xl leading-relaxed">{s.desc}</p>
+                    </div>
+                    
+                    {/* Detailed view on hover */}
+                    <div className={`absolute inset-0 flex flex-col justify-center items-center px-12 py-8 transition-all duration-500 ${
+                      isHovered ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-4 pointer-events-none'
+                    }`}>
+                      <div className="max-w-5xl mx-auto w-full">
+                        <div className="max-h-full overflow-y-auto scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent pr-4">
+                          <p 
+                            className="text-white/95 text-xl md:text-2xl text-left" 
+                            style={{ lineHeight: '1.8em' }}
+                          >
+                            {s.detailedDesc}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               ))}
