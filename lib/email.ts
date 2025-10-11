@@ -14,7 +14,7 @@ const transporter = nodemailer.createTransport({
 export async function sendOwnerNotification(data: ContactFormData): Promise<void> {
   const mailOptions = {
     from: process.env.SMTP_FROM || 'noreply@tracehold.com',
-    to: 'marcor@tracehold.es',
+    to: 'lazlomeli"gmail.com',
     subject: `New Lead from ${data.name} - Tracehold Contact Form`,
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">

@@ -31,6 +31,25 @@ a {
   text-decoration: none;
 }
 
+/* Neon text effects */
+.neon-text {
+  text-shadow: 
+    0 0 1px #7B36FF,
+    0 0 2px #7B36FF;
+}
+
+.neon-text-red {
+  text-shadow: 
+    0 0 2px #ef4444,
+    0 0 4px #ef4444;
+}
+
+.neon-text-blue {
+  text-shadow: 
+    0 0 1px #7B36FF,
+    0 0 2px #7B36FF;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

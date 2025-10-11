@@ -157,14 +157,16 @@ export default function TraceholdPilotLanding() {
           className={`w-full h-full object-cover transition-opacity duration-1000 ${
             isScrolledPastProduct ? 'opacity-0' : 'opacity-20'
           }`}
-          style={{ filter: 'blur(1px)' }}
+          style={{ 
+            filter: 'hue-rotate(240deg) saturate(0.6) brightness(0.85) contrast(1.05)'
+          }}
         >
           <source src="/assets/blockchain-2.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
         <div 
           className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
-            isScrolledPastProduct ? 'bg-black' : 'bg-black/10'
+            isScrolledPastProduct ? 'bg-black' : 'bg-black/5'
           }`}
         ></div>
       </div>
@@ -189,8 +191,8 @@ export default function TraceholdPilotLanding() {
 
       {/* Hero */}
       <section className="relative z-10 pt-20">
-        <div className="max-w-6xl mx-auto px-4 py-60 text-center">
-          <p className="text-xs uppercase tracking-widest text-tracehold-sky-blue/80 mb-4">eB/L • Critical documents • Blockchain</p>
+        <div className="max-w-6xl mx-auto px-4 py-60 text-center" style={{ paddingBottom: "10rem"}}>
+          <p className="text-xs uppercase tracking-widest text-tracehold-purple font-bold mb-4 neon-text">eB/L • Critical documents • Blockchain</p>
           <h1 className="text-5xl md:text-6xl font-semibold leading-tight mb-6">Digitize your Bill of Lading — and unlock new ways of financing.</h1>
           <p className="text-xl text-white/80 max-w-3xl mx-auto mb-8">Tracehold makes the eB/L blockchain-verifiable: fewer errors, less fraud, and a foundation for faster liquidity.</p>
           <div className="flex flex-wrap justify-center items-center gap-4">
@@ -202,24 +204,24 @@ export default function TraceholdPilotLanding() {
       </section>
 
       {/* Product */}
-      <section id="product" className="py-20 mb-[300px] relative z-10">
+      <section id="product" className="py-20 relative z-10" style={{ paddingBottom: "15rem"}}>
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-semibold mb-4">Product</h2>
             <p className="text-white/70 text-lg max-w-2xl mx-auto">Tracehold turns the Bill of Lading into a secure, digital asset — easy to create, register and transfer.</p>
-          </div>
+            </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { title: "Single source of truth", desc: "One document, roles and e-signatures in a single workflow." },
-              { title: "Blockchain fingerprint", desc: "Hash and verifiable timestamp for tamper evidence." },
-              { title: "Custody & traceability", desc: "Event log, endorsements and transfers with full audit trail." },
-              { title: "Simple onboarding", desc: "Start with templates and manual entry. ERP/TMS integrations are on the roadmap." },
-            ].map((f, i) => (
+              {[
+                { title: "Single source of truth", desc: "One document, roles and e-signatures in a single workflow." },
+                { title: "Blockchain fingerprint", desc: "Hash and verifiable timestamp for tamper evidence." },
+                { title: "Custody & traceability", desc: "Event log, endorsements and transfers with full audit trail." },
+                { title: "Simple onboarding", desc: "Start with templates and manual entry. ERP/TMS integrations are on the roadmap." },
+              ].map((f, i) => (
               <div key={i} className="rounded-2xl border border-white/10 p-6 bg-gray-phantom/20 backdrop-blur">
                 <h3 className="font-semibold mb-3">{f.title}</h3>
                 <p className="text-white/70 text-sm">{f.desc}</p>
-              </div>
-            ))}
+                </div>
+              ))}
           </div>
         </div>
       </section>
@@ -228,34 +230,68 @@ export default function TraceholdPilotLanding() {
       <section id="problem" className="py-20 relative z-10">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-16">
-            <p className="text-xs uppercase tracking-widest text-tracehold-sky-blue/80 mb-4">Section 2 — The Problem</p>
+            <p className="text-xs uppercase tracking-widest text-tracehold-purple font-bold mb-4 neon-text">Section 2 — The Problem</p>
             <h2 className="text-3xl md:text-4xl font-semibold mb-6">Paper slows down trade — and costs billions.</h2>
             <p className="text-white/70 text-lg max-w-3xl mx-auto">Every year, global trade wastes billions managing paper-based Bills of Lading that depend on printed, couriered documents.</p>
           </div>
           
-          {/* Problem Cards */}
+          {/* Problem Cards with Icons */}
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
             {[
               { 
                 title: "McKinsey Research", 
-                desc: "Digitalizing B/L could save $6.5B in direct costs and unlock $30-40B in trade growth." 
+                desc: "Digitalizing B/L could save <strong>$6.5B</strong> in direct costs and unlock <strong>$30-40B</strong> in trade growth.",
+                icon: (
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  </svg>
+                )
               },
               { 
                 title: "DCSA Analysis", 
-                desc: "eB/Ls could eliminate 10-30% of total trade documentation costs." 
+                desc: "eB/Ls could eliminate <strong>10-30%</strong> of total trade documentation costs.",
+                icon: (
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                )
               },
               { 
                 title: "Current Reality", 
-                desc: "99% of Bills of Lading are still issued on paper despite massive costs." 
+                desc: "<strong>99%</strong> of Bills of Lading are still issued on paper despite massive costs.",
+                icon: (
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                )
               },
               { 
                 title: "Daily Impact", 
-                desc: "Every delay, lost document, and manual verification means lost efficiency." 
+                desc: "Every delay, lost document, and manual verification means lost efficiency.",
+                icon: (
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                )
               },
             ].map((problem, i) => (
-              <div key={i} className="rounded-2xl border border-red-500/20 p-6 bg-red-500/5 backdrop-blur">
-                <h3 className="font-semibold mb-3 text-red-400">{problem.title}</h3>
-                <p className="text-white/70 text-sm">{problem.desc}</p>
+              <div key={i} className="group relative h-full">
+                {/* Card Background */}
+                <div className="rounded-2xl p-8 bg-gradient-to-br from-red-500/5 to-red-600/3 backdrop-blur hover:from-red-500/8 hover:to-red-600/5 transition-all duration-300 h-full flex flex-col">
+                  {/* Icon Circle */}
+                  <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-red-500/20 flex items-center justify-center text-red-400 group-hover:bg-red-500/30 group-hover:scale-110 transition-all duration-300 flex-shrink-0">
+                    {problem.icon}
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="text-center flex-1 flex flex-col">
+                    <h3 className="font-semibold mb-4 text-red-400 text-lg neon-text-red flex-shrink-0">{problem.title}</h3>
+                    <p className="text-white/70 text-sm leading-relaxed flex-1" dangerouslySetInnerHTML={{ __html: problem.desc }}></p>
+                  </div>
+                  
+                  {/* Hover Effect Overlay */}
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-red-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                </div>
               </div>
             ))}
           </div>
@@ -263,42 +299,76 @@ export default function TraceholdPilotLanding() {
           {/* Visual Split Layout */}
           <div className="grid md:grid-cols-2 gap-8">
             {/* Paper Chaos */}
-            <div className="rounded-2xl border border-red-500/20 p-8 bg-red-500/5 backdrop-blur">
-              <div className="text-center">
-                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-red-500/20 flex items-center justify-center">
-                  <svg className="w-8 h-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
+            <div className="group relative">
+              <div className="rounded-2xl p-8 bg-gradient-to-br from-red-500/5 to-red-600/3 backdrop-blur hover:from-red-500/8 hover:to-red-600/5 transition-all duration-300">
+                <div className="text-center">
+                  <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-red-500/20 flex items-center justify-center group-hover:bg-red-500/30 group-hover:scale-110 transition-all duration-300">
+                    <svg className="w-10 h-10 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-2xl font-semibold mb-6 text-red-400 neon-text-red">Paper Chaos</h3>
+                  <ul className="text-white/70 text-sm space-y-3 text-center max-w-xs mx-auto">
+                    <li className="flex items-center justify-center gap-3">
+                      <div className="w-2 h-2 rounded-full bg-red-400 flex-shrink-0"></div>
+                      Days of courier delays
+                    </li>
+                    <li className="flex items-center justify-center gap-3">
+                      <div className="w-2 h-2 rounded-full bg-red-400 flex-shrink-0"></div>
+                      Hundreds in processing costs
+                    </li>
+                    <li className="flex items-center justify-center gap-3">
+                      <div className="w-2 h-2 rounded-full bg-red-400 flex-shrink-0"></div>
+                      Manual verification errors
+                    </li>
+                    <li className="flex items-center justify-center gap-3">
+                      <div className="w-2 h-2 rounded-full bg-red-400 flex-shrink-0"></div>
+                      Lost or damaged documents
+                    </li>
+                    <li className="flex items-center justify-center gap-3">
+                      <div className="w-2 h-2 rounded-full bg-red-400 flex-shrink-0"></div>
+                      Multiple parties, multiple delays
+                    </li>
+                  </ul>
                 </div>
-                <h3 className="text-xl font-semibold mb-3 text-red-400">Paper Chaos</h3>
-                <ul className="text-white/70 text-sm space-y-2 text-left">
-                  <li>• Days of courier delays</li>
-                  <li>• Hundreds in processing costs</li>
-                  <li>• Manual verification errors</li>
-                  <li>• Lost or damaged documents</li>
-                  <li>• Multiple parties, multiple delays</li>
-                </ul>
-              </div>
-            </div>
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-red-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+          </div>
+        </div>
             
             {/* Digital Flow */}
-            <div className="rounded-2xl border border-green-500/20 p-8 bg-green-500/5 backdrop-blur">
-              <div className="text-center">
-                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-green-500/20 flex items-center justify-center">
-                  <svg className="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
+            <div className="group relative">
+              <div className="rounded-2xl p-8 backdrop-blur hover:from-tracehold-purple/30 hover:to-purple-600/25 transition-all duration-300" style={{ background: 'linear-gradient(to bottom right, rgb(12 14 16 / 20%) var(--tw-gradient-from-position), rgb(123 54 255 / 15%))' }}>
+                <div className="text-center">
+                  <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-tracehold-purple/20 flex items-center justify-center group-hover:bg-tracehold-purple/30 group-hover:scale-110 transition-all duration-300">
+                    <Image src="/assets/tracehold-fade.png" alt="Tracehold" width={32} height={32} className="h-8 w-8" style={{ filter: 'brightness(0) saturate(100%) invert(21%) sepia(100%) saturate(2000%) hue-rotate(260deg) brightness(101%) contrast(101%)' }} />
+                  </div>
+                  <h3 className="text-2xl font-semibold mb-6 text-tracehold-purple neon-text-blue">Digital Flow</h3>
+                  <ul className="text-white/70 text-sm space-y-3 text-center max-w-xs mx-auto">
+                    <li className="flex items-center justify-center gap-3">
+                      <div className="w-2 h-2 rounded-full bg-tracehold-purple flex-shrink-0"></div>
+                      Instant digital transfers
+                    </li>
+                    <li className="flex items-center justify-center gap-3">
+                      <div className="w-2 h-2 rounded-full bg-tracehold-purple flex-shrink-0"></div>
+                      Minimal processing costs
+                    </li>
+                    <li className="flex items-center justify-center gap-3">
+                      <div className="w-2 h-2 rounded-full bg-tracehold-purple flex-shrink-0"></div>
+                      Automated verification
+                    </li>
+                    <li className="flex items-center justify-center gap-3">
+                      <div className="w-2 h-2 rounded-full bg-tracehold-purple flex-shrink-0"></div>
+                      Tamper-proof records
+                    </li>
+                    <li className="flex items-center justify-center gap-3">
+                      <div className="w-2 h-2 rounded-full bg-tracehold-purple flex-shrink-0"></div>
+                      Seamless party integration
+                    </li>
+                  </ul>
                 </div>
-                <h3 className="text-xl font-semibold mb-3 text-green-400">Digital Flow</h3>
-                <ul className="text-white/70 text-sm space-y-2 text-left">
-                  <li>• Instant digital transfers</li>
-                  <li>• Minimal processing costs</li>
-                  <li>• Automated verification</li>
-                  <li>• Tamper-proof records</li>
-                  <li>• Seamless party integration</li>
-                </ul>
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-tracehold-sky-blue/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
               </div>
-            </div>
+          </div>
           </div>
         </div>
       </section>
@@ -363,6 +433,9 @@ export default function TraceholdPilotLanding() {
                     className={`w-full h-full object-cover transition-all duration-500 ${
                       isHovered ? 'blur-md' : 'blur-[0.5px]'
                     }`}
+                    style={{
+                      filter: 'grayscale(0.5) hue-rotate(240deg) saturate(1.2) brightness(0.8) contrast(1.1) sepia(0.4)'
+                    }}
                   >
                     <source src={s.video} type="video/mp4" />
                   </video>
