@@ -21,7 +21,7 @@ export default function TraceholdPilotLanding() {
     company: '',
     message: '',
     gdprConsent: false,
-    captchaToken: 'bypass', // Bypass CAPTCHA for now
+    captchaToken: '', // Will be filled by CAPTCHA
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [errors, setErrors] = useState<Record<string, string>>({})
@@ -76,6 +76,28 @@ export default function TraceholdPilotLanding() {
       }
     }
   }, [isHovered])
+
+  // Turnstile CAPTCHA setup
+  useEffect(() => {
+    // Load Turnstile script
+    const script = document.createElement('script')
+    script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js'
+    script.async = true
+    document.head.appendChild(script)
+
+    // Set up global callback
+    window.handleCaptchaChange = (token: string) => {
+      setFormData(prev => ({ ...prev, captchaToken: token }))
+    }
+
+    return () => {
+      // Cleanup
+      if (document.head.contains(script)) {
+        document.head.removeChild(script)
+      }
+      delete window.handleCaptchaChange
+    }
+  }, [])
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value, type } = e.target
@@ -170,7 +192,7 @@ export default function TraceholdPilotLanding() {
             <Image src="/assets/tracehold-lettering.png" alt="Tracehold" width={185} height={32} className="h-8" />
           </div>
           <nav className="hidden md:flex items-center gap-8 text-sm text-white/80">
-            <a href="#product" className="hover:text-white">Product</a>
+            <a href="#product" className="hover:text-white">Product</a> 
             <a href="#how" className="hover:text-white">How it works</a>
             <a href="/calculator" className="hover:text-white">EB/L Calculator</a>
             <a href="#contact" className="hover:text-white">Contact</a>
@@ -582,6 +604,15 @@ export default function TraceholdPilotLanding() {
                   disabled={isSubmitting}
                 />
                 {errors.message && <p className="mt-1 text-red-400 text-xs">{errors.message}</p>}
+              </div>
+              
+              {/* CAPTCHA */}
+              <div className="sm:col-span-2">
+                <div 
+                  className="cf-turnstile" 
+                  data-sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || ''} 
+                  data-callback="handleCaptchaChange"
+                ></div>
               </div>
               
               <div className="sm:col-span-2 flex items-center justify-between">
