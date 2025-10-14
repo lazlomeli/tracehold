@@ -21,7 +21,7 @@ export default function TraceholdPilotLanding() {
     company: '',
     message: '',
     gdprConsent: false,
-    captchaToken: '',
+    captchaToken: 'bypass', // Bypass CAPTCHA for now
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [errors, setErrors] = useState<Record<string, string>>({})
@@ -37,9 +37,6 @@ export default function TraceholdPilotLanding() {
       videoRef.current.playbackRate = 0.8
     }
 
-    // Set up global callback for Turnstile
-    window.handleCaptchaChange = handleCaptchaChange
-
     // Auto-carousel for steps (only when not paused)
     const interval = setInterval(() => {
       if (!isPaused) {
@@ -48,8 +45,7 @@ export default function TraceholdPilotLanding() {
     }, 4000) // Change every 4 seconds
 
     return () => {
-      // Clean up global callback and interval
-      delete window.handleCaptchaChange
+      // Clean up interval
       clearInterval(interval)
     }
   }, [isPaused])
@@ -92,10 +88,6 @@ export default function TraceholdPilotLanding() {
     if (errors[name]) {
       setErrors(prev => ({ ...prev, [name]: '' }))
     }
-  }
-
-  const handleCaptchaChange = (token: string) => {
-    setFormData(prev => ({ ...prev, captchaToken: token }))
   }
 
   const goToStep = (step: number) => {
@@ -180,6 +172,7 @@ export default function TraceholdPilotLanding() {
           <nav className="hidden md:flex items-center gap-8 text-sm text-white/80">
             <a href="#product" className="hover:text-white">Product</a>
             <a href="#how" className="hover:text-white">How it works</a>
+            <a href="/calculator" className="hover:text-white">EB/L Calculator</a>
             <a href="#contact" className="hover:text-white">Contact</a>
           </nav>
           <div className="flex items-center gap-2">
@@ -591,16 +584,6 @@ export default function TraceholdPilotLanding() {
                 {errors.message && <p className="mt-1 text-red-400 text-xs">{errors.message}</p>}
               </div>
               
-              <div className="sm:col-span-2">
-                <div
-                  className="cf-turnstile"
-                  data-sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || ''}
-                  data-callback="handleCaptchaChange"
-                  data-theme="dark"
-                />
-                {errors.captchaToken && <p className="mt-1 text-red-400 text-xs">{errors.captchaToken}</p>}
-              </div>
-              
               <div className="sm:col-span-2 flex items-center justify-between">
                 <label className="text-xs text-white/60 flex items-center">
                   <input
@@ -639,9 +622,6 @@ export default function TraceholdPilotLanding() {
           </div>
         </div>
       </footer>
-
-      {/* Cloudflare Turnstile Script */}
-      <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     </div>
   )
 }
