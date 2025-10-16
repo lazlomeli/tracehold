@@ -12,10 +12,231 @@ declare global {
   }
 }
 
+// Translations
+type Language = 'EN' | 'ES'
+
+const translations = {
+  EN: {
+    // Navigation
+    nav: {
+      product: 'Product',
+      howItWorks: 'How it works',
+      calculator: 'EB/L Calculator',
+      contact: 'Contact',
+      talkToSales: 'Talk to sales',
+      joinPilot: 'Join pilot',
+    },
+    // Hero Section
+    hero: {
+      tagline: 'eB/L • Critical documents • Blockchain',
+      title: 'Digitize your Bill of Lading — and unlock new ways of financing.',
+      subtitle: 'Tracehold makes the eB/L blockchain-verifiable: fewer errors, less fraud, and a foundation for faster liquidity.',
+      requestDemo: 'Request demo',
+      joinPilot: 'Join the pilot',
+      footer: 'MVP live • Pilot-ready • Immutable trust. Simplified innovation.',
+    },
+    // Product Section
+    product: {
+      title: 'Product',
+      subtitle: 'Tracehold turns the Bill of Lading into a secure, digital asset — easy to create, register and transfer.',
+      features: [
+        { title: 'Single source of truth', desc: 'One document, roles and e-signatures in a single workflow.' },
+        { title: 'Blockchain fingerprint', desc: 'Hash and verifiable timestamp for tamper evidence.' },
+        { title: 'Custody & traceability', desc: 'Event log, endorsements and transfers with full audit trail.' },
+        { title: 'Simple onboarding', desc: 'Start with templates and manual entry. ERP/TMS integrations are on the roadmap.' },
+      ],
+    },
+    // Problem Section
+    problem: {
+      tagline: 'The Problem',
+      title: 'Paper slows down trade — and costs billions.',
+      subtitle: 'Every year, global trade wastes billions managing paper-based Bills of Lading that depend on printed, couriered documents.',
+      statsData: [
+        { title: 'McKinsey Research', desc: 'Digitalizing B/L could save <strong>$6.5B</strong> in direct costs and unlock <strong>$30-40B</strong> in trade growth.' },
+        { title: 'DCSA Analysis', desc: 'eB/Ls could eliminate <strong>10-30%</strong> of total trade documentation costs.' },
+        { title: 'Current Reality', desc: '<strong>99%</strong> of Bills of Lading are still issued on paper despite massive costs.' },
+        { title: 'Daily Impact', desc: 'Every delay, lost document, and manual verification means lost efficiency.' },
+      ],
+      paperChaos: {
+        title: 'Paper Chaos',
+        items: [
+          'Days of courier delays',
+          'Hundreds in processing costs',
+          'Manual verification errors',
+          'Lost or damaged documents',
+          'Multiple parties, multiple delays',
+        ],
+      },
+      digitalFlow: {
+        title: 'Digital Flow',
+        items: [
+          'Instant digital transfers',
+          'Minimal processing costs',
+          'Automated verification',
+          'Tamper-proof records',
+          'Seamless party integration',
+        ],
+      },
+    },
+    // How It Works Section
+    howItWorks: {
+      title: 'How it works',
+      subtitle: 'A simple three-step process to digitize and secure your Bill of Lading',
+      steps: [
+        {
+          title: 'Create',
+          desc: 'Fill a standardized template and assign roles.',
+          detailedDesc: 'Every shipment begins with a document - and with Tracehold, that document is born digital. Instead of drafting or scanning endless paper forms, users fill a standardized Bill of Lading template that automatically includes every required field and regulation-ready format. Each participant - shipper, carrier, consignee, or agent - is assigned a defined role and digital identity, ensuring accountability from the very first entry. Once the document is created, it\'s digitally signed and verified, ready to move through the trade network without the friction of manual checks or courier delays. What used to take days to prepare now takes minutes - standardized, compliant, and immediately verifiable.',
+        },
+        {
+          title: 'Register',
+          desc: 'Store the cryptographic hash on blockchain; evidence on IPFS.',
+          detailedDesc: 'After creation, Tracehold takes care of the most critical part: registration and proof. Each digital Bill of Lading is hashed cryptographically and anchored to the blockchain, generating a tamper-proof record that cannot be altered or lost. This registration creates an immutable timestamp - verifiable proof of origin and authenticity. At the same time, a copy of the evidence is stored on IPFS, a decentralized network ensuring that the document remains accessible and verifiable anywhere, at any time. This step transforms a simple document into a trusted digital asset - transparent, auditable, and legally robust.',
+        },
+        {
+          title: 'Transfer / Endorse',
+          desc: 'Endorse and transfer ownership digitally with full traceability.',
+          detailedDesc: 'Once registered, the Bill of Lading is ready to travel - digitally, securely, and with complete traceability. Using Tracehold\'s platform, the document can be endorsed and transferred from one party to another, with every action recorded on-chain. Ownership passes seamlessly from shipper to carrier to consignee, and each endorsement carries its own cryptographic signature, forming an unbroken chain of custody. Stakeholders can verify ownership and document integrity instantly - without relying on couriers, emails, or manual tracking. Every transfer is visible, every signature verifiable, and every step trusted by code, not paperwork.',
+        },
+      ],
+    },
+    // Contact Section
+    contact: {
+      title: 'Get in touch',
+      subtitle: 'Ready to transform your Bill of Lading process? Let\'s discuss how Tracehold can work for your business.',
+      form: {
+        name: 'Name *',
+        company: 'Company',
+        email: 'Email *',
+        message: 'Tell us about your B/L flow (systems, volume, pain points) *',
+        gdprConsent: 'I accept the',
+        privacyPolicy: 'privacy policy',
+        send: 'Send',
+        sending: 'Sending...',
+      },
+    },
+    // Footer
+    footer: {
+      copyright: '© {year} Tracehold B.V.',
+      privacy: 'Privacy',
+      terms: 'Terms',
+      security: 'Security',
+    },
+  },
+  ES: {
+    // Navigation
+    nav: {
+      product: 'Producto',
+      howItWorks: 'Cómo funciona',
+      calculator: 'Calculadora EB/L',
+      contact: 'Contacto',
+      talkToSales: 'Hablar con ventas',
+      joinPilot: 'Unirse al piloto',
+    },
+    // Hero Section
+    hero: {
+      tagline: 'eB/L • Documentos críticos • Blockchain',
+      title: 'Digitalice su Bill of Lading y desbloquee nuevas formas de financiación.',
+      subtitle: 'Tracehold hace que el eB/L sea verificable en blockchain: menos errores, menos fraude y una base para mayor liquidez.',
+      requestDemo: 'Solicitar demo',
+      joinPilot: 'Unirse al piloto',
+      footer: 'MVP en vivo • Listo para piloto • Confianza inmutable. Innovación simplificada.',
+    },
+    // Product Section
+    product: {
+      title: 'Producto',
+      subtitle: 'Tracehold convierte el Bill of Lading en un activo digital seguro, fácil de crear, registrar y transferir.',
+      features: [
+        { title: 'Fuente única de verdad', desc: 'Un documento, roles y firmas electrónicas en un solo flujo de trabajo.' },
+        { title: 'Huella blockchain', desc: 'Hash y marca de tiempo verificable para evidencia de manipulación.' },
+        { title: 'Custodia y trazabilidad', desc: 'Registro de eventos, endosos y transferencias con auditoría completa.' },
+        { title: 'Incorporación simple', desc: 'Comience con plantillas y entrada manual. Las integraciones ERP/TMS están en el plan.' },
+      ],
+    },
+    // Problem Section
+    problem: {
+      tagline: 'El Problema',
+      title: 'El papel ralentiza el comercio y cuesta miles de millones.',
+      subtitle: 'Cada año, el comercio global desperdicia miles de millones gestionando Bill of Lading\'s en papel que dependen de documentos impresos y enviados por mensajería.',
+      statsData: [
+        { title: 'Investigación McKinsey', desc: 'Digitalizar B/L podría ahorrar <strong>$6.5B</strong> en costos directos y desbloquear <strong>$30-40B</strong> en crecimiento comercial.' },
+        { title: 'Análisis DCSA', desc: 'Los eB/Ls podrían eliminar <strong>10-30%</strong> de los costos totales de documentación comercial.' },
+        { title: 'Realidad Actual', desc: '<strong>99%</strong> de los Bill of Lading\'s aún se emiten en papel a pesar de los costos masivos.' },
+        { title: 'Impacto Diario', desc: 'Cada retraso, documento perdido y verificación manual significa pérdida de eficiencia.' },
+      ],
+      paperChaos: {
+        title: 'Caos del Papel',
+        items: [
+          'Días de retrasos de mensajería',
+          'Cientos en costos de procesamiento',
+          'Errores de verificación manual',
+          'Documentos perdidos o dañados',
+          'Múltiples partes, múltiples retrasos',
+        ],
+      },
+      digitalFlow: {
+        title: 'Flujo Digital',
+        items: [
+          'Transferencias digitales instantáneas',
+          'Costos de procesamiento mínimos',
+          'Verificación automatizada',
+          'Registros a prueba de manipulación',
+          'Integración fluida de partes',
+        ],
+      },
+    },
+    // How It Works Section
+    howItWorks: {
+      title: 'Cómo funciona',
+      subtitle: 'Un proceso simple de tres pasos para digitalizar y asegurar su Bill of Lading',
+      steps: [
+        {
+          title: 'Crear',
+          desc: 'Complete una plantilla estandarizada y asigne roles.',
+          detailedDesc: 'Cada envio comienza con un documento, y con Tracehold, ese documento nace digital. En lugar de redactar o escanear interminables formularios en papel, los usuarios completan una plantilla estandarizada de Bill of Lading que incluye automaticamente todos los campos requeridos y el formato listo para regulacion. A cada participante (expedidor, transportista, consignatario o agente) se le asigna un rol definido e identidad digital, asegurando responsabilidad desde la primera entrada. Una vez creado el documento, se firma y verifica digitalmente, listo para moverse a traves de la red comercial sin la friccion de verificaciones manuales o retrasos de mensajeria. Lo que solia llevar dias preparar ahora toma minutos: estandarizado, conforme e inmediatamente verificable.',
+        },
+        {
+          title: 'Registrar',
+          desc: 'Almacene el hash criptografico en blockchain; evidencia en IPFS.',
+          detailedDesc: 'Despues de la creacion, Tracehold se encarga de la parte mas critica: registro y prueba. Cada Bill of Lading digital se hashea criptograficamente y se ancla a la blockchain, generando un registro a prueba de manipulacion que no puede ser alterado o perdido. Este registro crea una marca de tiempo inmutable: prueba verificable de origen y autenticidad. Al mismo tiempo, una copia de la evidencia se almacena en IPFS, una red descentralizada que garantiza que el documento permanezca accesible y verificable en cualquier lugar, en cualquier momento. Este paso transforma un documento simple en un activo digital confiable: transparente, auditable y legalmente robusto.',
+        },
+        {
+          title: 'Transferir / Endosar',
+          desc: 'Endose y transfiera la propiedad digitalmente con trazabilidad completa.',
+          detailedDesc: 'Una vez registrado, el Bill of Lading esta listo para viajar, digitalmente, de forma segura y con trazabilidad completa. Usando la plataforma de Tracehold, el documento puede ser endosado y transferido de una parte a otra, con cada accion registrada en cadena. La propiedad pasa sin problemas de expedidor a transportista a consignatario, y cada endoso lleva su propia firma criptografica, formando una cadena ininterrumpida de custodia. Las partes interesadas pueden verificar la propiedad y la integridad del documento al instante, sin depender de mensajeria, correos electronicos o seguimiento manual. Cada transferencia es visible, cada firma verificable y cada paso confiable por codigo, no por papeleo.',
+        },
+      ],
+    },
+    // Contact Section
+    contact: {
+      title: 'Contáctenos',
+      subtitle: '¿Listo para transformar su proceso de Bill of Lading? Hablemos sobre cómo Tracehold puede funcionar para su negocio.',
+      form: {
+        name: 'Nombre *',
+        company: 'Empresa',
+        email: 'Correo electrónico *',
+        message: 'Cuéntenos sobre su flujo de B/L (sistemas, volumen, puntos críticos) *',
+        gdprConsent: 'Acepto la',
+        privacyPolicy: 'política de privacidad',
+        send: 'Enviar',
+        sending: 'Enviando...',
+      },
+    },
+    // Footer
+    footer: {
+      copyright: '© {year} Tracehold B.V.',
+      privacy: 'Privacidad',
+      terms: 'Términos',
+      security: 'Seguridad',
+    },
+  },
+}
+
 //
 export default function TraceholdPilotLanding() {
   const router = useRouter()
   const videoRef = useRef<HTMLVideoElement>(null)
+  const [language, setLanguage] = useState<Language>('EN')
   const [formData, setFormData] = useState<ContactFormData>({
     name: '',
     email: '',
@@ -31,6 +252,8 @@ export default function TraceholdPilotLanding() {
   const [isPaused, setIsPaused] = useState(false)
   const [isHovered, setIsHovered] = useState(false)
   const [readingProgress, setReadingProgress] = useState(0)
+
+  const t = translations[language]
 
   useEffect(() => {
     // Set playback rate after component mounts (as per Stack Overflow solution)
@@ -193,14 +416,37 @@ export default function TraceholdPilotLanding() {
             <Image src="/assets/tracehold-lettering.png" alt="Tracehold" width={185} height={32} className="h-8" />
           </div>
           <nav className="hidden md:flex items-center gap-8 text-sm text-white/80">
-            <a href="#product" className="hover:text-white">Product</a> 
-            <a href="#how" className="hover:text-white">How it works</a>
-            <a href="/calculator" className="hover:text-white">EB/L Calculator</a>
-            <a href="#contact" className="hover:text-white">Contact</a>
+            <a href="#product" className="hover:text-white">{t.nav.product}</a> 
+            <a href="#how" className="hover:text-white">{t.nav.howItWorks}</a>
+            <a href="/calculator" className="hover:text-white">{t.nav.calculator}</a>
+            <a href="#contact" className="hover:text-white">{t.nav.contact}</a>
           </nav>
           <div className="flex items-center gap-2">
-            <a href="#contact" className="px-3 py-2 rounded-xl border border-white/15 text-sm hover:bg-white/5">Talk to sales</a>
-            <a href="#contact" className="px-3 py-2 rounded-xl bg-white text-neutral-900 text-sm font-semibold hover:bg-white/90">Join pilot</a>
+            {/* Language Toggle */}
+            <div className="flex items-center rounded-xl border border-white/15 overflow-hidden">
+              <button
+                onClick={() => setLanguage('EN')}
+                className={`px-3 py-2 text-xs font-semibold transition-colors ${
+                  language === 'EN' 
+                    ? 'bg-white text-neutral-900' 
+                    : 'text-white/80 hover:bg-white/5'
+                }`}
+              >
+                EN
+              </button>
+              <button
+                onClick={() => setLanguage('ES')}
+                className={`px-3 py-2 text-xs font-semibold transition-colors ${
+                  language === 'ES' 
+                    ? 'bg-white text-neutral-900' 
+                    : 'text-white/80 hover:bg-white/5'
+                }`}
+              >
+                ES
+              </button>
+            </div>
+            <a href="#contact" className="px-3 py-2 rounded-xl border border-white/15 text-sm hover:bg-white/5">{t.nav.talkToSales}</a>
+            <a href="#contact" className="px-3 py-2 rounded-xl bg-white text-neutral-900 text-sm font-semibold hover:bg-white/90">{t.nav.joinPilot}</a>
           </div>
         </div>
       </header>
@@ -208,14 +454,14 @@ export default function TraceholdPilotLanding() {
       {/* Hero */}
       <section className="relative z-10 pt-20">
         <div className="max-w-6xl mx-auto px-4 py-60 text-center" style={{ paddingBottom: "5rem"}}>
-          <p className="text-xs uppercase tracking-widest text-tracehold-purple font-bold mb-4 neon-text">eB/L • Critical documents • Blockchain</p>
-          <h1 className="text-5xl md:text-6xl font-semibold leading-tight mb-6">Digitize your Bill of Lading — and unlock new ways of financing.</h1>
-          <p className="text-xl text-white/80 max-w-3xl mx-auto mb-8">Tracehold makes the eB/L blockchain-verifiable: fewer errors, less fraud, and a foundation for faster liquidity.</p>
+          <p className="text-xs uppercase tracking-widest text-tracehold-purple font-bold mb-4 neon-text">{t.hero.tagline}</p>
+          <h1 className="text-5xl md:text-6xl font-semibold leading-tight mb-6">{t.hero.title}</h1>
+          <p className="text-xl text-white/80 max-w-3xl mx-auto mb-8">{t.hero.subtitle}</p>
           <div className="flex flex-wrap justify-center items-center gap-4">
-            <a href="#contact" className="px-6 py-3 rounded-2xl bg-white text-neutral-900 font-semibold hover:bg-white/90">Request demo</a>
-            <a href="#contact" className="px-6 py-3 rounded-2xl border border-white/15 hover:bg-white/5">Join the pilot</a>
+            <a href="#contact" className="px-6 py-3 rounded-2xl bg-white text-neutral-900 font-semibold hover:bg-white/90">{t.hero.requestDemo}</a>
+            <a href="#contact" className="px-6 py-3 rounded-2xl border border-white/15 hover:bg-white/5">{t.hero.joinPilot}</a>
           </div>
-          <p className="mt-6 text-sm text-white/60">MVP live • Pilot-ready • Immutable trust. Simplified innovation.</p>
+          <p className="mt-6 text-sm text-white/60">{t.hero.footer}</p>
         </div>
       </section>
 
@@ -225,17 +471,12 @@ export default function TraceholdPilotLanding() {
           <div className="text-center mb-12">
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
               <Image src="/assets/tracehold-fade.png" alt="Tracehold Icon" width={30} height={32} />
-              <h2 className="text-3xl font-semibold">Product</h2>
+              <h2 className="text-3xl font-semibold">{t.product.title}</h2>
             </div>
-            <p className="text-white/70 text-lg max-w-2xl mx-auto">Tracehold turns the Bill of Lading into a secure, digital asset — easy to create, register and transfer.</p>
+            <p className="text-white/70 text-lg max-w-2xl mx-auto">{t.product.subtitle}</p>
             </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[
-                { title: "Single source of truth", desc: "One document, roles and e-signatures in a single workflow." },
-                { title: "Blockchain fingerprint", desc: "Hash and verifiable timestamp for tamper evidence." },
-                { title: "Custody & traceability", desc: "Event log, endorsements and transfers with full audit trail." },
-                { title: "Simple onboarding", desc: "Start with templates and manual entry. ERP/TMS integrations are on the roadmap." },
-              ].map((f, i) => (
+              {t.product.features.map((f, i) => (
               <div key={i} className="rounded-2xl border border-white/10 p-6 bg-gray-phantom/20 backdrop-blur">
                 <h3 className="font-semibold mb-3">{f.title}</h3>
                 <p className="text-white/70 text-sm">{f.desc}</p>
@@ -249,70 +490,49 @@ export default function TraceholdPilotLanding() {
       <section id="problem" className="py-20 relative z-10" style={{ paddingBottom: "8rem"}}>
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-16">
-            <p className="text-xs uppercase tracking-widest text-tracehold-purple font-bold mb-4 neon-text">The Problem</p>
-            <h2 className="text-3xl md:text-4xl font-semibold mb-6">Paper slows down trade — and costs billions.</h2>
-            <p className="text-white/70 text-lg max-w-3xl mx-auto">Every year, global trade wastes billions managing paper-based Bills of Lading that depend on printed, couriered documents.</p>
+            <p className="text-xs uppercase tracking-widest text-tracehold-purple font-bold mb-4 neon-text">{t.problem.tagline}</p>
+            <h2 className="text-3xl md:text-4xl font-semibold mb-6">{t.problem.title}</h2>
+            <p className="text-white/70 text-lg max-w-3xl mx-auto">{t.problem.subtitle}</p>
           </div>
           
           {/* Problem Cards with Icons */}
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            {[
-              { 
-                title: "McKinsey Research", 
-                desc: "Digitalizing B/L could save <strong>$6.5B</strong> in direct costs and unlock <strong>$30-40B</strong> in trade growth.",
-                icon: (
-                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                  </svg>
-                )
-              },
-              { 
-                title: "DCSA Analysis", 
-                desc: "eB/Ls could eliminate <strong>10-30%</strong> of total trade documentation costs.",
-                icon: (
-                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                )
-              },
-              { 
-                title: "Current Reality", 
-                desc: "<strong>99%</strong> of Bills of Lading are still issued on paper despite massive costs.",
-                icon: (
-                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                )
-              },
-              { 
-                title: "Daily Impact", 
-                desc: "Every delay, lost document, and manual verification means lost efficiency.",
-                icon: (
-                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                )
-              },
-            ].map((problem, i) => (
-              <div key={i} className="group relative h-full">
-                {/* Card Background */}
-                <div className="rounded-2xl p-8 bg-gradient-to-br from-red-500/5 to-red-600/3 backdrop-blur hover:from-red-500/8 hover:to-red-600/5 transition-all duration-300 h-full flex flex-col">
-                  {/* Icon Circle */}
-                  <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-red-500/20 flex items-center justify-center text-red-400 group-hover:bg-red-500/30 group-hover:scale-110 transition-all duration-300 flex-shrink-0">
-                    {problem.icon}
+            {t.problem.statsData.map((problem, i) => {
+              const icons = [
+                <svg key={i} className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>,
+                <svg key={i} className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>,
+                <svg key={i} className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>,
+                <svg key={i} className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>,
+              ]
+              return (
+                <div key={i} className="group relative h-full">
+                  {/* Card Background */}
+                  <div className="rounded-2xl p-8 bg-gradient-to-br from-red-500/5 to-red-600/3 backdrop-blur hover:from-red-500/8 hover:to-red-600/5 transition-all duration-300 h-full flex flex-col">
+                    {/* Icon Circle */}
+                    <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-red-500/20 flex items-center justify-center text-red-400 group-hover:bg-red-500/30 group-hover:scale-110 transition-all duration-300 flex-shrink-0">
+                      {icons[i]}
+                    </div>
+                    
+                    {/* Content */}
+                    <div className="text-center flex-1 flex flex-col">
+                      <h3 className="font-semibold mb-4 text-red-400 text-lg neon-text-red flex-shrink-0">{problem.title}</h3>
+                      <p className="text-white/70 text-sm leading-relaxed flex-1" dangerouslySetInnerHTML={{ __html: problem.desc }}></p>
+                    </div>
+                    
+                    {/* Hover Effect Overlay */}
+                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-red-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
                   </div>
-                  
-                  {/* Content */}
-                  <div className="text-center flex-1 flex flex-col">
-                    <h3 className="font-semibold mb-4 text-red-400 text-lg neon-text-red flex-shrink-0">{problem.title}</h3>
-                    <p className="text-white/70 text-sm leading-relaxed flex-1" dangerouslySetInnerHTML={{ __html: problem.desc }}></p>
-                  </div>
-                  
-                  {/* Hover Effect Overlay */}
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-red-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
                 </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
             
           {/* Visual Split Layout */}
@@ -326,28 +546,14 @@ export default function TraceholdPilotLanding() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
                   </div>
-                  <h3 className="text-2xl font-semibold mb-6 text-red-400 neon-text-red">Paper Chaos</h3>
+                  <h3 className="text-2xl font-semibold mb-6 text-red-400 neon-text-red">{t.problem.paperChaos.title}</h3>
                   <ul className="text-white/70 text-sm space-y-3 text-center max-w-xs mx-auto">
-                    <li className="flex items-center justify-center gap-3">
-                      <div className="w-2 h-2 rounded-full bg-red-400 flex-shrink-0"></div>
-                      Days of courier delays
-                    </li>
-                    <li className="flex items-center justify-center gap-3">
-                      <div className="w-2 h-2 rounded-full bg-red-400 flex-shrink-0"></div>
-                      Hundreds in processing costs
-                    </li>
-                    <li className="flex items-center justify-center gap-3">
-                      <div className="w-2 h-2 rounded-full bg-red-400 flex-shrink-0"></div>
-                      Manual verification errors
-                    </li>
-                    <li className="flex items-center justify-center gap-3">
-                      <div className="w-2 h-2 rounded-full bg-red-400 flex-shrink-0"></div>
-                      Lost or damaged documents
-                    </li>
-                    <li className="flex items-center justify-center gap-3">
-                      <div className="w-2 h-2 rounded-full bg-red-400 flex-shrink-0"></div>
-                      Multiple parties, multiple delays
-                    </li>
+                    {t.problem.paperChaos.items.map((item, idx) => (
+                      <li key={idx} className="flex items-center justify-center gap-3">
+                        <div className="w-2 h-2 rounded-full bg-red-400 flex-shrink-0"></div>
+                        {item}
+                      </li>
+                    ))}
                   </ul>
                 </div>
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-red-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
@@ -361,28 +567,14 @@ export default function TraceholdPilotLanding() {
                   <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-tracehold-purple/20 flex items-center justify-center group-hover:bg-tracehold-purple/30 group-hover:scale-110 transition-all duration-300">
                     <Image src="/assets/tracehold-fade.png" alt="Tracehold" width={32} height={32} className="h-8 w-8" style={{ filter: 'brightness(0) saturate(100%) invert(21%) sepia(100%) saturate(2000%) hue-rotate(260deg) brightness(101%) contrast(101%)' }} />
                   </div>
-                  <h3 className="text-2xl font-semibold mb-6 text-tracehold-purple neon-text-blue">Digital Flow</h3>
+                  <h3 className="text-2xl font-semibold mb-6 text-tracehold-purple neon-text-blue">{t.problem.digitalFlow.title}</h3>
                   <ul className="text-white/70 text-sm space-y-3 text-center max-w-xs mx-auto">
-                    <li className="flex items-center justify-center gap-3">
-                      <div className="w-2 h-2 rounded-full bg-tracehold-purple flex-shrink-0"></div>
-                      Instant digital transfers
-                    </li>
-                    <li className="flex items-center justify-center gap-3">
-                      <div className="w-2 h-2 rounded-full bg-tracehold-purple flex-shrink-0"></div>
-                      Minimal processing costs
-                    </li>
-                    <li className="flex items-center justify-center gap-3">
-                      <div className="w-2 h-2 rounded-full bg-tracehold-purple flex-shrink-0"></div>
-                      Automated verification
-                    </li>
-                    <li className="flex items-center justify-center gap-3">
-                      <div className="w-2 h-2 rounded-full bg-tracehold-purple flex-shrink-0"></div>
-                      Tamper-proof records
-                    </li>
-                    <li className="flex items-center justify-center gap-3">
-                      <div className="w-2 h-2 rounded-full bg-tracehold-purple flex-shrink-0"></div>
-                      Seamless party integration
-                    </li>
+                    {t.problem.digitalFlow.items.map((item, idx) => (
+                      <li key={idx} className="flex items-center justify-center gap-3">
+                        <div className="w-2 h-2 rounded-full bg-tracehold-purple flex-shrink-0"></div>
+                        {item}
+                      </li>
+                    ))}
                   </ul>
                 </div>
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-tracehold-sky-blue/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
@@ -398,9 +590,9 @@ export default function TraceholdPilotLanding() {
           <div className="text-center mb-12">
             <div className="flex items-center justify-center gap-4 mb-6">
               <Image src="/assets/tracehold-fade.png" alt="Tracehold Icon" width={32} height={30} className="h-8 w-8" />
-              <h2 className="text-3xl font-semibold">How it works</h2>
+              <h2 className="text-3xl font-semibold">{t.howItWorks.title}</h2>
             </div>
-            <p className="text-white/70 text-lg max-w-2xl mx-auto">A simple three-step process to digitize and secure your Bill of Lading</p>
+            <p className="text-white/70 text-lg max-w-2xl mx-auto">{t.howItWorks.subtitle}</p>
           </div>
           
           {/* Video Carousel Container */}
@@ -417,26 +609,9 @@ export default function TraceholdPilotLanding() {
                 setIsHovered(false)
               }}
             >
-              {[
-                { 
-                  title: "Create", 
-                  desc: "Fill a standardized template and assign roles.",
-                  detailedDesc: "Every shipment begins with a document — and with Tracehold, that document is born digital. Instead of drafting or scanning endless paper forms, users fill a standardized Bill of Lading template that automatically includes every required field and regulation-ready format. Each participant — shipper, carrier, consignee, or agent — is assigned a defined role and digital identity, ensuring accountability from the very first entry. Once the document is created, it's digitally signed and verified, ready to move through the trade network without the friction of manual checks or courier delays. What used to take days to prepare now takes minutes — standardized, compliant, and immediately verifiable.",
-                  video: "/assets/cargo-1.mp4"
-                },
-                { 
-                  title: "Register", 
-                  desc: "Store the cryptographic hash on blockchain; evidence on IPFS.",
-                  detailedDesc: "After creation, Tracehold takes care of the most critical part: registration and proof. Each digital Bill of Lading is hashed cryptographically and anchored to the blockchain, generating a tamper-proof record that cannot be altered or lost. This registration creates an immutable timestamp — verifiable proof of origin and authenticity. At the same time, a copy of the evidence is stored on IPFS, a decentralized network ensuring that the document remains accessible and verifiable anywhere, at any time. This step transforms a simple document into a trusted digital asset — transparent, auditable, and legally robust.",
-                  video: "/assets/cargo-2.mp4"
-                },
-                { 
-                  title: "Transfer / Endorse", 
-                  desc: "Endorse and transfer ownership digitally with full traceability.",
-                  detailedDesc: "Once registered, the Bill of Lading is ready to travel — digitally, securely, and with complete traceability. Using Tracehold's platform, the document can be endorsed and transferred from one party to another, with every action recorded on-chain. Ownership passes seamlessly from shipper to carrier to consignee, and each endorsement carries its own cryptographic signature, forming an unbroken chain of custody. Stakeholders can verify ownership and document integrity instantly — without relying on couriers, emails, or manual tracking. Every transfer is visible, every signature verifiable, and every step trusted by code, not paperwork.",
-                  video: "/assets/plane-1.mp4"
-                },
-              ].map((s, i) => (
+              {t.howItWorks.steps.map((s, i) => {
+                const videos = ["/assets/cargo-1.mp4", "/assets/cargo-2.mp4", "/assets/plane-1.mp4"]
+                return (
                 <div 
                   key={i}
                   className={`absolute inset-0 transition-opacity duration-1000 ${
@@ -456,7 +631,7 @@ export default function TraceholdPilotLanding() {
                       filter: 'grayscale(0.5) hue-rotate(240deg) saturate(1.2) brightness(0.8) contrast(1.1) sepia(0.4)'
                     }}
                   >
-                    <source src={s.video} type="video/mp4" />
+                    <source src={videos[i]} type="video/mp4" />
                   </video>
                   
                   {/* Dark Overlay */}
@@ -509,7 +684,8 @@ export default function TraceholdPilotLanding() {
                     </div>
                   </div>
                 </div>
-              ))}
+              )
+            })}
             </div>
             
             {/* Navigation Controls */}
@@ -539,9 +715,9 @@ export default function TraceholdPilotLanding() {
           <div className="text-center mb-12">
             <div className="flex items-center justify-center gap-4 mb-6">
               <Image src="/assets/tracehold-fade.png" alt="Tracehold Icon" width={30} height={32} className="h-8 w-8" />
-              <h2 className="text-3xl font-semibold">Get in touch</h2>
+              <h2 className="text-3xl font-semibold">{t.contact.title}</h2>
             </div>
-            <p className="text-white/70 text-lg max-w-2xl mx-auto">Ready to transform your Bill of Lading process? Let's discuss how Tracehold can work for your business.</p>
+            <p className="text-white/70 text-lg max-w-2xl mx-auto">{t.contact.subtitle}</p>
           </div>
           <div className="rounded-2xl border border-white/10 p-8 bg-gray-phantom/20 backdrop-blur">
             
@@ -560,7 +736,7 @@ export default function TraceholdPilotLanding() {
                   className={`w-full rounded-xl bg-gray-phantom border p-3 text-sm ${
                     errors.name ? 'border-red-500' : 'border-white/10'
                   }`}
-                  placeholder="Name *"
+                  placeholder={t.contact.form.name}
                   disabled={isSubmitting}
                 />
                 {errors.name && <p className="mt-1 text-red-400 text-xs">{errors.name}</p>}
@@ -574,7 +750,7 @@ export default function TraceholdPilotLanding() {
                   className={`w-full rounded-xl bg-gray-phantom border p-3 text-sm ${
                     errors.company ? 'border-red-500' : 'border-white/10'
                   }`}
-                  placeholder="Company"
+                  placeholder={t.contact.form.company}
                   disabled={isSubmitting}
                 />
                 {errors.company && <p className="mt-1 text-red-400 text-xs">{errors.company}</p>}
@@ -589,7 +765,7 @@ export default function TraceholdPilotLanding() {
                   className={`w-full rounded-xl bg-gray-phantom border p-3 text-sm ${
                     errors.email ? 'border-red-500' : 'border-white/10'
                   }`}
-                  placeholder="Email *"
+                  placeholder={t.contact.form.email}
                   disabled={isSubmitting}
                 />
                 {errors.email && <p className="mt-1 text-red-400 text-xs">{errors.email}</p>}
@@ -604,7 +780,7 @@ export default function TraceholdPilotLanding() {
                   className={`w-full rounded-xl bg-gray-phantom border p-3 text-sm ${
                     errors.message ? 'border-red-500' : 'border-white/10'
                   }`}
-                  placeholder="Tell us about your B/L flow (systems, volume, pain points) *"
+                  placeholder={t.contact.form.message}
                   disabled={isSubmitting}
                 />
                 {errors.message && <p className="mt-1 text-red-400 text-xs">{errors.message}</p>}
@@ -629,14 +805,14 @@ export default function TraceholdPilotLanding() {
                     className="mr-2 align-middle"
                     disabled={isSubmitting}
                   />
-                  I accept the <a href="/privacy" className="text-tracehold-sky-blue hover:text-tracehold-sky-blue/80" style={{ paddingLeft: '3px' }}> privacy policy</a> *
+                  {t.contact.form.gdprConsent} <a href="/privacy" className="text-tracehold-sky-blue hover:text-tracehold-sky-blue/80" style={{ paddingLeft: '3px' }}> {t.contact.form.privacyPolicy}</a> *
                 </label>
                 <button
                   type="submit"
                   disabled={isSubmitting}
                   className="px-5 py-3 rounded-2xl bg-white text-neutral-900 font-semibold hover:bg-white/90 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {isSubmitting ? 'Sending...' : 'Send'}
+                  {isSubmitting ? t.contact.form.sending : t.contact.form.send}
                 </button>
               </div>
               
@@ -649,11 +825,11 @@ export default function TraceholdPilotLanding() {
       {/* Footer */}
       <footer className="border-t border-white/10 py-8 relative z-10">
         <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/60">
-          <div>© {new Date().getFullYear()} Tracehold B.V.</div>
+          <div>{t.footer.copyright.replace('{year}', new Date().getFullYear().toString())}</div>
           <div className="flex items-center gap-6">
-            <a href="/privacy" className="hover:text-white">Privacy</a>
-            <a href="#" className="hover:text-white">Terms</a>
-            <a href="#" className="hover:text-white">Security</a>
+            <a href="/privacy" className="hover:text-white">{t.footer.privacy}</a>
+            <a href="#" className="hover:text-white">{t.footer.terms}</a>
+            <a href="#" className="hover:text-white">{t.footer.security}</a>
           </div>
         </div>
       </footer>
