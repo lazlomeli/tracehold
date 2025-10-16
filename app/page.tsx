@@ -136,7 +136,7 @@ const translations = {
     // Hero Section
     hero: {
       tagline: 'eB/L • Documentos críticos • Blockchain',
-      title: 'Digitalice su Bill of Lading y desbloquee nuevas formas de financiación.',
+      title: 'Digitaliza tu Bill of Lading y desbloquee nuevas formas de financiación.',
       subtitle: 'Tracehold hace que el eB/L sea verificable en blockchain: menos errores, menos fraude y una base para mayor liquidez.',
       requestDemo: 'Solicitar demo',
       joinPilot: 'Unirse al piloto',
@@ -252,6 +252,7 @@ export default function TraceholdPilotLanding() {
   const [isPaused, setIsPaused] = useState(false)
   const [isHovered, setIsHovered] = useState(false)
   const [readingProgress, setReadingProgress] = useState(0)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   const t = translations[language]
 
@@ -413,20 +414,24 @@ export default function TraceholdPilotLanding() {
       <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/10 backdrop-blur bg-black/50">
         <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <Image src="/assets/tracehold-lettering.png" alt="Tracehold" width={185} height={32} className="h-8" />
+            <Image src="/assets/tracehold-lettering.png" alt="Tracehold" width={185} height={32} className="h-6 sm:h-8" />
           </div>
-          <nav className="hidden md:flex items-center gap-8 text-sm text-white/80">
-            <a href="#product" className="hover:text-white">{t.nav.product}</a> 
-            <a href="#how" className="hover:text-white">{t.nav.howItWorks}</a>
-            <a href="/calculator" className="hover:text-white">{t.nav.calculator}</a>
-            <a href="#contact" className="hover:text-white">{t.nav.contact}</a>
+          
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center gap-8 text-sm text-white/80">
+            <a href="#product" className="hover:text-white transition-colors">{t.nav.product}</a> 
+            <a href="#how" className="hover:text-white transition-colors">{t.nav.howItWorks}</a>
+            <a href="/calculator" className="hover:text-white transition-colors">{t.nav.calculator}</a>
+            <a href="#contact" className="hover:text-white transition-colors">{t.nav.contact}</a>
           </nav>
-          <div className="flex items-center gap-2">
+          
+          {/* Desktop Actions */}
+          <div className="hidden md:flex items-center gap-2">
             {/* Language Toggle */}
             <div className="flex items-center rounded-xl border border-white/15 overflow-hidden">
               <button
                 onClick={() => setLanguage('EN')}
-                className={`px-3 py-2 text-xs font-semibold transition-colors ${
+                className={`px-2 sm:px-3 py-2 text-xs font-semibold transition-colors ${
                   language === 'EN' 
                     ? 'bg-white text-neutral-900' 
                     : 'text-white/80 hover:bg-white/5'
@@ -436,7 +441,7 @@ export default function TraceholdPilotLanding() {
               </button>
               <button
                 onClick={() => setLanguage('ES')}
-                className={`px-3 py-2 text-xs font-semibold transition-colors ${
+                className={`px-2 sm:px-3 py-2 text-xs font-semibold transition-colors ${
                   language === 'ES' 
                     ? 'bg-white text-neutral-900' 
                     : 'text-white/80 hover:bg-white/5'
@@ -445,41 +450,127 @@ export default function TraceholdPilotLanding() {
                 ES
               </button>
             </div>
-            <a href="#contact" className="px-3 py-2 rounded-xl border border-white/15 text-sm hover:bg-white/5">{t.nav.talkToSales}</a>
-            <a href="#contact" className="px-3 py-2 rounded-xl bg-white text-neutral-900 text-sm font-semibold hover:bg-white/90">{t.nav.joinPilot}</a>
+            <a href="#contact" className="hidden lg:block px-3 py-2 rounded-xl border border-white/15 text-sm hover:bg-white/5 transition-colors">{t.nav.talkToSales}</a>
+            <a href="#contact" className="px-3 py-2 rounded-xl bg-white text-neutral-900 text-sm font-semibold hover:bg-white/90 transition-colors">{t.nav.joinPilot}</a>
+          </div>
+          
+          {/* Mobile Menu Button */}
+          <div className="md:hidden flex items-center gap-2">
+            {/* Mobile Language Toggle */}
+            <div className="flex items-center rounded-xl border border-white/15 overflow-hidden">
+              <button
+                onClick={() => setLanguage('EN')}
+                className={`px-2 py-1.5 text-xs font-semibold transition-colors ${
+                  language === 'EN' 
+                    ? 'bg-white text-neutral-900' 
+                    : 'text-white/80 hover:bg-white/5'
+                }`}
+              >
+                EN
+              </button>
+              <button
+                onClick={() => setLanguage('ES')}
+                className={`px-2 py-1.5 text-xs font-semibold transition-colors ${
+                  language === 'ES' 
+                    ? 'bg-white text-neutral-900' 
+                    : 'text-white/80 hover:bg-white/5'
+                }`}
+              >
+                ES
+              </button>
+            </div>
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="p-2 rounded-xl border border-white/15 hover:bg-white/5 transition-colors"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {isMobileMenuOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
+          </div>
+        </div>
+        
+        {/* Mobile Menu */}
+        <div className={`md:hidden transition-all duration-300 ease-in-out overflow-hidden ${
+          isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+        }`}>
+          <div className="px-4 py-4 border-t border-white/10 bg-black/80 backdrop-blur">
+            <nav className="flex flex-col gap-4">
+              <a 
+                href="#product" 
+                className="text-white/80 hover:text-white transition-colors py-2"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {t.nav.product}
+              </a>
+              <a 
+                href="#how" 
+                className="text-white/80 hover:text-white transition-colors py-2"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {t.nav.howItWorks}
+              </a>
+              <a 
+                href="/calculator" 
+                className="text-white/80 hover:text-white transition-colors py-2"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {t.nav.calculator}
+              </a>
+              <a 
+                href="#contact" 
+                className="text-white/80 hover:text-white transition-colors py-2"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {t.nav.contact}
+              </a>
+              <div className="pt-2 border-t border-white/10">
+                <a 
+                  href="#contact" 
+                  className="block w-full text-center px-4 py-3 rounded-xl bg-white text-neutral-900 font-semibold hover:bg-white/90 transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {t.nav.joinPilot}
+                </a>
+              </div>
+            </nav>
           </div>
         </div>
       </header>
 
       {/* Hero */}
       <section className="relative z-10 pt-20">
-        <div className="max-w-6xl mx-auto px-4 py-60 text-center" style={{ paddingBottom: "5rem"}}>
+        <div className="max-w-6xl mx-auto px-4 py-32 sm:py-48 lg:py-60 text-center" style={{ paddingBottom: "3rem"}}>
           <p className="text-xs uppercase tracking-widest text-tracehold-purple font-bold mb-4 neon-text">{t.hero.tagline}</p>
-          <h1 className="text-5xl md:text-6xl font-semibold leading-tight mb-6">{t.hero.title}</h1>
-          <p className="text-xl text-white/80 max-w-3xl mx-auto mb-8">{t.hero.subtitle}</p>
-          <div className="flex flex-wrap justify-center items-center gap-4">
-            <a href="#contact" className="px-6 py-3 rounded-2xl bg-white text-neutral-900 font-semibold hover:bg-white/90">{t.hero.requestDemo}</a>
-            <a href="#contact" className="px-6 py-3 rounded-2xl border border-white/15 hover:bg-white/5">{t.hero.joinPilot}</a>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight mb-6 px-2">{t.hero.title}</h1>
+          <p className="text-lg sm:text-xl text-white/80 max-w-3xl mx-auto mb-8 px-4">{t.hero.subtitle}</p>
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 px-4">
+            <a href="#contact" className="w-full sm:w-auto px-6 py-3 rounded-2xl bg-white text-neutral-900 font-semibold hover:bg-white/90 transition-colors text-center">{t.hero.requestDemo}</a>
+            <a href="#contact" className="w-full sm:w-auto px-6 py-3 rounded-2xl border border-white/15 hover:bg-white/5 transition-colors text-center">{t.hero.joinPilot}</a>
           </div>
-          <p className="mt-6 text-sm text-white/60">{t.hero.footer}</p>
+          <p className="mt-6 text-sm text-white/60 px-4">{t.hero.footer}</p>
         </div>
       </section>
 
       {/* Product */}
-      <section id="product" className="py-20 relative z-10" style={{ paddingBottom: "8rem"}}>
+      <section id="product" className="py-12 sm:py-16 lg:py-20 relative z-10" style={{ paddingBottom: "4rem"}}>
         <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
-              <Image src="/assets/tracehold-fade.png" alt="Tracehold Icon" width={30} height={32} />
-              <h2 className="text-3xl font-semibold">{t.product.title}</h2>
+          <div className="text-center mb-8 sm:mb-12">
+            <div className="flex items-center justify-center gap-3 sm:gap-4 mb-4 sm:mb-6">
+              <Image src="/assets/tracehold-fade.png" alt="Tracehold Icon" width={30} height={32} className="w-6 h-6 sm:w-8 sm:h-8" />
+              <h2 className="text-2xl sm:text-3xl font-semibold">{t.product.title}</h2>
             </div>
-            <p className="text-white/70 text-lg max-w-2xl mx-auto">{t.product.subtitle}</p>
+            <p className="text-white/70 text-base sm:text-lg max-w-2xl mx-auto px-4">{t.product.subtitle}</p>
             </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
               {t.product.features.map((f, i) => (
-              <div key={i} className="rounded-2xl border border-white/10 p-6 bg-gray-phantom/20 backdrop-blur">
-                <h3 className="font-semibold mb-3">{f.title}</h3>
-                <p className="text-white/70 text-sm">{f.desc}</p>
+              <div key={i} className="rounded-2xl border border-white/10 p-4 sm:p-6 bg-gray-phantom/20 backdrop-blur hover:bg-gray-phantom/30 transition-colors">
+                <h3 className="font-semibold mb-3 text-sm sm:text-base">{f.title}</h3>
+                <p className="text-white/70 text-xs sm:text-sm leading-relaxed">{f.desc}</p>
                 </div>
               ))}
           </div>
@@ -487,44 +578,44 @@ export default function TraceholdPilotLanding() {
       </section>
 
       {/* The Problem */}
-      <section id="problem" className="py-20 relative z-10" style={{ paddingBottom: "8rem"}}>
+      <section id="problem" className="py-12 sm:py-16 lg:py-20 relative z-10" style={{ paddingBottom: "4rem"}}>
         <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12 sm:mb-16">
             <p className="text-xs uppercase tracking-widest text-tracehold-purple font-bold mb-4 neon-text">{t.problem.tagline}</p>
-            <h2 className="text-3xl md:text-4xl font-semibold mb-6">{t.problem.title}</h2>
-            <p className="text-white/70 text-lg max-w-3xl mx-auto">{t.problem.subtitle}</p>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-6 px-2">{t.problem.title}</h2>
+            <p className="text-white/70 text-base sm:text-lg max-w-3xl mx-auto px-4">{t.problem.subtitle}</p>
           </div>
           
           {/* Problem Cards with Icons */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-12 sm:mb-16">
             {t.problem.statsData.map((problem, i) => {
               const icons = [
-                <svg key={i} className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg key={i} className="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                 </svg>,
-                <svg key={i} className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg key={i} className="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>,
-                <svg key={i} className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg key={i} className="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>,
-                <svg key={i} className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg key={i} className="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>,
               ]
               return (
                 <div key={i} className="group relative h-full">
                   {/* Card Background */}
-                  <div className="rounded-2xl p-8 bg-gradient-to-br from-red-500/5 to-red-600/3 backdrop-blur hover:from-red-500/8 hover:to-red-600/5 transition-all duration-300 h-full flex flex-col">
+                  <div className="rounded-2xl p-4 sm:p-6 lg:p-8 bg-gradient-to-br from-red-500/5 to-red-600/3 backdrop-blur hover:from-red-500/8 hover:to-red-600/5 transition-all duration-300 h-full flex flex-col">
                     {/* Icon Circle */}
-                    <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-red-500/20 flex items-center justify-center text-red-400 group-hover:bg-red-500/30 group-hover:scale-110 transition-all duration-300 flex-shrink-0">
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-4 sm:mb-6 rounded-full bg-red-500/20 flex items-center justify-center text-red-400 group-hover:bg-red-500/30 group-hover:scale-110 transition-all duration-300 flex-shrink-0">
                       {icons[i]}
                     </div>
                     
                     {/* Content */}
                     <div className="text-center flex-1 flex flex-col">
-                      <h3 className="font-semibold mb-4 text-red-400 text-lg neon-text-red flex-shrink-0">{problem.title}</h3>
-                      <p className="text-white/70 text-sm leading-relaxed flex-1" dangerouslySetInnerHTML={{ __html: problem.desc }}></p>
+                      <h3 className="font-semibold mb-3 sm:mb-4 text-red-400 text-base sm:text-lg neon-text-red flex-shrink-0">{problem.title}</h3>
+                      <p className="text-white/70 text-xs sm:text-sm leading-relaxed flex-1" dangerouslySetInnerHTML={{ __html: problem.desc }}></p>
                     </div>
                     
                     {/* Hover Effect Overlay */}
@@ -536,20 +627,20 @@ export default function TraceholdPilotLanding() {
           </div>
             
           {/* Visual Split Layout */}
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             {/* Paper Chaos */}
             <div className="group relative">
-              <div className="rounded-2xl p-8 bg-gradient-to-br from-red-500/5 to-red-600/3 backdrop-blur hover:from-red-500/8 hover:to-red-600/5 transition-all duration-300">
+              <div className="rounded-2xl p-6 sm:p-8 bg-gradient-to-br from-red-500/5 to-red-600/3 backdrop-blur hover:from-red-500/8 hover:to-red-600/5 transition-all duration-300">
                 <div className="text-center">
-                  <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-red-500/20 flex items-center justify-center group-hover:bg-red-500/30 group-hover:scale-110 transition-all duration-300">
-                    <svg className="w-10 h-10 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 sm:mb-6 rounded-full bg-red-500/20 flex items-center justify-center group-hover:bg-red-500/30 group-hover:scale-110 transition-all duration-300">
+                    <svg className="w-8 h-8 sm:w-10 sm:h-10 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
                   </div>
-                  <h3 className="text-2xl font-semibold mb-6 text-red-400 neon-text-red">{t.problem.paperChaos.title}</h3>
-                  <ul className="text-white/70 text-sm space-y-3 text-center max-w-xs mx-auto">
+                  <h3 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6 text-red-400 neon-text-red">{t.problem.paperChaos.title}</h3>
+                  <ul className="text-white/70 text-xs sm:text-sm space-y-2 sm:space-y-3 text-center max-w-xs mx-auto">
                     {t.problem.paperChaos.items.map((item, idx) => (
-                      <li key={idx} className="flex items-center justify-center gap-3">
+                      <li key={idx} className="flex items-center justify-center gap-2 sm:gap-3">
                         <div className="w-2 h-2 rounded-full bg-red-400 flex-shrink-0"></div>
                         {item}
                       </li>
@@ -562,15 +653,15 @@ export default function TraceholdPilotLanding() {
             
             {/* Digital Flow */}
             <div className="group relative">
-              <div className="rounded-2xl p-8 backdrop-blur hover:from-tracehold-purple/30 hover:to-purple-600/25 transition-all duration-300" style={{ background: 'linear-gradient(to bottom right, rgb(12 14 16 / 20%) var(--tw-gradient-from-position), rgb(123 54 255 / 15%))' }}>
+              <div className="rounded-2xl p-6 sm:p-8 backdrop-blur hover:from-tracehold-purple/30 hover:to-purple-600/25 transition-all duration-300" style={{ background: 'linear-gradient(to bottom right, rgb(12 14 16 / 20%) var(--tw-gradient-from-position), rgb(123 54 255 / 15%))' }}>
                 <div className="text-center">
-                  <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-tracehold-purple/20 flex items-center justify-center group-hover:bg-tracehold-purple/30 group-hover:scale-110 transition-all duration-300">
-                    <Image src="/assets/tracehold-fade.png" alt="Tracehold" width={32} height={32} className="h-8 w-8" style={{ filter: 'brightness(0) saturate(100%) invert(21%) sepia(100%) saturate(2000%) hue-rotate(260deg) brightness(101%) contrast(101%)' }} />
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 sm:mb-6 rounded-full bg-tracehold-purple/20 flex items-center justify-center group-hover:bg-tracehold-purple/30 group-hover:scale-110 transition-all duration-300">
+                    <Image src="/assets/tracehold-fade.png" alt="Tracehold" width={32} height={32} className="h-6 w-6 sm:h-8 sm:w-8" style={{ filter: 'brightness(0) saturate(100%) invert(21%) sepia(100%) saturate(2000%) hue-rotate(260deg) brightness(101%) contrast(101%)' }} />
                   </div>
-                  <h3 className="text-2xl font-semibold mb-6 text-tracehold-purple neon-text-blue">{t.problem.digitalFlow.title}</h3>
-                  <ul className="text-white/70 text-sm space-y-3 text-center max-w-xs mx-auto">
+                  <h3 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6 text-tracehold-purple neon-text-blue">{t.problem.digitalFlow.title}</h3>
+                  <ul className="text-white/70 text-xs sm:text-sm space-y-2 sm:space-y-3 text-center max-w-xs mx-auto">
                     {t.problem.digitalFlow.items.map((item, idx) => (
-                      <li key={idx} className="flex items-center justify-center gap-3">
+                      <li key={idx} className="flex items-center justify-center gap-2 sm:gap-3">
                         <div className="w-2 h-2 rounded-full bg-tracehold-purple flex-shrink-0"></div>
                         {item}
                       </li>
@@ -585,14 +676,14 @@ export default function TraceholdPilotLanding() {
       </section>
 
       {/* How it works - Video Carousel */}
-      <section id="how" className="py-20 relative z-10">
+      <section id="how" className="py-12 sm:py-16 lg:py-20 relative z-10">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <div className="flex items-center justify-center gap-4 mb-6">
-              <Image src="/assets/tracehold-fade.png" alt="Tracehold Icon" width={32} height={30} className="h-8 w-8" />
-              <h2 className="text-3xl font-semibold">{t.howItWorks.title}</h2>
+          <div className="text-center mb-8 sm:mb-12">
+            <div className="flex items-center justify-center gap-3 sm:gap-4 mb-4 sm:mb-6">
+              <Image src="/assets/tracehold-fade.png" alt="Tracehold Icon" width={32} height={30} className="h-6 w-6 sm:h-8 sm:w-8" />
+              <h2 className="text-2xl sm:text-3xl font-semibold">{t.howItWorks.title}</h2>
             </div>
-            <p className="text-white/70 text-lg max-w-2xl mx-auto">{t.howItWorks.subtitle}</p>
+            <p className="text-white/70 text-base sm:text-lg max-w-2xl mx-auto px-4">{t.howItWorks.subtitle}</p>
           </div>
           
           {/* Video Carousel Container */}
@@ -640,23 +731,23 @@ export default function TraceholdPilotLanding() {
                   }`}></div>
                   
                   {/* Content Overlay */}
-                  <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-8">
+                  <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-4 sm:px-6 lg:px-8">
                     {/* Default view */}
                     <div className={`transition-all duration-500 ${
                       !isHovered ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform -translate-y-4 pointer-events-none'
                     }`}>
-                      <h3 className="font-semibold text-4xl md:text-5xl mb-6 text-white">{s.title}</h3>
-                      <p className="text-white/90 text-xl md:text-2xl max-w-3xl leading-relaxed">{s.desc}</p>
+                      <h3 className="font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-4 sm:mb-6 text-white">{s.title}</h3>
+                      <p className="text-white/90 text-base sm:text-lg md:text-xl lg:text-2xl max-w-3xl leading-relaxed">{s.desc}</p>
                     </div>
                     
-                    {/* Detailed view on hover */}
-                    <div className={`absolute inset-0 flex flex-col justify-center items-center px-12 py-8 transition-all duration-500 ${
+                    {/* Detailed view on hover - Hidden on mobile */}
+                    <div className={`hidden md:flex absolute inset-0 flex-col justify-center items-center px-6 lg:px-12 py-8 transition-all duration-500 ${
                       isHovered ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-4 pointer-events-none'
                     }`}>
                       <div className="max-w-5xl mx-auto w-full">
                         <div className="max-h-full overflow-y-auto scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent pr-4">
                           <div 
-                            className="text-xl md:text-2xl text-left"
+                            className="text-lg lg:text-xl xl:text-2xl text-left"
                             style={{ lineHeight: '1.8em' }}
                           >
                             {s.detailedDesc.split(' ').map((word, wordIndex) => {
@@ -689,14 +780,14 @@ export default function TraceholdPilotLanding() {
             </div>
             
             {/* Navigation Controls */}
-            <div className="flex justify-center mt-8">
+            <div className="flex justify-center mt-6 sm:mt-8">
               {/* Step Indicators */}
-              <div className="flex gap-4">
+              <div className="flex gap-3 sm:gap-4">
                 {[0, 1, 2].map((step) => (
                   <button
                     key={step}
                     onClick={() => goToStep(step)}
-                    className={`w-4 h-4 rounded-full transition-all duration-300 ${
+                    className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full transition-all duration-300 ${
                       currentStep === step 
                         ? 'bg-white scale-125' 
                         : 'bg-white/40 hover:bg-white/60'
@@ -705,21 +796,29 @@ export default function TraceholdPilotLanding() {
                 ))}
               </div>
             </div>
+            
+            {/* Mobile Step Details - Only visible on mobile */}
+            <div className="md:hidden mt-6 px-4">
+              <div className="rounded-2xl border border-white/10 p-6 bg-gray-phantom/20 backdrop-blur">
+                <h3 className="font-semibold text-xl mb-4 text-center">{t.howItWorks.steps[currentStep].title}</h3>
+                <p className="text-white/80 text-sm leading-relaxed">{t.howItWorks.steps[currentStep].detailedDesc}</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Contact */}
-      <section id="contact" className="py-20 relative z-10">
+      <section id="contact" className="py-12 sm:py-16 lg:py-20 relative z-10">
         <div className="max-w-4xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <div className="flex items-center justify-center gap-4 mb-6">
-              <Image src="/assets/tracehold-fade.png" alt="Tracehold Icon" width={30} height={32} className="h-8 w-8" />
-              <h2 className="text-3xl font-semibold">{t.contact.title}</h2>
+          <div className="text-center mb-8 sm:mb-12">
+            <div className="flex items-center justify-center gap-3 sm:gap-4 mb-4 sm:mb-6">
+              <Image src="/assets/tracehold-fade.png" alt="Tracehold Icon" width={30} height={32} className="h-6 w-6 sm:h-8 sm:w-8" />
+              <h2 className="text-2xl sm:text-3xl font-semibold">{t.contact.title}</h2>
             </div>
-            <p className="text-white/70 text-lg max-w-2xl mx-auto">{t.contact.subtitle}</p>
+            <p className="text-white/70 text-base sm:text-lg max-w-2xl mx-auto px-4">{t.contact.subtitle}</p>
           </div>
-          <div className="rounded-2xl border border-white/10 p-8 bg-gray-phantom/20 backdrop-blur">
+          <div className="rounded-2xl border border-white/10 p-4 sm:p-6 lg:p-8 bg-gray-phantom/20 backdrop-blur">
             
             {errors.general && (
               <div className="mt-4 p-3 bg-red-500/10 border border-red-500/20 rounded-xl text-red-400 text-sm">
@@ -727,7 +826,7 @@ export default function TraceholdPilotLanding() {
               </div>
             )}
             
-            <form onSubmit={handleSubmit} className="mt-6 grid sm:grid-cols-2 gap-4">
+            <form onSubmit={handleSubmit} className="mt-4 sm:mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <input
                   name="name"
@@ -777,7 +876,7 @@ export default function TraceholdPilotLanding() {
                   value={formData.message}
                   onChange={handleInputChange}
                   rows={4}
-                  className={`w-full rounded-xl bg-gray-phantom border p-3 text-sm ${
+                  className={`w-full rounded-xl bg-gray-phantom border p-3 text-sm resize-none ${
                     errors.message ? 'border-red-500' : 'border-white/10'
                   }`}
                   placeholder={t.contact.form.message}
@@ -787,7 +886,7 @@ export default function TraceholdPilotLanding() {
               </div>
               
               {/* CAPTCHA */}
-              <div className="sm:col-span-2">
+              <div className="sm:col-span-2 flex justify-center">
                 <div 
                   className="cf-turnstile" 
                   data-sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || ''} 
@@ -795,41 +894,44 @@ export default function TraceholdPilotLanding() {
                 ></div>
               </div>
               
-              <div className="sm:col-span-2 flex items-center justify-between">
-                <label className="text-xs text-white/60 flex items-center">
+              {/* Mobile Layout */}
+              <div className="sm:col-span-2 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <label className="text-xs text-white/60 flex items-start sm:items-center flex-1">
                   <input
                     type="checkbox"
                     name="gdprConsent"
                     checked={formData.gdprConsent}
                     onChange={handleInputChange}
-                    className="mr-2 align-middle"
+                    className="mr-2 mt-0.5 sm:mt-0 align-middle flex-shrink-0"
                     disabled={isSubmitting}
                   />
-                  {t.contact.form.gdprConsent} <a href="/privacy" className="text-tracehold-sky-blue hover:text-tracehold-sky-blue/80" style={{ paddingLeft: '3px' }}> {t.contact.form.privacyPolicy}</a> *
+                  <span className="leading-relaxed">
+                    {t.contact.form.gdprConsent} <a href="/privacy" className="text-tracehold-sky-blue hover:text-tracehold-sky-blue/80"> {t.contact.form.privacyPolicy}</a> *
+                  </span>
                 </label>
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="px-5 py-3 rounded-2xl bg-white text-neutral-900 font-semibold hover:bg-white/90 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full sm:w-auto px-5 py-3 rounded-2xl bg-white text-neutral-900 font-semibold hover:bg-white/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                 >
                   {isSubmitting ? t.contact.form.sending : t.contact.form.send}
                 </button>
               </div>
               
-              {errors.gdprConsent && <p className="mt-1 text-red-400 text-xs">{errors.gdprConsent}</p>}
+              {errors.gdprConsent && <p className="sm:col-span-2 mt-1 text-red-400 text-xs">{errors.gdprConsent}</p>}
             </form>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-white/10 py-8 relative z-10">
+      <footer className="border-t border-white/10 py-6 sm:py-8 relative z-10">
         <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/60">
-          <div>{t.footer.copyright.replace('{year}', new Date().getFullYear().toString())}</div>
-          <div className="flex items-center gap-6">
-            <a href="/privacy" className="hover:text-white">{t.footer.privacy}</a>
-            <a href="#" className="hover:text-white">{t.footer.terms}</a>
-            <a href="#" className="hover:text-white">{t.footer.security}</a>
+          <div className="text-center md:text-left">{t.footer.copyright.replace('{year}', new Date().getFullYear().toString())}</div>
+          <div className="flex items-center gap-4 sm:gap-6">
+            <a href="/privacy" className="hover:text-white transition-colors">{t.footer.privacy}</a>
+            <a href="#" className="hover:text-white transition-colors">{t.footer.terms}</a>
+            <a href="#" className="hover:text-white transition-colors">{t.footer.security}</a>
           </div>
         </div>
       </footer>
