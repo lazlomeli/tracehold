@@ -63,7 +63,7 @@ export default function TraceholdPilotLanding() {
           if (prev >= 100) {
             return 100
           }
-          return prev + 0.3 // Slower speed (was 0.8)
+          return prev + 0.22 // Slower speed (was 0.8, then 0.3)
         })
       }, 50) // Update every 50ms
     } else {
@@ -207,7 +207,7 @@ export default function TraceholdPilotLanding() {
 
       {/* Hero */}
       <section className="relative z-10 pt-20">
-        <div className="max-w-6xl mx-auto px-4 py-60 text-center" style={{ paddingBottom: "10rem"}}>
+        <div className="max-w-6xl mx-auto px-4 py-60 text-center" style={{ paddingBottom: "5rem"}}>
           <p className="text-xs uppercase tracking-widest text-tracehold-purple font-bold mb-4 neon-text">eB/L • Critical documents • Blockchain</p>
           <h1 className="text-5xl md:text-6xl font-semibold leading-tight mb-6">Digitize your Bill of Lading — and unlock new ways of financing.</h1>
           <p className="text-xl text-white/80 max-w-3xl mx-auto mb-8">Tracehold makes the eB/L blockchain-verifiable: fewer errors, less fraud, and a foundation for faster liquidity.</p>
@@ -220,10 +220,13 @@ export default function TraceholdPilotLanding() {
       </section>
 
       {/* Product */}
-      <section id="product" className="py-20 relative z-10" style={{ paddingBottom: "15rem"}}>
+      <section id="product" className="py-20 relative z-10" style={{ paddingBottom: "8rem"}}>
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-semibold mb-4">Product</h2>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
+              <Image src="/assets/tracehold-fade.png" alt="Tracehold Icon" width={30} height={32} />
+              <h2 className="text-3xl font-semibold">Product</h2>
+            </div>
             <p className="text-white/70 text-lg max-w-2xl mx-auto">Tracehold turns the Bill of Lading into a secure, digital asset — easy to create, register and transfer.</p>
             </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -243,10 +246,10 @@ export default function TraceholdPilotLanding() {
       </section>
 
       {/* The Problem */}
-      <section id="problem" className="py-20 relative z-10">
+      <section id="problem" className="py-20 relative z-10" style={{ paddingBottom: "8rem"}}>
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-16">
-            <p className="text-xs uppercase tracking-widest text-tracehold-purple font-bold mb-4 neon-text">Section 2 — The Problem</p>
+            <p className="text-xs uppercase tracking-widest text-tracehold-purple font-bold mb-4 neon-text">The Problem</p>
             <h2 className="text-3xl md:text-4xl font-semibold mb-6">Paper slows down trade — and costs billions.</h2>
             <p className="text-white/70 text-lg max-w-3xl mx-auto">Every year, global trade wastes billions managing paper-based Bills of Lading that depend on printed, couriered documents.</p>
           </div>
@@ -394,7 +397,7 @@ export default function TraceholdPilotLanding() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
             <div className="flex items-center justify-center gap-4 mb-6">
-              <Image src="/assets/tracehold-fade.png" alt="Tracehold Icon" width={32} height={32} className="h-8 w-8" />
+              <Image src="/assets/tracehold-fade.png" alt="Tracehold Icon" width={32} height={30} className="h-8 w-8" />
               <h2 className="text-3xl font-semibold">How it works</h2>
             </div>
             <p className="text-white/70 text-lg max-w-2xl mx-auto">A simple three-step process to digitize and secure your Bill of Lading</p>
@@ -535,7 +538,7 @@ export default function TraceholdPilotLanding() {
         <div className="max-w-4xl mx-auto px-4">
           <div className="text-center mb-12">
             <div className="flex items-center justify-center gap-4 mb-6">
-              <Image src="/assets/tracehold-fade.png" alt="Tracehold Icon" width={32} height={32} className="h-8 w-8" />
+              <Image src="/assets/tracehold-fade.png" alt="Tracehold Icon" width={30} height={32} className="h-8 w-8" />
               <h2 className="text-3xl font-semibold">Get in touch</h2>
             </div>
             <p className="text-white/70 text-lg max-w-2xl mx-auto">Ready to transform your Bill of Lading process? Let's discuss how Tracehold can work for your business.</p>
@@ -626,7 +629,7 @@ export default function TraceholdPilotLanding() {
                     className="mr-2 align-middle"
                     disabled={isSubmitting}
                   />
-                  I accept the <a href="/privacy" className="text-tracehold-sky-blue hover:text-tracehold-sky-blue/80">privacy policy</a> *
+                  I accept the <a href="/privacy" className="text-tracehold-sky-blue hover:text-tracehold-sky-blue/80" style={{ paddingLeft: '3px' }}> privacy policy</a> *
                 </label>
                 <button
                   type="submit"
