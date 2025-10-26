@@ -62,11 +62,11 @@ const translations = {
     },
     hero: {
       tagline: 'Calculadora de Costos E/BL',
-      title: '¿Cuánto podría ahorrar su empresa cada mes?',
+      title: '¿Cuánto podría ahorrar tu empresa cada mes?',
       subtitle: 'Cada Bill of Lading en papel agrega costos ocultos: impresión, tarifas de mensajería, verificaciones manuales y retrasos de cumplimiento. Tracehold lo automatiza todo, ahorrando tiempo y miles en gastos operativos.',
     },
     calculator: {
-      inputTitle: 'Calcule Sus Ahorros',
+      inputTitle: 'Calcula tus ahorros',
       teusPerMonth: 'TEUs por mes',
       blsPerTeu: 'Bills of Lading por TEU',
       blsPerTeuHelp: 'Predeterminado: 1.5 B/L por TEU',
@@ -76,7 +76,7 @@ const translations = {
       placeholder: 'Ingrese número de TEUs',
     },
     results: {
-      title: 'Sus Ahorros Potenciales',
+      title: 'Tus ahorros potenciales',
       monthlySavings: 'Ahorros Mensuales',
       monthlySavingsDesc: 'Comparado con el procesamiento tradicional de B/L en papel',
       annualSavings: 'Ahorros Anuales',
@@ -89,7 +89,7 @@ const translations = {
       each: 'cada uno',
       ctaText: '¿Listo para comenzar a ahorrar? Hablemos sobre sus necesidades específicas.',
       ctaButton: 'Agendar una Demo',
-      emptyState: 'Ingrese sus TEUs por mes para ver los ahorros potenciales',
+      emptyState: 'Ingresa tus TEUs por mes para ver los ahorros potenciales',
     },
     footer: {
       disclaimer: '* Los cálculos son estimaciones basadas en promedios de la industria. Los ahorros reales pueden variar según sus requisitos operativos específicos, descuentos por volumen y eficiencia del proceso actual. El costo del B/L digital de Tracehold incluye acceso a la plataforma, registro en blockchain y soporte básico.',
@@ -100,6 +100,7 @@ const translations = {
 export default function EBLCalculator() {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [language, setLanguage] = useState<Language>('EN')
+  const [isLanguageLoaded, setIsLanguageLoaded] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [formData, setFormData] = useState({
     teusPerMonth: '',
@@ -113,6 +114,22 @@ export default function EBLCalculator() {
   } | null>(null)
 
   const t = translations[language]
+
+  // Load language preference from localStorage on mount
+  useEffect(() => {
+    const savedLanguage = localStorage.getItem('tracehold-language') as Language | null
+    if (savedLanguage && (savedLanguage === 'EN' || savedLanguage === 'ES')) {
+      setLanguage(savedLanguage)
+    }
+    setIsLanguageLoaded(true)
+  }, [])
+
+  // Save language preference to localStorage when it changes (but only after initial load)
+  useEffect(() => {
+    if (isLanguageLoaded) {
+      localStorage.setItem('tracehold-language', language)
+    }
+  }, [language, isLanguageLoaded])
 
   useEffect(() => {
     // Set playback rate after component mounts

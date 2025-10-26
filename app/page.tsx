@@ -29,8 +29,8 @@ const translations = {
     // Hero Section
     hero: {
       tagline: 'eB/L • Critical documents • Blockchain',
-      title: 'Digitize your Bill of Lading — and unlock new ways of financing.',
-      subtitle: 'Tracehold makes the eB/L blockchain-verifiable: fewer errors, less fraud, and a foundation for faster liquidity.',
+      title: 'Digitize your trade documents and unlock new ways of financing.',
+      subtitle: 'Tracehold converts eB/L into an asset, easy to create & endorse. Manage trade documents in an all-in-one blockchain based platform.',
       requestDemo: 'Request demo',
       joinPilot: 'Join the pilot',
       footer: 'MVP live • Pilot-ready • Immutable trust. Simplified innovation.',
@@ -38,7 +38,7 @@ const translations = {
     // Product Section
     product: {
       title: 'Product',
-      subtitle: 'Tracehold turns the Bill of Lading into a secure, digital asset — easy to create, register and transfer.',
+      subtitle: 'Tracehold turns the Bill of Lading into a secure, digital asset. Easy to create, register and transfer.',
       features: [
         { title: 'Single source of truth', desc: 'One document, roles and e-signatures in a single workflow.' },
         { title: 'Blockchain fingerprint', desc: 'Hash and verifiable timestamp for tamper evidence.' },
@@ -49,7 +49,7 @@ const translations = {
     // Problem Section
     problem: {
       tagline: 'The Problem',
-      title: 'Paper slows down trade — and costs billions.',
+      title: 'Paper slows down trade and costs billions.',
       subtitle: 'Every year, global trade wastes billions managing paper-based Bills of Lading that depend on printed, couriered documents.',
       statsData: [
         { title: 'McKinsey Research', desc: 'Digitalizing B/L could save <strong>$6.5B</strong> in direct costs and unlock <strong>$30-40B</strong> in trade growth.' },
@@ -136,8 +136,8 @@ const translations = {
     // Hero Section
     hero: {
       tagline: 'eB/L • Documentos críticos • Blockchain',
-      title: 'Digitaliza tu Bill of Lading y desbloquea nuevas formas de financiación.',
-      subtitle: 'Tracehold hace que el eB/L sea verificable en blockchain: menos errores, menos fraude y una base para mayor liquidez.',
+      title: 'Digitaliza tus documentos de comercio y desbloquea nuevas formas de financiación.',
+      subtitle: 'Tracehold convierte el Conocimiento de Embarque en un activo, fácil de crear y endosar. Gestiona documentos comerciales en una única plataforma basada en blockchain.',
       requestDemo: 'Solicitar demo',
       joinPilot: 'Unirse al piloto',
       footer: 'MVP en vivo • Listo para piloto • Confianza inmutable. Innovación simplificada.',
@@ -237,6 +237,7 @@ export default function TraceholdPilotLanding() {
   const router = useRouter()
   const videoRef = useRef<HTMLVideoElement>(null)
   const [language, setLanguage] = useState<Language>('EN')
+  const [isLanguageLoaded, setIsLanguageLoaded] = useState(false)
   const [formData, setFormData] = useState<ContactFormData>({
     name: '',
     email: '',
@@ -255,6 +256,22 @@ export default function TraceholdPilotLanding() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   const t = translations[language]
+
+  // Load language preference from localStorage on mount
+  useEffect(() => {
+    const savedLanguage = localStorage.getItem('tracehold-language') as Language | null
+    if (savedLanguage && (savedLanguage === 'EN' || savedLanguage === 'ES')) {
+      setLanguage(savedLanguage)
+    }
+    setIsLanguageLoaded(true)
+  }, [])
+
+  // Save language preference to localStorage when it changes (but only after initial load)
+  useEffect(() => {
+    if (isLanguageLoaded) {
+      localStorage.setItem('tracehold-language', language)
+    }
+  }, [language, isLanguageLoaded])
 
   useEffect(() => {
     // Set playback rate after component mounts (as per Stack Overflow solution)
