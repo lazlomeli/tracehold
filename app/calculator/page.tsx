@@ -63,7 +63,7 @@ const translations = {
     hero: {
       tagline: 'Calculadora de Costos E/BL',
       title: '¿Cuánto podría ahorrar tu empresa cada mes?',
-      subtitle: 'Cada Bill of Lading en papel agrega costos ocultos: impresión, tarifas de mensajería, verificaciones manuales y retrasos de cumplimiento. Tracehold lo automatiza todo, ahorrando tiempo y miles en gastos operativos.',
+      subtitle: 'Cada Conocimiento de Embarque en papel agrega costos ocultos: impresión, tarifas de mensajería, verificaciones manuales y retrasos de cumplimiento. Tracehold lo automatiza todo, ahorrando tiempo y miles en gastos operativos.',
     },
     calculator: {
       inputTitle: 'Calcula tus ahorros',
@@ -73,7 +73,7 @@ const translations = {
       avgCostPerBL: 'Costo promedio por B/L en papel (€)',
       avgCostHelp: 'Rango típico: €60-80 por B/L',
       calculateButton: 'Calcular Ahorros',
-      placeholder: 'Ingrese número de TEUs',
+      placeholder: 'Ingresa número de TEUs',
     },
     results: {
       title: 'Tus ahorros potenciales',
@@ -87,7 +87,7 @@ const translations = {
       traceholdCost: 'B/L digital de Tracehold:',
       savingsPerBL: 'Ahorro por B/L:',
       each: 'cada uno',
-      ctaText: '¿Listo para comenzar a ahorrar? Hablemos sobre sus necesidades específicas.',
+      ctaText: '¿Listo para comenzar a ahorrar? Hablemos sobre tus necesidades específicas.',
       ctaButton: 'Agendar una Demo',
       emptyState: 'Ingresa tus TEUs por mes para ver los ahorros potenciales',
     },

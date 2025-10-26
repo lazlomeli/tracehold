@@ -210,7 +210,7 @@ const translations = {
     // Contact Section
     contact: {
       title: 'Contáctenos',
-      subtitle: '¿Listo para transformar su proceso de Bill of Lading? Hablemos sobre cómo Tracehold puede funcionar para su negocio.',
+      subtitle: '¿Listo para transformar tu gestión de documentos comerciales? Hablemos sobre cómo Tracehold puede funcionar para tu negocio.',
       form: {
         name: 'Nombre *',
         company: 'Empresa',
