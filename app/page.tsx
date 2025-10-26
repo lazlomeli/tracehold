@@ -136,7 +136,7 @@ const translations = {
     // Hero Section
     hero: {
       tagline: 'eB/L • Documentos críticos • Blockchain',
-      title: 'Digitaliza tu Bill of Lading y desbloquee nuevas formas de financiación.',
+      title: 'Digitaliza tu Bill of Lading y desbloquea nuevas formas de financiación.',
       subtitle: 'Tracehold hace que el eB/L sea verificable en blockchain: menos errores, menos fraude y una base para mayor liquidez.',
       requestDemo: 'Solicitar demo',
       joinPilot: 'Unirse al piloto',
@@ -414,7 +414,7 @@ export default function TraceholdPilotLanding() {
       <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/10 backdrop-blur bg-black/50">
         <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <Image src="/assets/tracehold-lettering.png" alt="Tracehold" width={185} height={32} className="h-6 sm:h-8" />
+            <Image src="/assets/tracehold-lettering.png" alt="Tracehold" width={185} height={32} style={{ width: '185px', height: '32px' }} />
           </div>
           
           {/* Desktop Navigation */}
@@ -557,11 +557,11 @@ export default function TraceholdPilotLanding() {
       </section>
 
       {/* Product */}
-      <section id="product" className="py-12 sm:py-16 lg:py-20 relative z-10" style={{ paddingBottom: "4rem"}}>
+      <section id="product" className="py-12 sm:py-16 lg:py-20 relative z-10 scroll-mt-20" style={{ paddingBottom: "4rem"}}>
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-8 sm:mb-12">
             <div className="flex items-center justify-center gap-3 sm:gap-4 mb-4 sm:mb-6">
-              <Image src="/assets/tracehold-fade.png" alt="Tracehold Icon" width={30} height={32} className="w-6 h-6 sm:w-8 sm:h-8" />
+              <Image src="/assets/tracehold-fade.png" alt="Tracehold Icon" width={30} height={30} style={{ width: '30px', height: '34px' }}/>
               <h2 className="text-2xl sm:text-3xl font-semibold">{t.product.title}</h2>
             </div>
             <p className="text-white/70 text-base sm:text-lg max-w-2xl mx-auto px-4">{t.product.subtitle}</p>
@@ -578,7 +578,7 @@ export default function TraceholdPilotLanding() {
       </section>
 
       {/* The Problem */}
-      <section id="problem" className="py-12 sm:py-16 lg:py-20 relative z-10" style={{ paddingBottom: "4rem"}}>
+      <section id="problem" className="py-12 sm:py-16 lg:py-20 relative z-10 scroll-mt-20" style={{ paddingBottom: "4rem"}}>
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12 sm:mb-16">
             <p className="text-xs uppercase tracking-widest text-tracehold-purple font-bold mb-4 neon-text">{t.problem.tagline}</p>
@@ -640,8 +640,7 @@ export default function TraceholdPilotLanding() {
                   <h3 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6 text-red-400 neon-text-red">{t.problem.paperChaos.title}</h3>
                   <ul className="text-white/70 text-xs sm:text-sm space-y-2 sm:space-y-3 text-center max-w-xs mx-auto">
                     {t.problem.paperChaos.items.map((item, idx) => (
-                      <li key={idx} className="flex items-center justify-center gap-2 sm:gap-3">
-                        <div className="w-2 h-2 rounded-full bg-red-400 flex-shrink-0"></div>
+                      <li key={idx}>
                         {item}
                       </li>
                     ))}
@@ -656,13 +655,12 @@ export default function TraceholdPilotLanding() {
               <div className="rounded-2xl p-6 sm:p-8 backdrop-blur hover:from-tracehold-purple/30 hover:to-purple-600/25 transition-all duration-300" style={{ background: 'linear-gradient(to bottom right, rgb(12 14 16 / 20%) var(--tw-gradient-from-position), rgb(123 54 255 / 15%))' }}>
                 <div className="text-center">
                   <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 sm:mb-6 rounded-full bg-tracehold-purple/20 flex items-center justify-center group-hover:bg-tracehold-purple/30 group-hover:scale-110 transition-all duration-300">
-                    <Image src="/assets/tracehold-fade.png" alt="Tracehold" width={32} height={32} className="h-6 w-6 sm:h-8 sm:w-8" style={{ filter: 'brightness(0) saturate(100%) invert(21%) sepia(100%) saturate(2000%) hue-rotate(260deg) brightness(101%) contrast(101%)' }} />
+                    <Image src="/assets/tracehold-fade.png" alt="Tracehold" width={32} height={32} style={{ filter: 'brightness(0) saturate(100%) invert(21%) sepia(100%) saturate(2000%) hue-rotate(260deg) brightness(101%) contrast(101%)', width: '30px', height: '32px' }} />
                   </div>
                   <h3 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6 text-tracehold-purple neon-text-blue">{t.problem.digitalFlow.title}</h3>
                   <ul className="text-white/70 text-xs sm:text-sm space-y-2 sm:space-y-3 text-center max-w-xs mx-auto">
                     {t.problem.digitalFlow.items.map((item, idx) => (
-                      <li key={idx} className="flex items-center justify-center gap-2 sm:gap-3">
-                        <div className="w-2 h-2 rounded-full bg-tracehold-purple flex-shrink-0"></div>
+                      <li key={idx}>        
                         {item}
                       </li>
                     ))}
@@ -676,11 +674,11 @@ export default function TraceholdPilotLanding() {
       </section>
 
       {/* How it works - Video Carousel */}
-      <section id="how" className="py-12 sm:py-16 lg:py-20 relative z-10">
+      <section id="how" className="py-12 sm:py-16 lg:py-20 relative z-10 scroll-mt-20">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-8 sm:mb-12">
             <div className="flex items-center justify-center gap-3 sm:gap-4 mb-4 sm:mb-6">
-              <Image src="/assets/tracehold-fade.png" alt="Tracehold Icon" width={32} height={30} className="h-6 w-6 sm:h-8 sm:w-8" />
+              <Image src="/assets/tracehold-fade.png" alt="Tracehold Icon" width={32} height={30} style={{ width: '30px', height: '34px' }} />
               <h2 className="text-2xl sm:text-3xl font-semibold">{t.howItWorks.title}</h2>
             </div>
             <p className="text-white/70 text-base sm:text-lg max-w-2xl mx-auto px-4">{t.howItWorks.subtitle}</p>
@@ -809,11 +807,11 @@ export default function TraceholdPilotLanding() {
       </section>
 
       {/* Contact */}
-      <section id="contact" className="py-12 sm:py-16 lg:py-20 relative z-10">
+      <section id="contact" className="py-12 sm:py-16 lg:py-20 relative z-10 scroll-mt-20">
         <div className="max-w-4xl mx-auto px-4">
           <div className="text-center mb-8 sm:mb-12">
             <div className="flex items-center justify-center gap-3 sm:gap-4 mb-4 sm:mb-6">
-              <Image src="/assets/tracehold-fade.png" alt="Tracehold Icon" width={30} height={32} className="h-6 w-6 sm:h-8 sm:w-8" />
+              <Image src="/assets/tracehold-fade.png" alt="Tracehold Icon" width={30} height={32} style={{ width: '30px', height: '34px' }} />
               <h2 className="text-2xl sm:text-3xl font-semibold">{t.contact.title}</h2>
             </div>
             <p className="text-white/70 text-base sm:text-lg max-w-2xl mx-auto px-4">{t.contact.subtitle}</p>
