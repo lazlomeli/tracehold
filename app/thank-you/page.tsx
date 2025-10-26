@@ -3,12 +3,12 @@ import Image from 'next/image'
 
 export default function ThankYouPage() {
   return (
-    <div className="min-h-screen bg-tracehold-navy text-white flex items-center justify-center">
+    <div className="min-h-screen bg-black text-white flex items-center justify-center">
       <div className="max-w-2xl mx-auto px-4 text-center">
-        <div className="mb-8">
-          <Image src="/assets/tracehold-lettering.png" alt="Tracehold" width={180} height={48} className="h-12 mx-auto mb-4" />
-          <h1 className="text-3xl font-semibold mb-4">Thank you for your interest!</h1>
-          <p className="text-white/80 text-lg">
+        <div className="flex flex-col items-center justify-center">
+          <Image src="/assets/tracehold-lettering.png" alt="Tracehold" width={180} height={35} style={{ width: '180px', height: '30px', marginBottom: '60px' }} />
+          <h1 className="text-3xl font-semibold mb-8">Thank you for your interest!</h1>
+          <p className="text-white/80 text-lg mb-8">
             We've received your message and will get back to you within 24 hours.
           </p>
         </div>
@@ -17,15 +17,15 @@ export default function ThankYouPage() {
           <h2 className="text-xl font-semibold mb-4">What's next?</h2>
           <div className="space-y-3 text-left">
             <div className="flex items-start gap-3">
-              <div className="h-6 w-6 rounded-full bg-tracehold-sky-blue text-white text-xs font-bold flex items-center justify-center mt-0.5">1</div>
+              <div className="h-6 w-6 rounded-full bg-tracehold-purple text-white text-xs font-bold flex items-center justify-center mt-0.5 flex-shrink-0">1</div>
               <p className="text-white/80">Our team will review your requirements</p>
             </div>
             <div className="flex items-start gap-3">
-              <div className="h-6 w-6 rounded-full bg-tracehold-sky-blue text-white text-xs font-bold flex items-center justify-center mt-0.5">2</div>
+              <div className="h-6 w-6 rounded-full bg-tracehold-purple text-white text-xs font-bold flex items-center justify-center mt-0.5 flex-shrink-0">2</div>
               <p className="text-white/80">We'll schedule a 20-minute demo of our MVP</p>
             </div>
             <div className="flex items-start gap-3">
-              <div className="h-6 w-6 rounded-full bg-tracehold-sky-blue text-white text-xs font-bold flex items-center justify-center mt-0.5">3</div>
+              <div className="h-6 w-6 rounded-full bg-tracehold-purple text-white text-xs font-bold flex items-center justify-center mt-0.5 flex-shrink-0">3</div>
               <p className="text-white/80">If you're interested, we'll invite you to our pilot program</p>
             </div>
           </div>

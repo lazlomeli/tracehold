@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function PrivacyPage() {
   return (
@@ -6,11 +7,16 @@ export default function PrivacyPage() {
       {/* Header */}
       <header className="border-b border-white/10">
         <div className="max-w-4xl mx-auto px-4 py-6">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="h-9 w-9 rounded-2xl bg-gradient-to-br from-sky-400/90 to-cyan-300/80 grid place-content-center font-bold text-neutral-950">T</div>
-            <span className="text-lg font-semibold tracking-tight">Tracehold</span>
+          <div className="mb-4">
+            <Image 
+              src="/assets/tracehold-lettering.png" 
+              alt="Tracehold" 
+              width={180} 
+              height={30} 
+              style={{ width: '180px', height: '30px' }}
+            />
           </div>
-          <Link href="/" className="text-sky-400 hover:text-sky-300 text-sm">
+          <Link href="/" className="text-tracehold-purple hover:text-tracehold-purple/80 text-sm transition-colors">
             ← Back to Home
           </Link>
         </div>
@@ -134,9 +140,9 @@ export default function PrivacyPage() {
             </p>
             <div className="bg-neutral-900/40 rounded-xl border border-white/10 p-4">
               <p className="text-white/80">
-                <strong>Email:</strong> marcor@tracehold.com<br />
+                <strong>Email:</strong> info@tracehold.com<br />
                 <strong>Company:</strong> Tracehold B.V.<br />
-                <strong>Address:</strong> [Your business address]
+                <strong>Address:</strong> Werfkade 25, 1033 TA, Amsterdam, Netherlands
               </p>
             </div>
           </section>
