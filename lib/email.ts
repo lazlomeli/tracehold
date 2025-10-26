@@ -6,14 +6,14 @@ const transporter = nodemailer.createTransport({
   port: 465,
   secure: true,
   auth: {
-    user: 'info@tracehold.com',
+    user: 'marcor@tracehold.com',
     pass: process.env.SMTP_PASS
   },
 })
 
 export async function sendOwnerNotification(data: ContactFormData): Promise<void> {
   const mailOptions = {
-    from:'info@tracehold.com',
+    from:'marcor@tracehold.com',
     to: 'marcor@tracehold.com',
     subject: `New Lead from ${data.name} - Tracehold Contact Form`,
     html: `
@@ -55,7 +55,7 @@ export async function sendOwnerNotification(data: ContactFormData): Promise<void
 
 export async function sendConfirmationEmail(data: ContactFormData): Promise<void> {
   const mailOptions = {
-    from:'info@tracehold.com',
+    from:'marcor@tracehold.com',
     to: data.email,
     subject: 'Thank you for contacting Tracehold',
     html: `
