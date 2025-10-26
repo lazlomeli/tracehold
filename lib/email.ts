@@ -2,18 +2,18 @@ import nodemailer from 'nodemailer'
 import { ContactFormData } from './validations'
 
 const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST,
-  port: parseInt(process.env.SMTP_PORT || '587'),
-  secure: process.env.SMTP_SECURE === 'true',
+  host: 'smtp.gmail.com',
+  port: 465,
+  secure: true,
   auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS,
+    user: 'info@tracehold.com',
+    pass: process.env.STMP_PASS
   },
 })
 
 export async function sendOwnerNotification(data: ContactFormData): Promise<void> {
   const mailOptions = {
-    from: process.env.SMTP_FROM || 'noreply@tracehold.com',
+    from:'info@tracehold.com',
     to: 'marcor@tracehold.com',
     subject: `New Lead from ${data.name} - Tracehold Contact Form`,
     html: `
@@ -55,7 +55,7 @@ export async function sendOwnerNotification(data: ContactFormData): Promise<void
 
 export async function sendConfirmationEmail(data: ContactFormData): Promise<void> {
   const mailOptions = {
-    from: process.env.SMTP_FROM || 'noreply@tracehold.com',
+    from:'info@tracehold.com',
     to: data.email,
     subject: 'Thank you for contacting Tracehold',
     html: `

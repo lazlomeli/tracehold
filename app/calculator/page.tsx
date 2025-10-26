@@ -4,8 +4,102 @@ import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
+type Language = 'EN' | 'ES'
+
+const translations = {
+  EN: {
+    nav: {
+      product: 'Product',
+      howItWorks: 'How it works',
+      calculator: 'E/BL Calculator',
+      contact: 'Contact',
+      talkToSales: 'Talk to sales',
+      joinPilot: 'Join pilot',
+    },
+    hero: {
+      tagline: 'E/BL Cost Calculator',
+      title: 'How much could your company save each month?',
+      subtitle: 'Every paper-based Bill of Lading adds hidden costs — printing, courier fees, manual checks, and compliance delays. Tracehold automates it all, saving time and thousands in operational expenses.',
+    },
+    calculator: {
+      inputTitle: 'Calculate Your Savings',
+      teusPerMonth: 'TEUs per month',
+      blsPerTeu: 'Bills of Lading per TEU',
+      blsPerTeuHelp: 'Default: 1.5 B/L per TEU',
+      avgCostPerBL: 'Average cost per paper B/L (€)',
+      avgCostHelp: 'Typical range: €60-80 per B/L',
+      calculateButton: 'Calculate Savings',
+      placeholder: 'Enter number of TEUs',
+    },
+    results: {
+      title: 'Your Potential Savings',
+      monthlySavings: 'Monthly Savings',
+      monthlySavingsDesc: 'Compared to traditional paper-based B/L processing',
+      annualSavings: 'Annual Savings',
+      annualSavingsDesc: 'Total yearly cost reduction with Tracehold',
+      breakdown: 'Cost Breakdown',
+      totalBLs: 'Total B/Ls per month:',
+      paperCost: 'Paper B/L cost:',
+      traceholdCost: 'Tracehold digital B/L:',
+      savingsPerBL: 'Savings per B/L:',
+      each: 'each',
+      ctaText: 'Ready to start saving? Let\'s discuss your specific needs.',
+      ctaButton: 'Schedule a Demo',
+      emptyState: 'Enter your TEUs per month to see potential savings',
+    },
+    footer: {
+      disclaimer: '* Calculations are estimates based on industry averages. Actual savings may vary depending on your specific operational requirements, volume discounts, and current process efficiency. Tracehold\'s digital B/L cost includes platform access, blockchain registration, and basic support.',
+    },
+  },
+  ES: {
+    nav: {
+      product: 'Producto',
+      howItWorks: 'Cómo funciona',
+      calculator: 'Calculadora E/BL',
+      contact: 'Contacto',
+      talkToSales: 'Hablar con ventas',
+      joinPilot: 'Unirse al piloto',
+    },
+    hero: {
+      tagline: 'Calculadora de Costos E/BL',
+      title: '¿Cuánto podría ahorrar su empresa cada mes?',
+      subtitle: 'Cada Bill of Lading en papel agrega costos ocultos: impresión, tarifas de mensajería, verificaciones manuales y retrasos de cumplimiento. Tracehold lo automatiza todo, ahorrando tiempo y miles en gastos operativos.',
+    },
+    calculator: {
+      inputTitle: 'Calcule Sus Ahorros',
+      teusPerMonth: 'TEUs por mes',
+      blsPerTeu: 'Bills of Lading por TEU',
+      blsPerTeuHelp: 'Predeterminado: 1.5 B/L por TEU',
+      avgCostPerBL: 'Costo promedio por B/L en papel (€)',
+      avgCostHelp: 'Rango típico: €60-80 por B/L',
+      calculateButton: 'Calcular Ahorros',
+      placeholder: 'Ingrese número de TEUs',
+    },
+    results: {
+      title: 'Sus Ahorros Potenciales',
+      monthlySavings: 'Ahorros Mensuales',
+      monthlySavingsDesc: 'Comparado con el procesamiento tradicional de B/L en papel',
+      annualSavings: 'Ahorros Anuales',
+      annualSavingsDesc: 'Reducción total de costos anuales con Tracehold',
+      breakdown: 'Desglose de Costos',
+      totalBLs: 'Total de B/Ls por mes:',
+      paperCost: 'Costo de B/L en papel:',
+      traceholdCost: 'B/L digital de Tracehold:',
+      savingsPerBL: 'Ahorro por B/L:',
+      each: 'cada uno',
+      ctaText: '¿Listo para comenzar a ahorrar? Hablemos sobre sus necesidades específicas.',
+      ctaButton: 'Agendar una Demo',
+      emptyState: 'Ingrese sus TEUs por mes para ver los ahorros potenciales',
+    },
+    footer: {
+      disclaimer: '* Los cálculos son estimaciones basadas en promedios de la industria. Los ahorros reales pueden variar según sus requisitos operativos específicos, descuentos por volumen y eficiencia del proceso actual. El costo del B/L digital de Tracehold incluye acceso a la plataforma, registro en blockchain y soporte básico.',
+    },
+  },
+}
+
 export default function EBLCalculator() {
   const videoRef = useRef<HTMLVideoElement>(null)
+  const [language, setLanguage] = useState<Language>('EN')
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [formData, setFormData] = useState({
     teusPerMonth: '',
@@ -17,6 +111,8 @@ export default function EBLCalculator() {
     monthlySavings: { min: number; max: number }
     annualSavings: { min: number; max: number }
   } | null>(null)
+
+  const t = translations[language]
 
   useEffect(() => {
     // Set playback rate after component mounts
@@ -99,31 +195,79 @@ export default function EBLCalculator() {
           
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8 text-sm text-white/80">
-            <Link href="/#product" className="hover:text-white transition-colors">Product</Link>
-            <Link href="/#how" className="hover:text-white transition-colors">How it works</Link>
-            <Link href="/calculator" className="hover:text-white text-tracehold-purple transition-colors">E/BL Calculator</Link>
-            <Link href="/#contact" className="hover:text-white transition-colors">Contact</Link>
+            <Link href="/#product" className="hover:text-white transition-colors">{t.nav.product}</Link>
+            <Link href="/#how" className="hover:text-white transition-colors">{t.nav.howItWorks}</Link>
+            <Link href="/calculator" className="hover:text-white text-tracehold-purple transition-colors">{t.nav.calculator}</Link>
+            <Link href="/#contact" className="hover:text-white transition-colors">{t.nav.contact}</Link>
           </nav>
           
           {/* Desktop Actions */}
           <div className="hidden md:flex items-center gap-2">
-            <Link href="/#contact" className="hidden lg:block px-3 py-2 rounded-xl border border-white/15 text-sm hover:bg-white/5 transition-colors">Talk to sales</Link>
-            <Link href="/#contact" className="px-3 py-2 rounded-xl bg-white text-neutral-900 text-sm font-semibold hover:bg-white/90 transition-colors">Join pilot</Link>
+            {/* Language Toggle */}
+            <div className="flex items-center rounded-xl border border-white/15 overflow-hidden">
+              <button
+                onClick={() => setLanguage('EN')}
+                className={`px-2 sm:px-3 py-2 text-xs font-semibold transition-colors ${
+                  language === 'EN' 
+                    ? 'bg-white text-neutral-900' 
+                    : 'text-white/80 hover:bg-white/5'
+                }`}
+              >
+                EN
+              </button>
+              <button
+                onClick={() => setLanguage('ES')}
+                className={`px-2 sm:px-3 py-2 text-xs font-semibold transition-colors ${
+                  language === 'ES' 
+                    ? 'bg-white text-neutral-900' 
+                    : 'text-white/80 hover:bg-white/5'
+                }`}
+              >
+                ES
+              </button>
+            </div>
+            <Link href="/#contact" className="hidden lg:block px-3 py-2 rounded-xl border border-white/15 text-sm hover:bg-white/5 transition-colors">{t.nav.talkToSales}</Link>
+            <Link href="/#contact" className="px-3 py-2 rounded-xl bg-white text-neutral-900 text-sm font-semibold hover:bg-white/90 transition-colors">{t.nav.joinPilot}</Link>
           </div>
           
           {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 rounded-xl border border-white/15 hover:bg-white/5 transition-colors"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              {isMobileMenuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
-          </button>
+          <div className="md:hidden flex items-center gap-2">
+            {/* Mobile Language Toggle */}
+            <div className="flex items-center rounded-xl border border-white/15 overflow-hidden">
+              <button
+                onClick={() => setLanguage('EN')}
+                className={`px-2 py-1.5 text-xs font-semibold transition-colors ${
+                  language === 'EN' 
+                    ? 'bg-white text-neutral-900' 
+                    : 'text-white/80 hover:bg-white/5'
+                }`}
+              >
+                EN
+              </button>
+              <button
+                onClick={() => setLanguage('ES')}
+                className={`px-2 py-1.5 text-xs font-semibold transition-colors ${
+                  language === 'ES' 
+                    ? 'bg-white text-neutral-900' 
+                    : 'text-white/80 hover:bg-white/5'
+                }`}
+              >
+                ES
+              </button>
+            </div>
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="p-2 rounded-xl border border-white/15 hover:bg-white/5 transition-colors"
+              >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {isMobileMenuOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
+          </div>
         </div>
         
         {/* Mobile Menu */}
@@ -137,28 +281,28 @@ export default function EBLCalculator() {
                 className="text-white/80 hover:text-white transition-colors py-2"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Product
+                {t.nav.product}
               </Link>
               <Link 
                 href="/#how" 
                 className="text-white/80 hover:text-white transition-colors py-2"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                How it works
+                {t.nav.howItWorks}
               </Link>
               <Link 
                 href="/calculator" 
                 className="text-tracehold-purple hover:text-white transition-colors py-2"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                E/BL Calculator
+                {t.nav.calculator}
               </Link>
               <Link 
                 href="/#contact" 
                 className="text-white/80 hover:text-white transition-colors py-2"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Contact
+                {t.nav.contact}
               </Link>
               <div className="pt-2 border-t border-white/10">
                 <Link 
@@ -166,7 +310,7 @@ export default function EBLCalculator() {
                   className="block w-full text-center px-4 py-3 rounded-xl bg-white text-neutral-900 font-semibold hover:bg-white/90 transition-colors"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  Join pilot
+                  {t.nav.joinPilot}
                 </Link>
               </div>
             </nav>
@@ -179,13 +323,12 @@ export default function EBLCalculator() {
         <div className="max-w-4xl mx-auto px-4">
           {/* Hero Section */}
           <div className="text-center mb-8 sm:mb-12 lg:mb-16">
-            <p className="text-xs uppercase tracking-widest text-tracehold-purple font-bold mb-4 neon-text">E/BL Cost Calculator</p>
+            <p className="text-xs uppercase tracking-widest text-tracehold-purple font-bold mb-4 neon-text">{t.hero.tagline}</p>
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight mb-4 sm:mb-6 px-2">
-              How much could your company save each month?
+              {t.hero.title}
             </h1>
             <p className="text-base sm:text-lg md:text-xl text-white/80 max-w-3xl mx-auto px-2">
-              Every paper-based Bill of Lading adds hidden costs — printing, courier fees, manual checks, and 
-              compliance delays. Tracehold automates it all, saving time and thousands in operational expenses.
+              {t.hero.subtitle}
             </p>
           </div>
 
@@ -194,19 +337,19 @@ export default function EBLCalculator() {
             <div className="grid md:grid-cols-2 gap-6 sm:gap-8 md:gap-12">
               {/* Input Section */}
               <div className="space-y-6 sm:space-y-8">
-                <h2 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6">Calculate Your Savings</h2>
+                <h2 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6">{t.calculator.inputTitle}</h2>
                 
                 <div className="space-y-4 sm:space-y-6">
                   <div>
                     <label className="block text-xs sm:text-sm font-medium mb-2">
-                      TEUs per month <span className="text-red-400">*</span>
+                      {t.calculator.teusPerMonth} <span className="text-red-400">*</span>
                     </label>
                     <input
                       type="number"
                       name="teusPerMonth"
                       value={formData.teusPerMonth}
                       onChange={handleInputChange}
-                      placeholder="Enter number of TEUs"
+                      placeholder={t.calculator.placeholder}
                       className="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base rounded-xl bg-white/5 border border-white/20 focus:border-tracehold-purple focus:outline-none focus:ring-1 focus:ring-tracehold-purple"
                       min="1"
                     />
@@ -214,7 +357,7 @@ export default function EBLCalculator() {
 
                   <div>
                     <label className="block text-xs sm:text-sm font-medium mb-2">
-                      Bills of Lading per TEU
+                      {t.calculator.blsPerTeu}
                     </label>
                     <input
                       type="number"
@@ -225,12 +368,12 @@ export default function EBLCalculator() {
                       className="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base rounded-xl bg-white/5 border border-white/20 focus:border-tracehold-purple focus:outline-none focus:ring-1 focus:ring-tracehold-purple"
                       min="0.1"
                     />
-                    <p className="text-xs text-white/60 mt-1">Default: 1.5 B/L per TEU</p>
+                    <p className="text-xs text-white/60 mt-1">{t.calculator.blsPerTeuHelp}</p>
                   </div>
 
                   <div>
                     <label className="block text-xs sm:text-sm font-medium mb-2">
-                      Average cost per paper B/L (€)
+                      {t.calculator.avgCostPerBL}
                     </label>
                     <input
                       type="number"
@@ -240,7 +383,7 @@ export default function EBLCalculator() {
                       className="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base rounded-xl bg-white/5 border border-white/20 focus:border-tracehold-purple focus:outline-none focus:ring-1 focus:ring-tracehold-purple"
                       min="1"
                     />
-                    <p className="text-xs text-white/60 mt-1">Typical range: €60-80 per B/L</p>
+                    <p className="text-xs text-white/60 mt-1">{t.calculator.avgCostHelp}</p>
                   </div>
 
                   <button
@@ -248,58 +391,58 @@ export default function EBLCalculator() {
                     disabled={!formData.teusPerMonth}
                     className="w-full px-4 sm:px-6 py-3 sm:py-4 text-sm sm:text-base rounded-xl bg-tracehold-purple hover:bg-tracehold-purple/90 disabled:bg-white/10 disabled:text-white/50 font-semibold transition-colors"
                   >
-                    Calculate Savings
+                    {t.calculator.calculateButton}
                   </button>
                 </div>
               </div>
 
               {/* Results Section */}
               <div className="space-y-6 sm:space-y-8">
-                <h2 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6">Your Potential Savings</h2>
+                <h2 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6">{t.results.title}</h2>
                 
                 {results ? (
                   <div className="space-y-4 sm:space-y-6">
                     {/* Monthly Savings */}
                     <div className="p-4 sm:p-6 rounded-2xl bg-gradient-to-br from-tracehold-purple/20 to-tracehold-purple/10 border border-tracehold-purple/20">
-                      <h3 className="text-base sm:text-lg font-semibold mb-2 text-tracehold-purple neon-text-blue">Monthly Savings</h3>
+                      <h3 className="text-base sm:text-lg font-semibold mb-2 text-tracehold-purple neon-text-blue">{t.results.monthlySavings}</h3>
                       <p className="text-2xl sm:text-3xl font-bold break-words">
                         {formatCurrency(results.monthlySavings.min)} - {formatCurrency(results.monthlySavings.max)}
                       </p>
                       <p className="text-xs sm:text-sm text-white/70 mt-2">
-                        Compared to traditional paper-based B/L processing
+                        {t.results.monthlySavingsDesc}
                       </p>
                     </div>
 
                     {/* Annual Savings */}
                     <div className="p-4 sm:p-6 rounded-2xl bg-gradient-to-br from-green-500/20 to-green-600/10 border border-green-500/20">
-                      <h3 className="text-base sm:text-lg font-semibold mb-2 text-green-400">Annual Savings</h3>
+                      <h3 className="text-base sm:text-lg font-semibold mb-2 text-green-400">{t.results.annualSavings}</h3>
                       <p className="text-2xl sm:text-3xl font-bold break-words">
                         {formatCurrency(results.annualSavings.min)} - {formatCurrency(results.annualSavings.max)}
                       </p>
                       <p className="text-xs sm:text-sm text-white/70 mt-2">
-                        Total yearly cost reduction with Tracehold
+                        {t.results.annualSavingsDesc}
                       </p>
                     </div>
 
                     {/* Breakdown */}
                     <div className="p-4 sm:p-6 rounded-2xl bg-white/5 border border-white/10">
-                      <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">Cost Breakdown</h3>
+                      <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">{t.results.breakdown}</h3>
                       <div className="space-y-2 sm:space-y-3 text-xs sm:text-sm">
                         <div className="flex justify-between gap-2">
-                          <span className="text-white/70">Total B/Ls per month:</span>
+                          <span className="text-white/70">{t.results.totalBLs}</span>
                           <span className="text-right">{Math.round((parseFloat(formData.teusPerMonth) || 0) * (parseFloat(formData.blsPerTeu) || 1.5))}</span>
                         </div>
                         <div className="flex justify-between gap-2">
-                          <span className="text-white/70">Paper B/L cost:</span>
-                          <span className="text-right">€{formData.avgCostPerBL} each</span>
+                          <span className="text-white/70">{t.results.paperCost}</span>
+                          <span className="text-right">€{formData.avgCostPerBL} {t.results.each}</span>
                         </div>
                         <div className="flex justify-between gap-2">
-                          <span className="text-white/70">Tracehold digital B/L:</span>
-                          <span className="text-right">€12 each</span>
+                          <span className="text-white/70">{t.results.traceholdCost}</span>
+                          <span className="text-right">€12 {t.results.each}</span>
                         </div>
                         <hr className="border-white/20" />
                         <div className="flex justify-between gap-2 font-semibold">
-                          <span>Savings per B/L:</span>
+                          <span>{t.results.savingsPerBL}</span>
                           <span className="text-right">€{(parseFloat(formData.avgCostPerBL) || 70) - 12}</span>
                         </div>
                       </div>
@@ -308,13 +451,13 @@ export default function EBLCalculator() {
                     {/* CTA */}
                     <div className="text-center">
                       <p className="text-sm sm:text-base text-white/80 mb-4 px-2">
-                        Ready to start saving? Let's discuss your specific needs.
+                        {t.results.ctaText}
                       </p>
                       <Link 
                         href="/#contact" 
                         className="inline-block w-full sm:w-auto px-4 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base rounded-xl bg-white text-neutral-900 font-semibold hover:bg-white/90 transition-colors"
                       >
-                        Schedule a Demo
+                        {t.results.ctaButton}
                       </Link>
                     </div>
                   </div>
@@ -326,7 +469,7 @@ export default function EBLCalculator() {
                       </svg>
                     </div>
                     <p className="text-sm sm:text-base text-white/60 px-2">
-                      Enter your TEUs per month to see potential savings
+                      {t.results.emptyState}
                     </p>
                   </div>
                 )}
@@ -337,9 +480,7 @@ export default function EBLCalculator() {
           {/* Additional Info */}
           <div className="mt-8 sm:mt-12 lg:mt-16 text-center">
             <p className="text-white/60 text-xs sm:text-sm max-w-2xl mx-auto px-2">
-              * Calculations are estimates based on industry averages. Actual savings may vary depending on your specific 
-              operational requirements, volume discounts, and current process efficiency. Tracehold's digital B/L cost 
-              includes platform access, blockchain registration, and basic support.
+              {t.footer.disclaimer}
             </p>
           </div>
         </div>
