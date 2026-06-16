@@ -166,20 +166,15 @@
 
           <!-- arrow in -->
           <div
-            class="flex w-10 shrink-0 items-center justify-center mt-[140px]"
+            class="flex w-20 shrink-0 items-center mt-[140px]"
           >
-            <svg width="60" height="16" viewBox="0 0 60 18" fill="none">
+            <svg height="14" viewBox="0 0 80 14" fill="none" preserveAspectRatio="none" class="w-full">
               <path
-                d="M2 9h32"
-                stroke="#c9ccd6"
+                class="thld-arrow-flow"
+                d="M0 7H80"
+                stroke="#9da2b3"
                 stroke-width="2"
                 stroke-linecap="round"></path>
-              <path
-                d="M30 3l7 6-7 6"
-                stroke="#c9ccd6"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"></path>
             </svg>
           </div>
 
@@ -312,32 +307,20 @@
               </div>
             </div>
 
-            <!-- metadata-only arrow (down) -->
-            <div class="flex flex-col items-center py-3">
+            <!-- metadata-only line (down) -->
+            <div class="relative flex justify-center" style="height: 90px;">
+              <svg width="14" height="90" viewBox="0 0 14 90" fill="none" preserveAspectRatio="none" class="h-full">
+                <path
+                  class="thld-arrow-flow"
+                  d="M7 0V90"
+                  stroke="#b89bff"
+                  stroke-width="2"
+                  stroke-linecap="round"></path>
+              </svg>
               <span
-                class="text-[10px] font-bold tracking-[0.02em] text-[var(--color-brand-purple)] uppercase"
+                class="absolute left-1/2 top-1/2 ml-3 -translate-y-1/2 whitespace-nowrap text-[10px] font-bold uppercase tracking-[0.02em] text-[var(--color-brand-purple)]"
                 >metadata only</span
               >
-              <svg
-                width="14"
-                height="34"
-                viewBox="0 0 14 34"
-                fill="none"
-                class="mt-1"
-              >
-                <path
-                  d="M7 2v24"
-                  stroke="#b89bff"
-                  stroke-width="2"
-                  stroke-dasharray="3 4"
-                  stroke-linecap="round"></path>
-                <path
-                  d="M2 24l5 7 5-7"
-                  stroke="#b89bff"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"></path>
-              </svg>
             </div>
 
             <!-- Tracehold Platform -->
@@ -410,30 +393,25 @@
             </div>
           </div>
 
-          <!-- safe prompts arrow → AI vendors -->
-          <div class="flex w-[70px] shrink-0 flex-col items-center pt-[110px]">
+          <!-- safe prompts line → AI vendors -->
+          <div class="flex w-[110px] shrink-0 flex-col items-center pt-[110px]">
             <span
-              class="text-[10px] font-bold tracking-[0.02em] text-[#16956a] uppercase ml-2"
+              class="text-[10px] font-bold tracking-[0.02em] text-[#16956a] uppercase"
               >safe prompts</span
             >
             <svg
-              width="60"
               height="14"
-              viewBox="0 0 60 14"
+              viewBox="0 0 110 14"
               fill="none"
-              class="mt-1"
+              preserveAspectRatio="none"
+              class="mt-1.5 w-full"
             >
               <path
-                d="M2 7h48"
+                class="thld-arrow-flow"
+                d="M0 7H110"
                 stroke="#1fc98a"
                 stroke-width="2"
                 stroke-linecap="round"></path>
-              <path
-                d="M46 2l7 5-7 5"
-                stroke="#1fc98a"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"></path>
             </svg>
           </div>
 

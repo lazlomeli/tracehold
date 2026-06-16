@@ -18,22 +18,33 @@ import Footer from "../components/Footer.astro";
 >
   <Header />
   <main>
-    <section class="relative overflow-hidden bg-white pt-16 pb-8 md:pt-24 md:pb-12">
-      <div class="pointer-events-none absolute -left-32 top-0 h-[420px] w-[420px] rounded-full opacity-[0.06]" style="background: radial-gradient(circle, #7b36ff 0%, transparent 60%);" aria-hidden="true"></div>
+    <section
+      class="relative overflow-hidden bg-white pt-16 pb-8 md:pt-24 md:pb-12"
+    >
+      <div
+        class="pointer-events-none absolute -left-32 top-0 h-[420px] w-[420px] rounded-full opacity-[0.06]"
+        style="background: radial-gradient(circle, #7b36ff 0%, transparent 60%);"
+        aria-hidden="true"
+      >
+      </div>
 
       <div class="container-x relative">
         <div class="mx-auto max-w-[760px] text-center">
-          <p class="text-[12px] font-bold uppercase tracking-[0.18em] text-[var(--color-brand-purple)]">
+          <p
+            class="text-[12px] font-bold uppercase tracking-[0.18em] text-[var(--color-brand-purple)]"
+          >
             How it works
           </p>
           <h1 class="h-section mt-4 text-[var(--color-phantom)]">
             One install. Every browser, every terminal.
-            <span class="block text-[var(--color-graphite)]">All on the device.</span>
+            <span class="block text-[var(--color-graphite)]"
+              >All on the device.</span
+            >
           </h1>
           <p class="body-lg mt-5">
-            Tracehold catches sensitive data at the source — before it reaches an AI vendor.
-            Detection runs locally, decisions happen in milliseconds, and only metadata ever
-            leaves the machine.
+            Tracehold catches sensitive data at the source — before it reaches
+            an AI vendor. Detection runs locally, decisions happen in
+            milliseconds, and only metadata ever leaves the machine.
           </p>
         </div>
       </div>

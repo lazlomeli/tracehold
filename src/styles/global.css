@@ -91,6 +91,16 @@
   @keyframes thld-spin {
     to { transform: rotate(360deg); }
   }
+  @keyframes thld-arrow-flow {
+    to { stroke-dashoffset: -8; }
+  }
+  .thld-arrow-flow {
+    stroke-dasharray: 2 6;
+    animation: thld-arrow-flow 0.7s linear infinite;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .thld-arrow-flow { animation: none; }
+  }
   @media (prefers-reduced-motion: reduce) {
     .thld-mock-content *,
     .thld-mock-content *::before,
