@@ -1,0 +1,130 @@
+---
+const stats = [
+  {
+    eyebrow: "GDPR — Largest fine on record",
+    figure: "€1.2B",
+    sub: "Meta Ireland, ruled by the Irish DPC in May 2023 for unlawful EU→US data transfers.",
+    source: "Irish Data Protection Commission",
+  },
+  {
+    eyebrow: "EU AI Act — Enforced since Aug 2025",
+    figure: "7%",
+    sub: "Maximum fine for prohibited AI practices — or €35M, whichever is higher.",
+    source: "Regulation 2024/1689, Article 99",
+  },
+  {
+    eyebrow: "IBM Cost of a Data Breach 2025",
+    figure: "$4.44M",
+    sub: "Global average cost per breach. Healthcare averages $9.77M. US average is $9.36M.",
+    source: "IBM Security, July 2025",
+  },
+  {
+    eyebrow: "Time to identify & contain",
+    figure: "241 days",
+    sub: "Mean lifecycle of a breach worldwide. Eight months between exfiltration and discovery.",
+    source: "IBM Cost of a Data Breach Report 2025",
+  },
+];
+
+const incidents = [
+  {
+    date: "Jan 2026",
+    title: "CISA Acting Director uploaded FOUO docs into ChatGPT",
+    body: "Madhu Gottumukkala, head of the US Cybersecurity and Infrastructure Security Agency, pasted at least four 'For Official Use Only' contracting documents into public ChatGPT — despite DHS restrictions on the tool. The story drew rebukes from House oversight leaders and Senator Grassley.",
+    href: "https://techcrunch.com/2026/01/28/trumps-acting-cybersecurity-chief-uploaded-sensitive-government-docs-to-chatgpt/",
+  },
+  {
+    date: "Feb 2026",
+    title: "Chat & Ask AI — 300M prompts exposed",
+    body: "A misconfigured database inside 'Chat & Ask AI', a 50M-user wrapper around ChatGPT, Claude and Gemini, leaked 300 million chat messages tied to 25 million users. The dataset included every prompt sent to the wrapped models.",
+    href: "https://www.malwarebytes.com/blog/news/2026/02/ai-chat-app-leak-exposes-300-million-messages-tied-to-25-million-users",
+  },
+  {
+    date: "Mar 2026",
+    title: "Anthropic shipped 513K lines of Claude Code source",
+    body: "Anthropic accidentally bundled a 59.8MB source-map file inside npm package @anthropic-ai/claude-code v2.1.88, exposing 513,000 lines of unobfuscated TypeScript across 1,906 files. Tens of thousands of GitHub forks appeared before the DMCA notices landed.",
+    href: "https://www.zscaler.com/blogs/security-research/anthropic-claude-code-leak",
+  },
+  {
+    date: "Q1 2026",
+    title: "CNIL fined Free Mobile €27M — GDPR enforcement surges",
+    body: "France's CNIL fined Free Mobile €27M for inadequate subscriber data protection. Total European GDPR fines in Q1 2026 hit €68M — a 5× jump versus Q1 2025, with France and the UK driving 94% of the activity.",
+    href: "https://finbold.com/gdpr-fines-hit-e68-million-in-q1-2026-as-france-and-u-k-drive-surge/",
+  },
+];
+---
+
+<section id="cost" class="relative overflow-hidden border-y border-[var(--color-cloud)] bg-[var(--color-brand-light)]/40 py-24 md:py-32">
+  <div class="pointer-events-none absolute -left-32 top-1/4 h-[480px] w-[480px] rounded-full opacity-[0.06]" style="background: radial-gradient(circle, #7b36ff 0%, transparent 60%);" aria-hidden="true"></div>
+
+  <div class="container-x relative">
+    <div class="max-w-[820px]">
+      <h2 class="h-section text-[var(--color-phantom)]">
+        The cost of one leaked prompt.
+      </h2>
+      <p class="body-lg mt-6 max-w-[680px]">
+        Regulators aren't waiting anymore. The EU AI Act has been fully enforceable since August 2025,
+        GDPR fines crossed <span class="font-semibold text-[var(--color-phantom)]">€7.1B</span> cumulative in 2026,
+        and the leaks have already started — even the Acting Director of CISA, the US cybersecurity
+        agency, pasted For Official Use Only contracting documents into public ChatGPT, as Politico
+        reported in January 2026.
+      </p>
+    </div>
+
+    <div class="mt-16 grid gap-px overflow-hidden rounded-2xl border border-[var(--color-cloud)] bg-[var(--color-cloud)] md:grid-cols-2 lg:grid-cols-4">
+      {stats.map((s) => (
+        <article class="flex flex-col bg-white p-7 transition hover:bg-[var(--color-brand-light)]/60">
+          <p class="text-[11px] font-bold uppercase tracking-[0.14em] text-[var(--color-graphite)]">{s.eyebrow}</p>
+
+          <p class="mt-6 text-[56px] font-extrabold leading-none tracking-[-0.03em] text-[var(--color-brand-purple)] md:text-[64px]">
+            {s.figure}
+          </p>
+
+          <p class="mt-5 text-[14px] leading-snug text-[var(--color-arsenic)]">{s.sub}</p>
+
+          <p class="mt-auto pt-5 text-[11px] uppercase tracking-[0.14em] text-[var(--color-space)]">
+            {s.source}
+          </p>
+        </article>
+      ))}
+    </div>
+
+    <div class="mt-10 overflow-hidden rounded-2xl border border-[var(--color-cloud)] bg-white">
+      <div class="flex items-center justify-between border-b border-[var(--color-cloud)] bg-[var(--color-brand-light)]/40 px-7 py-4">
+        <p class="text-[11px] font-bold uppercase tracking-[0.16em] text-[var(--color-brand-purple)]">It's not theoretical</p>
+        <p class="hidden text-[11px] uppercase tracking-[0.14em] text-[var(--color-graphite)] md:block">Documented AI-prompt incidents</p>
+      </div>
+
+      <ul class="grid gap-px bg-[var(--color-cloud)] md:grid-cols-2">
+        {incidents.map((i) => (
+          <li class="group bg-white p-7 transition hover:bg-[var(--color-brand-light)]/40">
+            <div class="flex items-baseline gap-3">
+              <span class="font-mono text-[12px] font-bold text-[var(--color-brand-purple)]">{i.date}</span>
+              <span class="h-px flex-1 bg-[var(--color-cloud)]"></span>
+            </div>
+            <h3 class="mt-3 text-[16px] font-bold leading-snug text-[var(--color-phantom)]">{i.title}</h3>
+            <p class="mt-2 text-[13.5px] leading-relaxed text-[var(--color-graphite)]">{i.body}</p>
+            <a
+              href={i.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-5 inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--color-brand-purple)] transition hover:text-[var(--color-phantom)]"
+            >
+              Read
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="transition group-hover:translate-x-0.5" aria-hidden="true">
+                <path d="M5 12h14M13 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <p class="mt-8 text-[12px] text-[var(--color-graphite)]">
+      Sources: <a href="https://artificialintelligenceact.eu/article/99/" class="underline-offset-4 hover:underline">EU AI Act Article 99</a> ·
+      <a href="https://www.ibm.com/think/x-force/2025-cost-of-a-data-breach-navigating-ai" class="underline-offset-4 hover:underline">IBM Cost of a Data Breach 2025</a> ·
+      <a href="https://cms.law/en/deu/publication/gdpr-enforcement-tracker-report/numbers-and-figures" class="underline-offset-4 hover:underline">GDPR Enforcement Tracker 2024/25</a> ·
+      <a href="https://techcrunch.com/2023/05/02/samsung-bans-use-of-generative-ai-tools-like-chatgpt-after-april-internal-data-leak" class="underline-offset-4 hover:underline">TechCrunch — Samsung ban</a>.
+    </p>
+  </div>
+</section>

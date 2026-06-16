@@ -1,0 +1,77 @@
+---
+const scenarios = [
+  {
+    tag: "Engineering",
+    title: "Source code into ChatGPT",
+    body: "A developer pastes 200 lines of auth.ts to debug. Tracehold catches AWS keys and internal hostnames before the request leaves the tab.",
+    metric: "Most-blocked event in pilots",
+  },
+  {
+    tag: "Customer Success",
+    title: "PII into Claude",
+    body: "A CS rep drafts a renewal email and dumps an account summary with names, emails, IBAN. Blocked at the DOM gate with an explanation.",
+    metric: "GDPR Art. 9 exposure",
+  },
+  {
+    tag: "Finance",
+    title: "Card numbers into Copilot",
+    body: "A controller asks Copilot to clean a CSV of vendor payments. PAN detected, blocked, audit-logged for PCI-DSS evidence.",
+    metric: "PCI-DSS v4.0.1 finding",
+  },
+  {
+    tag: "Shadow AI",
+    title: "Unknown AI tool in marketing",
+    body: "A team starts using a new chatbot you've never heard of. Heuristics flag it as 'discovered AI'; CISO whitelists or blocks in one click.",
+    metric: "EU AI Act register",
+  },
+];
+---
+
+<section id="scenarios" class="relative overflow-hidden bg-white py-24 md:py-32">
+  <div class="pointer-events-none absolute -top-40 left-1/2 h-[700px] w-[700px] -translate-x-1/2 rounded-full opacity-[0.06]" style="background: radial-gradient(circle, #7b36ff 0%, transparent 65%);" aria-hidden="true"></div>
+
+  <div class="container-x relative">
+    <div class="grid items-end gap-8 lg:grid-cols-[1.2fr_1fr]">
+      <div>
+        <div class="eyebrow">
+          <span class="inline-block h-px w-8 bg-[var(--color-brand-purple)]"></span>
+          Real scenarios
+        </div>
+        <h2 class="h-section mt-5 text-[var(--color-phantom)]">
+          Four leaks Tracehold caught
+          <span class="text-[var(--color-graphite)]">in customer pilots last quarter.</span>
+        </h2>
+      </div>
+      <p class="body-lg max-w-[440px] lg:justify-self-end">
+        Every one of these would have ended up in a vendor's logs or training data — invisible to your existing controls.
+      </p>
+    </div>
+
+    <div class="mt-14 grid gap-5 md:grid-cols-2">
+      {scenarios.map((s, i) => (
+        <article class="group relative overflow-hidden rounded-2xl border border-[var(--color-cloud)] bg-white p-8 transition hover:border-[var(--color-phantom)]">
+          <div class="flex items-center justify-between">
+            <span class="inline-flex items-center gap-1.5 rounded-full bg-[var(--color-brand-purple)]/10 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--color-brand-purple)]">
+              {s.tag}
+            </span>
+            <span class="font-mono text-[11px] text-[var(--color-space)]">{String(i + 1).padStart(2, "0")} / 04</span>
+          </div>
+
+          <h3 class="mt-6 text-[20px] font-extrabold leading-tight tracking-tight text-[var(--color-phantom)]">
+            {s.title}
+          </h3>
+          <p class="mt-3 text-[14.5px] leading-relaxed text-[var(--color-arsenic)]">{s.body}</p>
+
+          <div class="mt-6 flex items-center gap-2 border-t border-[var(--color-cloud)] pt-4">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" class="text-[var(--color-brand-purple)]" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="12" y1="8" x2="12" y2="12"/>
+              <line x1="12" y1="16" x2="12.01" y2="16"/>
+            </svg>
+            <span class="text-[12px] font-semibold text-[var(--color-graphite)]">{s.metric}</span>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

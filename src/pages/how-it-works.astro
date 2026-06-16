@@ -1,0 +1,90 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import ArchDiagram from "../components/ArchDiagram.astro";
+import FeatureShowcase from "../components/FeatureShowcase.astro";
+import MockExtension from "../components/mockups/MockExtension.astro";
+import MockPatternEngine from "../components/mockups/MockPatternEngine.astro";
+import MockChatbotText from "../components/mockups/MockChatbotText.astro";
+import MockChatbotFile from "../components/mockups/MockChatbotFile.astro";
+import MockCustomPolicies from "../components/mockups/MockCustomPolicies.astro";
+import CTA from "../components/CTA.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout
+  title="How Tracehold works — AI-native DLP for the browser"
+  description="Detection runs on-device, in browser and terminal, before sensitive data leaves the machine. Our endpoint agent works on Windows, macOS, and Linux."
+>
+  <Header />
+  <main>
+    <section class="relative overflow-hidden bg-white pt-16 pb-8 md:pt-24 md:pb-12">
+      <div class="pointer-events-none absolute -left-32 top-0 h-[420px] w-[420px] rounded-full opacity-[0.06]" style="background: radial-gradient(circle, #7b36ff 0%, transparent 60%);" aria-hidden="true"></div>
+
+      <div class="container-x relative">
+        <div class="mx-auto max-w-[760px] text-center">
+          <p class="text-[12px] font-bold uppercase tracking-[0.18em] text-[var(--color-brand-purple)]">
+            How it works
+          </p>
+          <h1 class="h-section mt-4 text-[var(--color-phantom)]">
+            One install. Every browser, every terminal.
+            <span class="block text-[var(--color-graphite)]">All on the device.</span>
+          </h1>
+          <p class="body-lg mt-5">
+            Tracehold catches sensitive data at the source — before it reaches an AI vendor.
+            Detection runs locally, decisions happen in milliseconds, and only metadata ever
+            leaves the machine.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <ArchDiagram />
+
+    <FeatureShowcase
+      eyebrow="01 — Install"
+      title="One extension. Every browser."
+      body="Push Tracehold to every endpoint via GPO, Intune or Jamf. Chrome, Edge, Brave, Firefox — same install, same coverage. Employees never lift a finger."
+    >
+      <MockExtension />
+    </FeatureShowcase>
+
+    <FeatureShowcase
+      eyebrow="02 — The engine"
+      title="1,600+ detection patterns. All running on-device."
+      body="Secrets, credentials, PII, financial data, internal hostnames, code fingerprints. Every category covered out of the box, updated weekly without redeploying the extension."
+      reverse={true}
+      learnMoreHref="/platform"
+    >
+      <MockPatternEngine />
+    </FeatureShowcase>
+
+    <FeatureShowcase
+      eyebrow="03 — Real-time text"
+      title="Catches sensitive text the moment you type it."
+      body="Passwords, tokens, emails, account numbers — flagged inline as you type, before you hit send. Employees see a context-aware warning, not a silent block."
+    >
+      <MockChatbotText />
+    </FeatureShowcase>
+
+    <FeatureShowcase
+      eyebrow="04 — File uploads"
+      title="Stops sensitive files before they upload."
+      body="When an employee attaches a .env, key file or config, Tracehold inspects it on-device first. Secrets are caught before the upload starts — not flagged in a post-mortem."
+      reverse={true}
+    >
+      <MockChatbotFile />
+    </FeatureShowcase>
+
+    <FeatureShowcase
+      eyebrow="05 — Custom policies"
+      title="Tune detection to your business."
+      body="Add project codenames, internal hostnames, unreleased product names, ID conventions. Block or redact each policy independently. Enforced on-device, so your conventions never leave your tenant."
+    >
+      <MockCustomPolicies />
+    </FeatureShowcase>
+
+    <CTA />
+  </main>
+  <Footer />
+</Layout>

@@ -1,0 +1,71 @@
+---
+const roles = [
+  {
+    role: "CISO / Security",
+    title: "Visibility and audit-ready evidence.",
+    bullets: [
+      "Real-time dashboard of every blocked attempt.",
+      "Export reports mapped to GDPR, ISO 27001, ENS.",
+      "SIEM hooks: Splunk, Sentinel, CEF, webhooks.",
+    ],
+  },
+  {
+    role: "IT / Operations",
+    title: "Deploy in minutes. No agent. No proxy.",
+    bullets: [
+      "Push via GPO, Intune, Jamf or extension store.",
+      "Multi-tenant with strict RLS isolation.",
+      "SSO with OIDC and SAML 2.0 out of the box.",
+    ],
+  },
+  {
+    role: "Employees",
+    title: "Protected, not policed.",
+    bullets: [
+      "Only interrupts on genuine risk.",
+      "Every block explains what was detected.",
+      "Works offline — fail-open by default.",
+    ],
+  },
+];
+---
+
+<section class="bg-white py-24 md:py-32">
+  <div class="container-x">
+    <div class="grid items-end gap-8 lg:grid-cols-[1.2fr_1fr]">
+      <div>
+        <div class="eyebrow">
+          <span class="inline-block h-px w-8 bg-[var(--color-brand-purple)]"></span>
+          Built for every role
+        </div>
+        <h2 class="h-section mt-5 text-[var(--color-phantom)]">
+          One product. Three audiences.
+          <span class="text-[var(--color-graphite)]">Every one of them happier.</span>
+        </h2>
+      </div>
+      <p class="body-lg max-w-[420px] lg:justify-self-end">
+        Security tools usually trade off across stakeholders. Tracehold doesn't — because the architecture
+        respects all three.
+      </p>
+    </div>
+
+    <div class="mt-14 grid gap-6 lg:grid-cols-3">
+      {roles.map((r) => (
+        <article class="rounded-2xl border border-[var(--color-cloud)] bg-[var(--color-brand-light)]/40 p-8 transition hover:border-[var(--color-phantom)] hover:shadow-[0_24px_60px_-30px_rgba(2,14,45,0.25)]">
+          <p class="text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--color-brand-purple)]">{r.role}</p>
+          <h3 class="mt-4 text-[20px] font-extrabold leading-tight tracking-tight text-[var(--color-phantom)]">{r.title}</h3>
+          <ul class="mt-6 space-y-3">
+            {r.bullets.map((b) => (
+              <li class="flex gap-3 text-[14px] leading-snug text-[var(--color-arsenic)]">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 shrink-0 text-[var(--color-brand-purple)]" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+                <span>{b}</span>
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

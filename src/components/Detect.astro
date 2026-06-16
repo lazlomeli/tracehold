@@ -1,0 +1,75 @@
+---
+const categories = [
+  {
+    title: "Secrets & credentials",
+    items: ["AWS access keys", "GCP service accounts", "Azure client secrets", "GitHub PATs", "Stripe / Twilio / SendGrid", "JWT tokens", "SSH & PGP private keys"],
+  },
+  {
+    title: "Personal data (EU)",
+    items: ["DNI / NIE / passport", "IBAN & PAN (PCI-DSS)", "Phone numbers", "Medical records", "Social security IDs", "Names + emails in context"],
+  },
+  {
+    title: "Infrastructure",
+    items: ["Connection strings", "Internal hostnames", ".env file contents", "Private IPs", "Docker / NPM tokens", "High-entropy blobs"],
+  },
+  {
+    title: "Intent (NLP-lite)",
+    items: ["Jailbreak attempts", "Exfiltration patterns", "Prompt injection markers", "Custom org policies", "Allow / warn / block per rule"],
+  },
+];
+---
+
+<section id="detect" class="border-y border-[var(--color-cloud)] bg-[var(--color-brand-light)]/40 py-24 md:py-32">
+  <div class="container-x">
+    <div class="grid items-end gap-8 lg:grid-cols-[1.2fr_1fr]">
+      <div>
+        <div class="eyebrow">
+          <span class="inline-block h-px w-8 bg-[var(--color-brand-purple)]"></span>
+          What we detect
+        </div>
+        <h2 class="h-section mt-5 text-[var(--color-phantom)]">
+          1,600+ patterns out of the box.
+          <span class="text-[var(--color-graphite)]">Unlimited custom ones.</span>
+        </h2>
+      </div>
+      <p class="body-lg max-w-[440px] lg:justify-self-end">
+        The same engine runs in the browser and on the server, so your detection logic is identical everywhere —
+        and customizable per organization.
+      </p>
+    </div>
+
+    <div class="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      {categories.map((cat, i) => (
+        <div class="rounded-2xl border border-[var(--color-cloud)] bg-white p-7 transition hover:border-[var(--color-brand-purple)]">
+          <div class="flex items-center justify-between">
+            <span class="font-mono text-[11px] font-bold text-[var(--color-brand-purple)]">{String(i + 1).padStart(2, "0")}</span>
+            <span class="text-[10px] font-bold uppercase tracking-[0.14em] text-[var(--color-space)]">{cat.items.length} types</span>
+          </div>
+          <h3 class="mt-5 text-[16px] font-bold leading-snug text-[var(--color-phantom)]">{cat.title}</h3>
+          <ul class="mt-5 space-y-2">
+            {cat.items.map((item) => (
+              <li class="font-mono text-[12px] text-[var(--color-arsenic)]">{item}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-[13px] text-[var(--color-graphite)]">
+      <span class="font-semibold text-[var(--color-phantom)]">2,200+ AI domains covered</span>
+      <span class="text-[var(--color-steel)]">•</span>
+      <span>ChatGPT</span>
+      <span>Claude</span>
+      <span>Gemini</span>
+      <span>Copilot</span>
+      <span>Perplexity</span>
+      <span>Mistral</span>
+      <span>Grok</span>
+      <span>DeepSeek</span>
+      <span>Notion AI</span>
+      <span>Meta AI</span>
+      <span class="text-[var(--color-steel)]">•</span>
+      <span>+ Shadow AI heuristics</span>
+    </div>
+  </div>
+</section>

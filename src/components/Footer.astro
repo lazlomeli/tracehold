@@ -1,0 +1,54 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-[var(--color-phantom)] py-16 text-[var(--color-steel)]">
+  <div class="container-x">
+    <div class="grid gap-12 md:grid-cols-[1.5fr_1fr_1fr_1fr]">
+      <div>
+        <div class="flex items-center">
+          <img src="/logo-white.svg" alt="Tracehold" class="h-8 w-auto" />
+        </div>
+        <p class="mt-5 max-w-[320px] text-[14px] leading-relaxed text-[var(--color-space)]">
+          AI-native data loss prevention. Built so prompts never leave the browser.
+        </p>
+      </div>
+
+      <div>
+        <p class="text-[12px] font-semibold uppercase tracking-[0.16em] text-white">Product</p>
+        <ul class="mt-4 space-y-2.5 text-[14px]">
+          <li><a href="/platform" class="transition hover:text-white">Platform</a></li>
+          <li><a href="/how-it-works" class="transition hover:text-white">How it works</a></li>
+          <li><a href="/platform#detect" class="transition hover:text-white">What we detect</a></li>
+          <li><a href="/platform#ebpf" class="transition hover:text-white">CLI agents</a></li>
+          <li><a href="/#pricing" class="transition hover:text-white">Pricing</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="text-[12px] font-semibold uppercase tracking-[0.16em] text-white">Company</p>
+        <ul class="mt-4 space-y-2.5 text-[14px]">
+          <li><a href="#" class="transition hover:text-white">About</a></li>
+          <li><a href="#" class="transition hover:text-white">Security</a></li>
+          <li><a href="#" class="transition hover:text-white">Careers</a></li>
+          <li><a href="#" class="transition hover:text-white">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="text-[12px] font-semibold uppercase tracking-[0.16em] text-white">Legal</p>
+        <ul class="mt-4 space-y-2.5 text-[14px]">
+          <li><a href="#" class="transition hover:text-white">Privacy</a></li>
+          <li><a href="#" class="transition hover:text-white">Terms</a></li>
+          <li><a href="#" class="transition hover:text-white">DPA</a></li>
+          <li><a href="#" class="transition hover:text-white">Subprocessors</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-14 flex flex-col gap-3 border-t border-white/10 pt-6 text-[12px] text-[var(--color-space)] md:flex-row md:items-center md:justify-between">
+      <p>© {year} Tracehold. All rights reserved.</p>
+      <p>Made for CISOs who can't sleep.</p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,122 @@
+---
+const baseStyle = "font-family: ui-monospace, monospace; font-size: 11px; line-height: 1; padding: 5px 8px; border-radius: 6px; white-space: nowrap; border: 1px solid rgba(120,170,220,0.15); background: rgba(255,255,255,0.015);";
+const idle = (op: number) => `${baseStyle} color: rgba(150,184,216,${op});`;
+const matchStyle = "font-family: ui-monospace, monospace; font-size: 11px; line-height: 1; padding: 5px 8px; border-radius: 6px; white-space: nowrap; color: #ff8579; border: 1px solid rgba(255,90,77,0.55); background: rgba(226,59,48,0.14); box-shadow: 0 0 0 1px rgba(255,90,77,0.15); font-weight: 600;";
+const scanStyle = "font-family: ui-monospace, monospace; font-size: 11px; line-height: 1; padding: 5px 8px; border-radius: 6px; white-space: nowrap; color: #d9ccff; border: 1px solid rgba(123,54,255,0.6); background: rgba(123,54,255,0.16); box-shadow: 0 0 12px rgba(123,54,255,0.4); font-weight: 600;";
+
+const names = [
+  "AWS_SECRET_KEY", "GCP_API_KEY", "PRIVATE_KEY_PEM", "SSH_KEY", "JWT_TOKEN",
+  "OAUTH_BEARER", "SLACK_TOKEN", "STRIPE_SK_LIVE", "GITHUB_PAT", "DB_CONN_STRING",
+  "POSTGRES_URI", "CREDENTIAL_PAIR", "BASIC_AUTH", "CREDIT_CARD_16",
+  "IBAN", "SSN_US", "EMAIL_PII", "PHONE_E164",
+  "COOKIE_SESSION", "CLIENT_SECRET", "ENCRYPTION_KEY", "ENV_SECRET",
+  "SEED_PHRASE", "BANK_ACCOUNT", "API_SECRET",
+  "VAULT_TOKEN", "SMTP_CREDS", "JDBC_PASSWORD",
+];
+const matchSet = new Set(["CREDENTIAL_PAIR", "BASIC_AUTH"]);
+const scanSet = new Set(["JDBC_PASSWORD", "VAULT_TOKEN", "SMTP_CREDS"]);
+const dimSet = new Set([2, 5, 9, 14, 17, 21, 24]);
+
+const patterns = names.map((name, i) => {
+  let style: string;
+  if (matchSet.has(name)) style = matchStyle;
+  else if (scanSet.has(name)) style = scanStyle;
+  else style = idle(dimSet.has(i) ? 0.32 : 0.6);
+  return { name: (matchSet.has(name) ? "● " : "") + name, style };
+});
+---
+
+<div class="thld-mock-frame thld-pattern-engine" style="--mock-w: 1040; --mock-h: 360;">
+  <div class="thld-mock-content">
+    <div style="position: relative; width: 1040px; background: #020e2d; border-radius: 24px; box-shadow: 0 40px 90px -24px rgba(2,14,45,0.6), 0 10px 30px -10px rgba(2,14,45,0.5); border: 1px solid rgba(123,54,255,0.22); overflow: hidden; font-family: 'Manrope Variable', system-ui, sans-serif;">
+
+      <!-- ambient glow -->
+      <div style="position: absolute; top: -120px; right: -80px; width: 420px; height: 420px; border-radius: 50%; background: radial-gradient(circle, rgba(123,54,255,0.32), transparent 65%); pointer-events: none;"></div>
+
+      <!-- Header -->
+      <div style="position: relative; display: flex; align-items: center; gap: 14px; padding: 16px 26px; border-bottom: 1px solid rgba(255,255,255,0.07);">
+        <div style="width: 38px; height: 38px; border-radius: 11px; background: #7b36ff; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 16px -3px rgba(123,54,255,0.7); flex: none;">
+          <img src="/emblem-white.svg" alt="Tracehold" style="width: 24px; height: 24px; object-fit: contain;" />
+        </div>
+        <div style="line-height: 1.2;">
+          <div style="font-size: 15px; font-weight: 700; color: #ffffff; letter-spacing: -0.01em;">Tracehold Pattern Engine</div>
+          <div style="font-size: 12px; color: #7c89a8; font-weight: 500;">Real-time sensitive-data inspection</div>
+        </div>
+        <div style="flex: 1;"></div>
+        <div style="display: flex; align-items: center; gap: 9px; background: rgba(123,54,255,0.14); border: 1px solid rgba(123,54,255,0.34); border-radius: 999px; padding: 7px 14px;">
+          <div style="width: 13px; height: 13px; border-radius: 50%; border: 2px solid rgba(196,166,255,0.35); border-top-color: #c4a6ff; animation: thld-spin 0.9s linear infinite; flex: none;"></div>
+          <span style="font-size: 12.5px; font-weight: 600; color: #d9ccff; font-family: ui-monospace, monospace;">1,648 patterns</span>
+        </div>
+      </div>
+
+      <!-- Body: two panels -->
+      <div style="position: relative; display: flex; align-items: stretch;">
+
+        <!-- Left: human view -->
+        <div style="width: 340px; flex: none; padding: 22px; border-right: 1px solid rgba(255,255,255,0.06);">
+          <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.12em; color: #5f6c8a; text-transform: uppercase; margin-bottom: 16px;">Outgoing message</div>
+
+          <div style="display: flex; justify-content: flex-end;">
+            <div style="max-width: 300px; background: #ffffff; border-radius: 18px 18px 6px 18px; padding: 14px 16px; box-shadow: 0 10px 24px -10px rgba(0,0,0,0.5);">
+              <div style="font-size: 15px; line-height: 1.55; color: #1d2433; letter-spacing: -0.01em;">My password is
+                <span style="background: #ffe1e1; color: #e23b30; font-weight: 600; border-radius: 6px; padding: 1px 6px; box-shadow: inset 0 -2px 0 rgba(226,59,48,0.45);">Tr@ceH0ld!2026</span>, log in and pull the Q2 invoices<span style="display: inline-block; width: 2px; height: 17px; background: #7b36ff; border-radius: 1px; margin-left: 2px; vertical-align: -3px; animation: thld-caret 1.05s steps(1) infinite;"></span>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top: 14px; display: flex; justify-content: flex-end;">
+            <div style="display: inline-flex; align-items: center; gap: 7px; font-size: 12px; color: #7c89a8; font-weight: 500;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" style="color: #7b36ff;"><rect x="5" y="11" width="14" height="9" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="2"/></svg>
+              <span>Inspected before send</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- X-ray beam seam -->
+        <div style="position: absolute; left: 340px; top: 0; bottom: 0; width: 2px; background: linear-gradient(180deg, transparent, #7b36ff 18%, #c4a6ff 50%, #7b36ff 82%, transparent); box-shadow: 0 0 22px 3px rgba(123,54,255,0.65); animation: thld-beam 2.2s ease-in-out infinite; z-index: 3;"></div>
+        <div style="position: absolute; left: 328px; top: 50%; transform: translateY(-50%); z-index: 4; display: flex; flex-direction: column; align-items: center; gap: 5px;">
+          <div style="width: 26px; height: 26px; border-radius: 50%; background: #020e2d; border: 1.5px solid #7b36ff; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 16px rgba(123,54,255,0.7);">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="color: #c4a6ff;"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M16 16l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+        </div>
+
+        <!-- Right: x-ray / pattern field -->
+        <div style="flex: 1; position: relative; padding: 22px 26px 20px 28px; overflow: hidden;">
+          <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.12em; color: #7b6ab0; text-transform: uppercase; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">X-ray · pattern match
+            <span style="font-family: ui-monospace, monospace; color: #5f6c8a; font-weight: 500; letter-spacing: 0; text-transform: none;">scanning…</span>
+          </div>
+
+          <!-- pattern chips -->
+          <div style="position: relative; display: flex; flex-wrap: wrap; gap: 7px; z-index: 1;">
+            {patterns.map((p) => (
+              <span style={p.style}>{p.name}</span>
+            ))}
+          </div>
+
+          <!-- match result strip -->
+          <div style="position: relative; margin-top: 16px; display: flex; align-items: center; gap: 12px; background: rgba(226,59,48,0.1); border: 1px solid rgba(255,90,77,0.4); border-radius: 12px; padding: 12px 14px; z-index: 1;">
+            <div style="width: 9px; height: 9px; border-radius: 50%; background: #ff5a4d; box-shadow: 0 0 10px #ff5a4d; flex: none;"></div>
+            <div style="flex: 1; min-width: 0;">
+              <div style="font-size: 13px; font-weight: 700; color: #ff8579; font-family: ui-monospace, monospace;">CREDENTIAL_INLINE_PWD</div>
+              <div style="font-size: 11.5px; color: #9aa6c2; margin-top: 1px;">Plaintext password matched in message body</div>
+            </div>
+            <div style="text-align: right; flex: none;">
+              <div style="font-size: 13px; font-weight: 700; color: #ffffff; font-family: ui-monospace, monospace;">0.98</div>
+              <div style="font-size: 10px; color: #7c89a8; letter-spacing: 0.06em;">CONFIDENCE</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer progress -->
+      <div style="position: relative; display: flex; align-items: center; gap: 14px; padding: 13px 26px 15px; border-top: 1px solid rgba(255,255,255,0.07);">
+        <span style="font-size: 12px; color: #7c89a8; font-weight: 500; white-space: nowrap;">Scanning detection patterns</span>
+        <div style="flex: 1; height: 6px; border-radius: 3px; background: rgba(255,255,255,0.07); overflow: hidden;">
+          <div style="width: 97%; height: 100%; border-radius: 3px; background: linear-gradient(90deg, #7b36ff, #c4a6ff); box-shadow: 0 0 12px rgba(123,54,255,0.6);"></div>
+        </div>
+        <span style="font-size: 12px; font-weight: 600; color: #d9ccff; font-family: ui-monospace, monospace; white-space: nowrap;">1,597 / 1,648</span>
+      </div>
+
+    </div>
+  </div>
+</div>

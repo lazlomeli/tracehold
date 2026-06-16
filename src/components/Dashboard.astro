@@ -1,0 +1,163 @@
+---
+const blocks = [
+  {
+    eyebrow: "01 — Live overview",
+    title: "Every leak. Every detection. At a glance.",
+    body: "Real-time feed of every blocked attempt across ChatGPT, Claude, Gemini and 2,200+ AI tools. Severity coloring, finding type, user, AI — no clicks needed.",
+    bullets: [
+      "Live event stream with severity coloring",
+      "Filter by AI, user, finding type, time window",
+      "Drill into any event in one click — never see prompt text",
+    ],
+    video: "/tracehold-overview.mp4",
+    videoFirst: false,
+  },
+  {
+    eyebrow: "02 — Policy & admin",
+    title: "Build the policies that fit your org.",
+    body: "Define exactly what should block, warn, or just log — by team, AI, severity, or pattern. Test rules against real traffic before rolling out. Export evidence on demand.",
+    bullets: [
+      "Custom DLP rules with regex + entropy thresholds",
+      "Per-group policies (Engineering, Finance, Legal, …)",
+      "One-click export to GDPR, ISO 27001, ENS reports",
+    ],
+    video: "/tracehold-admin.mp4",
+    videoFirst: true,
+  },
+];
+---
+
+<section id="dashboard" class="relative overflow-hidden bg-white py-24 md:py-32">
+  <div class="container-x">
+    <div class="mx-auto max-w-[760px] text-center">
+      <div class="eyebrow justify-center">
+        <span class="inline-block h-px w-8 bg-[var(--color-brand-purple)]"></span>
+        Admin platform
+        <span class="inline-block h-px w-8 bg-[var(--color-brand-purple)]"></span>
+      </div>
+      <h2 class="h-section mt-5 text-[var(--color-phantom)]">
+        The dashboard your
+        <span
+          id="dashboard-cycler"
+          class="text-[var(--color-brand-purple)] whitespace-nowrap"
+          aria-live="polite"
+        >CISO</span>
+        <span class="text-[var(--color-graphite)]">actually opens.</span>
+      </h2>
+      <p class="body-lg mt-5">
+        Included on every paid plan. Real-time detections, custom policies, and exportable
+        compliance evidence — all in one place.
+      </p>
+    </div>
+
+    <script is:inline>
+      (function () {
+        var el = document.getElementById("dashboard-cycler");
+        if (!el) return;
+
+        var roles = [
+          "CISO",
+          "DevSecOps",
+          "IT Ops",
+          "ISM",
+          "DPO",
+          "SOC team",
+          "CSO",
+          "VP Security",
+        ];
+
+        var SCRAMBLE = "!<>-_/[]{}|=+*^?#%@$&0123456789ABCDEF";
+        function pick() {
+          return SCRAMBLE.charAt(Math.floor(Math.random() * SCRAMBLE.length));
+        }
+
+        function scrambleTo(target, done) {
+          var startText = el.textContent;
+          var maxLen = Math.max(startText.length, target.length);
+          var totalSteps = 18;
+          var step = 0;
+
+          function frame() {
+            var out = "";
+            for (var i = 0; i < maxLen; i++) {
+              var ch = i < target.length ? target.charAt(i) : "";
+              var lockAt = (i / maxLen) * totalSteps;
+              if (step >= lockAt) {
+                out += ch;
+              } else if (ch === " " || !ch) {
+                out += ch;
+              } else {
+                out += pick();
+              }
+            }
+            el.textContent = out;
+            step++;
+            if (step <= totalSteps) {
+              setTimeout(frame, 32);
+            } else {
+              el.textContent = target;
+              if (done) done();
+            }
+          }
+          frame();
+        }
+
+        var idx = 0;
+        function next() {
+          idx = (idx + 1) % roles.length;
+          scrambleTo(roles[idx], function () {
+            setTimeout(next, 1300);
+          });
+        }
+
+        var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (reduced) {
+          setInterval(function () {
+            idx = (idx + 1) % roles.length;
+            el.textContent = roles[idx];
+          }, 1800);
+        } else {
+          setTimeout(next, 2200);
+        }
+      })();
+    </script>
+
+    <div class="mt-20 space-y-24 lg:mt-28 lg:space-y-28">
+      {blocks.map((b) => (
+        <div class={`grid items-center gap-10 lg:gap-10 ${b.videoFirst ? "lg:grid-cols-[2.4fr_1fr]" : "lg:grid-cols-[1fr_2.4fr]"}`}>
+          <div class={b.videoFirst ? "lg:order-2" : ""}>
+            <p class="text-[12px] font-bold uppercase tracking-[0.18em] text-[var(--color-brand-purple)]">{b.eyebrow}</p>
+            <h3 class="mt-4 text-[24px] font-extrabold leading-[1.15] tracking-[-0.015em] text-[var(--color-phantom)] md:text-[28px]">
+              {b.title}
+            </h3>
+            <p class="body mt-4">{b.body}</p>
+
+            <ul class="mt-6 space-y-2.5">
+              {b.bullets.map((bullet) => (
+                <li class="flex gap-2.5 text-[13.5px] leading-snug text-[var(--color-arsenic)]">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 shrink-0 text-[var(--color-brand-purple)]" aria-hidden="true">
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
+                  <span>{bullet}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class={b.videoFirst ? "lg:order-1" : ""}>
+            <video
+              class="block h-auto w-full rounded-2xl border border-[var(--color-smoke)]"
+              src={b.video}
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+              aria-label={`${b.eyebrow} demo`}
+            ></video>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

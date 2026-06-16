@@ -1,0 +1,69 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  body: string;
+  image?: string;
+  alt?: string;
+  reverse?: boolean;
+  bg?: "white" | "cream";
+  learnMoreHref?: string;
+  learnMoreLabel?: string;
+}
+
+const {
+  eyebrow,
+  title,
+  body,
+  image,
+  alt,
+  reverse = false,
+  bg = "white",
+  learnMoreHref,
+  learnMoreLabel = "Learn more",
+} = Astro.props;
+const bgClass = bg === "cream" ? "bg-[var(--color-brand-light)]/40" : "bg-white";
+const hasSlot = Astro.slots.has("default");
+---
+
+<section class={`${bgClass} py-20 md:py-28`}>
+  <div class="container-x">
+    <div class={`grid items-center gap-10 lg:gap-16 ${reverse ? "lg:grid-cols-[1.4fr_1fr]" : "lg:grid-cols-[1fr_1.4fr]"}`}>
+      <div class={reverse ? "lg:order-2" : ""}>
+        <p class="text-[12px] font-bold uppercase tracking-[0.18em] text-[var(--color-brand-purple)]">
+          {eyebrow}
+        </p>
+        <h3 class="mt-4 text-[26px] font-extrabold leading-[1.15] tracking-[-0.015em] text-[var(--color-phantom)] md:text-[34px]">
+          {title}
+        </h3>
+        <p class="body-lg mt-5">{body}</p>
+
+        {learnMoreHref && (
+          <a
+            href={learnMoreHref}
+            class="group mt-6 inline-flex items-center gap-1.5 text-[13px] font-bold uppercase tracking-[0.16em] text-[var(--color-brand-purple)] transition hover:text-[var(--color-phantom)]"
+          >
+            {learnMoreLabel}
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="transition group-hover:translate-x-0.5" aria-hidden="true">
+              <path d="M5 12h14M13 5l7 7-7 7"/>
+            </svg>
+          </a>
+        )}
+      </div>
+
+      <div class={reverse ? "lg:order-1" : ""}>
+        {hasSlot ? (
+          <slot />
+        ) : (
+          <img
+            src={image}
+            alt={alt}
+            loading="lazy"
+            decoding="async"
+            class="block h-auto w-full"
+          />
+        )}
+      </div>
+    </div>
+  </div>
+</section>

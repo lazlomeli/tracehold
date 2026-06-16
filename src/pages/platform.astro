@@ -1,0 +1,21 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Detect from "../components/Detect.astro";
+import EBPF from "../components/EBPF.astro";
+import CTA from "../components/CTA.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout
+  title="Platform — Tracehold"
+  description="1,600+ DLP patterns out of the box, custom rules, and a kernel-level endpoint agent that intercepts Claude Code, Codex and other CLI AI agents."
+>
+  <Header />
+  <main>
+    <Detect />
+    <EBPF />
+    <CTA />
+  </main>
+  <Footer />
+</Layout>

@@ -1,0 +1,34 @@
+---
+import "../styles/global.css";
+import LoadingOverlay from "../components/LoadingOverlay.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Tracehold — AI-native DLP for the browser",
+  description = "Stop sensitive data leaks to ChatGPT, Claude, Gemini, Copilot and 2,200+ AI tools. No agent. No proxy. The prompt never leaves the browser.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/emblem-purple.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#020e2d" />
+  </head>
+  <body>
+    <LoadingOverlay />
+    <slot />
+  </body>
+</html>

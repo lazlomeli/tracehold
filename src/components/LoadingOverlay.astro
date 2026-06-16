@@ -1,0 +1,79 @@
+---
+---
+
+<div id="loading-overlay" class="loading-overlay" aria-hidden="true">
+  <video
+    class="loading-overlay__video"
+    src="/loading-light.mp4"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto"
+  ></video>
+</div>
+
+<style>
+  .loading-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e1e1e4;
+    transition:
+      opacity 600ms ease,
+      visibility 0s linear 600ms;
+    pointer-events: none;
+  }
+
+  .loading-overlay__video {
+    width: clamp(380px, 52vw, 780px);
+    height: auto;
+  }
+
+  .loading-overlay.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  /* Prevent flash of unstyled content — hide page content until overlay starts fading */
+  :global(html.is-loading body > *:not(#loading-overlay)) {
+    opacity: 0;
+  }
+
+  :global(html.is-ready body > *) {
+    opacity: 1;
+    transition: opacity 500ms ease 200ms;
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    document.documentElement.classList.add("is-loading");
+    var MIN_DISPLAY_MS = 1100;
+    var startedAt = Date.now();
+
+    function hide() {
+      var overlay = document.getElementById("loading-overlay");
+      if (!overlay) return;
+      var elapsed = Date.now() - startedAt;
+      var wait = Math.max(0, MIN_DISPLAY_MS - elapsed);
+      setTimeout(function () {
+        document.documentElement.classList.remove("is-loading");
+        document.documentElement.classList.add("is-ready");
+        overlay.classList.add("is-hidden");
+        setTimeout(function () {
+          if (overlay && overlay.parentNode) overlay.parentNode.removeChild(overlay);
+        }, 800);
+      }, wait);
+    }
+
+    if (document.readyState === "complete") {
+      hide();
+    } else {
+      window.addEventListener("load", hide, { once: true });
+    }
+  })();
+</script>

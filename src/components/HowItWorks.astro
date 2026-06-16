@@ -1,0 +1,71 @@
+---
+const steps = [
+  {
+    n: "01",
+    title: "Employee types a prompt",
+    body: "Inside ChatGPT, Claude, Gemini, Copilot or any of 2,200+ AI tools.",
+  },
+  {
+    n: "02",
+    title: "Extension intercepts in two layers",
+    body: "DOM gate catches the gesture. Network gate wraps fetch/XHR. Nothing slips by.",
+  },
+  {
+    n: "03",
+    title: "Local DLP engine scans",
+    body: "1,600+ patterns run on-device. The text never reaches our servers.",
+  },
+  {
+    n: "04",
+    title: "Policy decides: block, warn, log",
+    body: "On block, employee sees exactly what was detected. No silent blocks.",
+  },
+  {
+    n: "05",
+    title: "CISO sees the event in seconds",
+    body: "Metadata only — finding type, severity, domain, timestamp. Never the prompt.",
+  },
+];
+---
+
+<section id="how" class="relative overflow-hidden bg-[var(--color-brand-navy)] py-24 text-white md:py-32">
+  <div class="absolute inset-0 opacity-[0.04]" aria-hidden="true">
+    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="dot-grid" width="24" height="24" patternUnits="userSpaceOnUse">
+          <circle cx="1" cy="1" r="1" fill="white"/>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#dot-grid)"/>
+    </svg>
+  </div>
+
+  <div class="absolute -left-32 top-1/4 h-96 w-96 rounded-full bg-[var(--color-brand-purple)] opacity-20 blur-[140px]" aria-hidden="true"></div>
+  <div class="absolute -right-32 bottom-1/4 h-96 w-96 rounded-full bg-[var(--color-brand-blue)] opacity-10 blur-[140px]" aria-hidden="true"></div>
+
+  <div class="container-x relative">
+    <div class="max-w-[700px]">
+      <div class="eyebrow-purple">
+        <span class="inline-block h-px w-8 bg-[var(--color-brand-purple)]"></span>
+        How it works
+      </div>
+      <h2 class="h-section mt-5 text-white">
+        Five steps between a risky prompt and a stopped leak.
+      </h2>
+      <p class="body-lg mt-6 max-w-[560px] !text-[var(--color-steel)]">
+        No endpoint agent. No network proxy. Tracehold runs as a managed browser extension —
+        deployed via GPO, Intune or Jamf in minutes.
+      </p>
+    </div>
+
+    <ol class="mt-16 grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 md:grid-cols-5">
+      {steps.map((step) => (
+        <li class="bg-[var(--color-brand-navy)] p-6 transition hover:bg-white/[0.04]">
+          <span class="font-mono text-[12px] font-bold text-[var(--color-brand-purple)]">{step.n}</span>
+          <p class="mt-4 text-[15px] font-bold leading-snug text-white">{step.title}</p>
+          <p class="mt-2 text-[13px] leading-relaxed text-[var(--color-steel)]">{step.body}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

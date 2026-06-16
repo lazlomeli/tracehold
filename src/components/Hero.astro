@@ -1,0 +1,336 @@
+---
+---
+
+<section class="relative overflow-hidden border-b border-[var(--color-cloud)] bg-white pt-12 md:pt-20 lg:pt-24">
+  <div class="pointer-events-none absolute -left-32 top-1/4 h-[520px] w-[520px] rounded-full opacity-[0.07]" style="background: radial-gradient(circle, #7b36ff 0%, transparent 60%);" aria-hidden="true"></div>
+
+  <div class="container-x relative grid items-center gap-12 pb-20 lg:grid-cols-[1fr_1.35fr] lg:gap-14 lg:pb-28">
+    <div class="relative z-10">
+      <div class="eyebrow-purple">
+        <span class="inline-block h-1.5 w-1.5 rounded-full bg-[var(--color-brand-purple)]"></span>
+        AI-native data loss prevention
+      </div>
+
+      <h1 class="h-display mt-6 text-[var(--color-phantom)] lg:!text-[52px]">
+        <span class="block lg:whitespace-nowrap">Your employees</span>
+        <span class="block lg:whitespace-nowrap">are leaking</span>
+        <span
+          id="hero-cycler"
+          class="block whitespace-nowrap text-[var(--color-brand-purple)]"
+          aria-live="polite"
+        >API keys</span>
+        <span class="block text-[var(--color-arsenic)] lg:whitespace-nowrap">You don't know about it.</span>
+      </h1>
+
+      <p class="body-lg mt-7 max-w-[560px]">
+        Tracehold stops sensitive data leaks to ChatGPT, Claude, Gemini, Copilot and 2,200+ AI tools —
+        and intercepts <span class="font-semibold text-[var(--color-phantom)]">Claude Code, Codex</span> and other CLI AI agents
+        at the kernel level. No network proxy. Not a single character of the prompt leaves the device.
+      </p>
+
+      <div class="mt-9 flex flex-wrap items-center gap-3">
+        <a href="#demo" class="btn-primary">
+          Request a demo
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h14M13 5l7 7-7 7"/>
+          </svg>
+        </a>
+        <a href="/how-it-works" class="btn-ghost">
+          See how it works
+        </a>
+      </div>
+
+      <div class="mt-12 grid max-w-[520px] grid-cols-3 gap-6 border-t border-[var(--color-cloud)] pt-6">
+        <div>
+          <p class="text-[22px] font-extrabold tracking-tight text-[var(--color-phantom)]">2,200+</p>
+          <p class="mt-1 text-[12px] uppercase tracking-[0.1em] text-[var(--color-graphite)]">AI tools covered</p>
+        </div>
+        <div>
+          <p class="text-[22px] font-extrabold tracking-tight text-[var(--color-phantom)]">1,600+</p>
+          <p class="mt-1 text-[12px] uppercase tracking-[0.1em] text-[var(--color-graphite)]">Sensitive-data patterns</p>
+        </div>
+        <div>
+          <p class="text-[22px] font-extrabold tracking-tight text-[var(--color-phantom)]">0</p>
+          <p class="mt-1 text-[12px] uppercase tracking-[0.1em] text-[var(--color-graphite)]">Prompts leave the device</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="relative">
+      <video
+        id="hero-reel"
+        class="hero-reel block h-auto w-full"
+        src="/tracehold-demo.mp4"
+        autoplay
+        muted
+        playsinline
+        preload="auto"
+        aria-label="Tracehold product demo"
+      ></video>
+
+      <style>
+        .hero-reel {
+          -webkit-mask-image:
+            linear-gradient(to bottom, transparent 0%, #000 10%, #000 90%, transparent 100%),
+            linear-gradient(to right, transparent 0%, #000 10%, #000 90%, transparent 100%);
+          mask-image:
+            linear-gradient(to bottom, transparent 0%, #000 10%, #000 90%, transparent 100%),
+            linear-gradient(to right, transparent 0%, #000 10%, #000 90%, transparent 100%);
+          -webkit-mask-composite: source-in;
+          mask-composite: intersect;
+        }
+      </style>
+
+      <link rel="preload" as="video" href="/tracehold-files.mp4" />
+    </div>
+
+    <script is:inline>
+      (function () {
+        var reel = document.getElementById("hero-reel");
+        var label = document.getElementById("hero-reel-label");
+        if (!reel) return;
+
+        var clips = [
+          { src: "/tracehold-demo.mp4", label: "demo · 1/2" },
+          { src: "/tracehold-files.mp4", label: "files · 2/2" },
+        ];
+        var idx = 0;
+
+        function loadClip(nextIdx) {
+          idx = nextIdx;
+          reel.src = clips[idx].src;
+          if (label) label.textContent = clips[idx].label;
+          var p = reel.play();
+          if (p && typeof p.catch === "function") p.catch(function () {});
+        }
+
+        reel.addEventListener("ended", function () {
+          loadClip((idx + 1) % clips.length);
+        });
+
+        // Autoplay restart guard
+        reel.addEventListener("canplay", function () {
+          if (reel.paused) {
+            var p = reel.play();
+            if (p && typeof p.catch === "function") p.catch(function () {});
+          }
+        });
+      })();
+    </script>
+
+    <script is:inline>
+      (function () {
+        var el = document.getElementById("hero-cycler");
+        if (!el) return;
+
+        var leaks = [
+          "API keys",
+          ".env files",
+          "passwords",
+          "auth tokens",
+          "source code",
+          "business logic",
+          "bank accounts",
+          "financial data",
+          "customer PII",
+          "trade secrets",
+        ];
+
+        var SCRAMBLE = "!<>-_/[]{}|=+*^?#%@$&0123456789ABCDEF";
+        function pick() {
+          return SCRAMBLE.charAt(Math.floor(Math.random() * SCRAMBLE.length));
+        }
+
+        function scrambleTo(target, done) {
+          var startText = el.textContent;
+          var maxLen = Math.max(startText.length, target.length);
+          var totalSteps = 18;
+          var step = 0;
+
+          function frame() {
+            var out = "";
+            for (var i = 0; i < maxLen; i++) {
+              var ch = i < target.length ? target.charAt(i) : "";
+              var lockAt = (i / maxLen) * totalSteps;
+              if (step >= lockAt) {
+                out += ch;
+              } else if (ch === " " || !ch) {
+                out += ch;
+              } else {
+                out += pick();
+              }
+            }
+            el.textContent = out;
+            step++;
+            if (step <= totalSteps) {
+              setTimeout(frame, 32);
+            } else {
+              el.textContent = target;
+              if (done) done();
+            }
+          }
+          frame();
+        }
+
+        var idx = 0;
+        function next() {
+          idx = (idx + 1) % leaks.length;
+          scrambleTo(leaks[idx], function () {
+            setTimeout(next, 1300);
+          });
+        }
+
+        // Respect reduced-motion preference: just rotate the text without scramble
+        var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (reduced) {
+          setInterval(function () {
+            idx = (idx + 1) % leaks.length;
+            el.textContent = leaks[idx];
+          }, 1800);
+        } else {
+          // Start after page settles + loading overlay fades out
+          setTimeout(next, 2200);
+        }
+      })();
+    </script>
+  </div>
+
+  <div id="compliance-bar" data-open="false" class="group border-t border-[var(--color-cloud)] bg-[var(--color-brand-light)]/40 transition-colors data-[open=true]:bg-white">
+    <button
+      type="button"
+      aria-controls="compliance-panel"
+      aria-expanded="false"
+      class="container-x w-full flex cursor-pointer flex-wrap items-center justify-center gap-x-8 gap-y-3 py-6 text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--color-space)] transition hover:text-[var(--color-arsenic)]"
+    >
+      <span>Built for</span>
+      <span>GDPR</span>
+      <span class="text-[var(--color-steel)]">•</span>
+      <span>EU AI Act</span>
+      <span class="text-[var(--color-steel)]">•</span>
+      <span>NIS2</span>
+      <span class="text-[var(--color-steel)]">•</span>
+      <span>DORA</span>
+      <span class="text-[var(--color-steel)]">•</span>
+      <span>PCI-DSS</span>
+      <span class="text-[var(--color-steel)]">•</span>
+      <span>ENS</span>
+      <span class="text-[var(--color-steel)]">•</span>
+      <span>ISO 27001</span>
+      <span class="inline-flex h-5 w-5 items-center justify-center rounded-full border border-[var(--color-cloud)] text-[var(--color-graphite)] transition group-data-[open=true]:rotate-180 group-data-[open=true]:border-[var(--color-brand-purple)] group-data-[open=true]:text-[var(--color-brand-purple)]" aria-hidden="true">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </span>
+    </button>
+
+    <div
+      id="compliance-panel"
+      style="height: 0; overflow: hidden;"
+    >
+      <div class="border-t border-[var(--color-cloud)] bg-white py-10 md:py-14">
+      <div class="container-x">
+        <div class="mx-auto max-w-[680px] text-center">
+          <p class="text-[12px] font-bold uppercase tracking-[0.18em] text-[var(--color-brand-purple)]">Compliance coverage</p>
+          <h3 class="mt-3 text-[24px] font-extrabold leading-tight tracking-tight text-[var(--color-phantom)] md:text-[28px]">
+            Every regulation that turned AI use into a board-level risk.
+          </h3>
+          <p class="body mt-3">
+            Tracehold turns abstract obligations into concrete, exportable evidence — per organization, per event.
+          </p>
+        </div>
+
+        <div class="mt-10 overflow-hidden rounded-2xl border border-[var(--color-cloud)] bg-white">
+          <table class="w-full text-left">
+            <thead class="bg-[var(--color-brand-light)]/60">
+              <tr class="text-[11px] font-bold uppercase tracking-[0.16em] text-[var(--color-graphite)]">
+                <th class="px-6 py-4">Regulation</th>
+                <th class="px-6 py-4">Status / timeline</th>
+                <th class="px-6 py-4">What Tracehold gives you</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-[var(--color-cloud)] text-[14px] transition hover:bg-[var(--color-brand-light)]/30">
+                <td class="px-6 py-5 font-bold text-[var(--color-phantom)]">EU AI Act</td>
+                <td class="px-6 py-5 text-[var(--color-graphite)]">Governance Aug 2025 · High-risk Aug 2026</td>
+                <td class="px-6 py-5 text-[var(--color-arsenic)]">Acceptable-use policy enforcement + Shadow AI register + immutable event log.</td>
+              </tr>
+              <tr class="border-b border-[var(--color-cloud)] text-[14px] transition hover:bg-[var(--color-brand-light)]/30">
+                <td class="px-6 py-5 font-bold text-[var(--color-phantom)]">DORA</td>
+                <td class="px-6 py-5 text-[var(--color-graphite)]">Live since 17 Jan 2025</td>
+                <td class="px-6 py-5 text-[var(--color-arsenic)]">AI vendors classified as third-party ICT risk — Tracehold gives you the egress evidence.</td>
+              </tr>
+              <tr class="border-b border-[var(--color-cloud)] text-[14px] transition hover:bg-[var(--color-brand-light)]/30">
+                <td class="px-6 py-5 font-bold text-[var(--color-phantom)]">NIS2</td>
+                <td class="px-6 py-5 text-[var(--color-graphite)]">Member-state transposition 2025–2026</td>
+                <td class="px-6 py-5 text-[var(--color-arsenic)]">Technical measure against data exfiltration to third parties. Covers Art. 21 obligations.</td>
+              </tr>
+              <tr class="border-b border-[var(--color-cloud)] text-[14px] transition hover:bg-[var(--color-brand-light)]/30">
+                <td class="px-6 py-5 font-bold text-[var(--color-phantom)]">GDPR / LOPDGDD Art. 9</td>
+                <td class="px-6 py-5 text-[var(--color-graphite)]">In force</td>
+                <td class="px-6 py-5 text-[var(--color-arsenic)]">Special-category data never leaves the device. Cross-border transfer risk eliminated at source.</td>
+              </tr>
+              <tr class="border-b border-[var(--color-cloud)] text-[14px] transition hover:bg-[var(--color-brand-light)]/30">
+                <td class="px-6 py-5 font-bold text-[var(--color-phantom)]">PCI-DSS v4.0.1</td>
+                <td class="px-6 py-5 text-[var(--color-graphite)]">Mandatory since 31 Mar 2025</td>
+                <td class="px-6 py-5 text-[var(--color-arsenic)]">PAN must never appear in an outbound prompt. We catch it at every layer.</td>
+              </tr>
+              <tr class="text-[14px] transition hover:bg-[var(--color-brand-light)]/30">
+                <td class="px-6 py-5 font-bold text-[var(--color-phantom)]">ENS (RD 311/2022)</td>
+                <td class="px-6 py-5 text-[var(--color-graphite)]">In force</td>
+                <td class="px-6 py-5 text-[var(--color-arsenic)]">Mandatory for Spanish public sector and their suppliers. Reports map directly to the framework.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <script is:inline>
+    (function () {
+      var bar = document.getElementById("compliance-bar");
+      if (!bar) return;
+      var btn = bar.querySelector("button");
+      var panel = document.getElementById("compliance-panel");
+
+      var anim = null;
+      var EASE = "cubic-bezier(0.22, 0.61, 0.36, 1)";
+      var DURATION = 420;
+
+      function animateTo(from, to, onDone) {
+        if (anim) anim.cancel();
+        anim = panel.animate(
+          [{ height: from + "px" }, { height: to + "px" }],
+          { duration: DURATION, easing: EASE, fill: "forwards" }
+        );
+        anim.onfinish = function () {
+          panel.style.height = to + "px";
+          if (onDone) onDone();
+        };
+      }
+
+      function open() {
+        bar.dataset.open = "true";
+        btn.setAttribute("aria-expanded", "true");
+        var from = panel.getBoundingClientRect().height;
+        var to = panel.scrollHeight;
+        animateTo(from, to, function () {
+          if (bar.dataset.open === "true") panel.style.height = "auto";
+        });
+      }
+
+      function close() {
+        bar.dataset.open = "false";
+        btn.setAttribute("aria-expanded", "false");
+        var from = panel.getBoundingClientRect().height;
+        animateTo(from, 0);
+      }
+
+      btn.addEventListener("click", function () {
+        if (bar.dataset.open === "true") close();
+        else open();
+      });
+    })();
+  </script>
+</section>

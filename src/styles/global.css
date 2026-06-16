@@ -1,0 +1,159 @@
+@import "tailwindcss";
+@import "@fontsource-variable/manrope";
+
+@theme {
+  /* Brand — primary palette from Tracehold guidelines */
+  --color-brand-light: #f4f4f4;
+  --color-brand-purple: #7b36ff;
+  --color-brand-navy: #020e2d;
+  --color-brand-blue: #529dff;
+
+  /* Grayscale ladder */
+  --color-cloud: #edeff7;
+  --color-smoke: #d3d6e0;
+  --color-steel: #bcbfcc;
+  --color-space: #9da2b3;
+  --color-graphite: #6e7180;
+  --color-arsenic: #40424d;
+  --color-phantom: #1e1e24;
+  --color-ink: #000000;
+
+  /* Semantic (added — not in original guidelines) */
+  --color-success: #22c55e;
+  --color-warn: #f59e0b;
+  --color-danger: #ef4444;
+
+  --font-sans: "Manrope Variable", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-pill: 9999px;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+  }
+
+
+  body {
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+    color: var(--color-phantom);
+    background: #ffffff;
+    letter-spacing: -0.01em;
+  }
+
+  ::selection {
+    background: var(--color-brand-purple);
+    color: white;
+  }
+
+  /* Fluid product-mockup frame — scales fixed-px-width content to fit any container */
+  .thld-mock-frame {
+    container-type: inline-size;
+    width: 100%;
+    position: relative;
+  }
+  .thld-mock-frame::before {
+    content: "";
+    display: block;
+    padding-top: calc(var(--mock-h, 100) / var(--mock-w, 100) * 100%);
+  }
+  .thld-mock-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(var(--mock-w, 100) * 1px);
+    transform-origin: top left;
+    transform: scale(calc(100cqi / (var(--mock-w, 100) * 1px)));
+  }
+
+  /* Shared mockup keyframes */
+  @keyframes thld-caret {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+  }
+  @keyframes thld-pulse {
+    0%   { transform: scale(1); opacity: 0.55; }
+    70%  { transform: scale(1.9); opacity: 0; }
+    100% { transform: scale(1.9); opacity: 0; }
+  }
+  @keyframes thld-scan {
+    0%   { transform: translateX(-120%); }
+    100% { transform: translateX(320%); }
+  }
+  @keyframes thld-beam {
+    0%, 100% { opacity: 0.4; }
+    50%      { opacity: 1; }
+  }
+  @keyframes thld-spin {
+    to { transform: rotate(360deg); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .thld-mock-content *,
+    .thld-mock-content *::before,
+    .thld-mock-content *::after {
+      animation: none !important;
+    }
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-[1320px] px-5 md:px-8;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 rounded-full bg-[var(--color-phantom)] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[var(--color-brand-purple)];
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 rounded-full border border-[var(--color-steel)] bg-white px-5 py-3 text-sm font-semibold text-[var(--color-phantom)] transition hover:border-[var(--color-phantom)];
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--color-phantom)] underline-offset-4 hover:underline;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--color-graphite)];
+  }
+
+  .eyebrow-purple {
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--color-brand-purple)];
+  }
+
+  .h-display {
+    @apply text-[44px] leading-[1.05] font-extrabold tracking-[-0.025em] md:text-[64px] lg:text-[72px];
+  }
+
+  .h-section {
+    @apply text-[32px] leading-[1.1] font-extrabold tracking-[-0.02em] md:text-[44px];
+  }
+
+  .h-card {
+    @apply text-[18px] leading-[1.3] font-bold tracking-[-0.01em];
+  }
+
+  .body-lg {
+    @apply text-[17px] leading-[1.6] text-[var(--color-graphite)];
+  }
+
+  .body {
+    @apply text-[15px] leading-[1.6] text-[var(--color-graphite)];
+  }
+
+  .body-sm {
+    @apply text-[13px] leading-[1.55] text-[var(--color-graphite)];
+  }
+
+  .surface-card {
+    @apply rounded-2xl border border-[var(--color-cloud)] bg-white p-6 transition hover:border-[var(--color-steel)];
+  }
+
+  .surface-card-dark {
+    @apply rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition hover:border-white/20;
+  }
+}

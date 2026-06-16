@@ -1,0 +1,70 @@
+---
+const faqs = [
+  {
+    q: "Does it slow employees down?",
+    a: "No. Scanning runs locally in the browser with zero network round-trip. Most prompts pass through unchanged — Tracehold only interrupts on a real finding, and the overlay disappears in under a second when the issue is resolved.",
+  },
+  {
+    q: "What about AI tools that aren't in your catalog?",
+    a: "Our Shadow AI module uses a curated ~2,200-domain list, plus a heuristic for any new .ai or chatbot-like subdomain. Unknown AI tools still get scanned by the same engine, and CISOs see a 'discovered AI' list with one-click allow / block / review actions.",
+  },
+  {
+    q: "How do we deploy it?",
+    a: "Like any managed extension: push it via GPO on Windows, Intune on Microsoft 365, or Jamf on macOS. Average rollout is under a day for organizations under 1,000 users. No endpoint agent. No proxy. No certificate to install.",
+  },
+  {
+    q: "What data hits your servers?",
+    a: "Only metadata: detection type (e.g. aws_access_key), severity, AI domain, timestamp, user ID. The prompt text and uploaded file contents never leave the device. For docx/xlsx files that browsers can't parse, the file is scanned server-side and the content discarded immediately — only findings are kept.",
+  },
+  {
+    q: "What happens if the backend is unreachable?",
+    a: "Fail-open by default in the MVP, configurable per policy in Enterprise. Your employees keep working; events queue locally and flush when connectivity returns.",
+  },
+  {
+    q: "Do you support multi-tenant for MSPs?",
+    a: "Yes. The Enterprise plan ships a hierarchical multi-tenant model with strict row-level isolation in PostgreSQL. MSPs and MSSPs can manage hundreds of customer organizations from a single root tenant, with cross-tenant read-only views and per-tenant policy autonomy.",
+  },
+];
+---
+
+<section id="faq" class="border-y border-[var(--color-cloud)] bg-[var(--color-brand-light)]/40 py-24 md:py-32">
+  <div class="container-x">
+    <div class="grid gap-12 lg:grid-cols-[1fr_1.5fr] lg:gap-20">
+      <div>
+        <div class="eyebrow">
+          <span class="inline-block h-px w-8 bg-[var(--color-brand-purple)]"></span>
+          FAQ
+        </div>
+        <h2 class="h-section mt-5 text-[var(--color-phantom)]">
+          Questions worth answering up front.
+        </h2>
+        <p class="body-lg mt-5 max-w-[360px]">
+          Anything we miss? Email us — we keep this page short on purpose.
+        </p>
+        <a href="mailto:hello@tracehold.com" class="btn-ghost mt-6 inline-flex">
+          hello@tracehold.com
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h14M13 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="space-y-3">
+        {faqs.map((f, i) => (
+          <details name="faq" class="group rounded-2xl border border-[var(--color-cloud)] bg-white p-6 transition open:border-[var(--color-phantom)]" open={i === 0 ? true : undefined}>
+            <summary class="flex cursor-pointer items-center justify-between gap-4 list-none">
+              <span class="text-[16px] font-bold leading-snug text-[var(--color-phantom)]">{f.q}</span>
+              <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[var(--color-cloud)] text-[var(--color-graphite)] transition group-open:rotate-45 group-open:border-[var(--color-brand-purple)] group-open:text-[var(--color-brand-purple)]">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="12" y1="5" x2="12" y2="19"/>
+                  <line x1="5" y1="12" x2="19" y2="12"/>
+                </svg>
+              </span>
+            </summary>
+            <p class="mt-4 text-[14.5px] leading-relaxed text-[var(--color-arsenic)]">{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

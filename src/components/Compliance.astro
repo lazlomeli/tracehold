@@ -1,0 +1,49 @@
+---
+const regs = [
+  { name: "EU AI Act", date: "Governance Aug 2025 · High-risk Aug 2026", hook: "Acceptable-use policy enforcement + Shadow AI register + immutable event log." },
+  { name: "DORA", date: "Live since 17 Jan 2025", hook: "AI vendors classified as third-party ICT risk — Tracehold gives you the egress evidence." },
+  { name: "NIS2", date: "Member-state transposition 2025–2026", hook: "Technical measure against data exfiltration to third parties. Covers Art. 21 obligations." },
+  { name: "GDPR / LOPDGDD Art. 9", date: "In force", hook: "Special-category data never leaves the device. Cross-border transfer risk eliminated at source." },
+  { name: "PCI-DSS v4.0.1", date: "Mandatory since 31 Mar 2025", hook: "PAN must never appear in an outbound prompt. We catch it at every layer." },
+  { name: "ENS (RD 311/2022)", date: "In force", hook: "Mandatory for Spanish public sector and their suppliers. Reports map directly to the framework." },
+];
+---
+
+<section id="compliance" class="border-y border-[var(--color-cloud)] bg-[var(--color-brand-light)]/40 py-24 md:py-32">
+  <div class="container-x">
+    <div class="mx-auto max-w-[760px] text-center">
+      <div class="eyebrow justify-center">
+        <span class="inline-block h-px w-8 bg-[var(--color-brand-purple)]"></span>
+        Compliance coverage
+        <span class="inline-block h-px w-8 bg-[var(--color-brand-purple)]"></span>
+      </div>
+      <h2 class="h-section mt-5 text-[var(--color-phantom)]">
+        Every regulation that turned AI use into a board-level risk.
+      </h2>
+      <p class="body-lg mt-5">
+        Tracehold turns abstract obligations into concrete, exportable evidence — per organization, per event.
+      </p>
+    </div>
+
+    <div class="mt-14 overflow-hidden rounded-2xl border border-[var(--color-cloud)] bg-white">
+      <table class="w-full text-left">
+        <thead class="bg-[var(--color-brand-light)]/60">
+          <tr class="text-[11px] font-bold uppercase tracking-[0.16em] text-[var(--color-graphite)]">
+            <th class="px-6 py-4">Regulation</th>
+            <th class="px-6 py-4">Status / timeline</th>
+            <th class="px-6 py-4">What Tracehold gives you</th>
+          </tr>
+        </thead>
+        <tbody>
+          {regs.map((r, i) => (
+            <tr class={`text-[14px] ${i !== regs.length - 1 ? "border-b border-[var(--color-cloud)]" : ""} transition hover:bg-[var(--color-brand-light)]/30`}>
+              <td class="px-6 py-5 font-bold text-[var(--color-phantom)]">{r.name}</td>
+              <td class="px-6 py-5 text-[var(--color-graphite)]">{r.date}</td>
+              <td class="px-6 py-5 text-[var(--color-arsenic)]">{r.hook}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
