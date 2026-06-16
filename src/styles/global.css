@@ -98,8 +98,58 @@
     stroke-dasharray: 2 6;
     animation: thld-arrow-flow 0.7s linear infinite;
   }
+
+  /* Tracehold gate scene cycle — 12s total, 4s per scenario */
+  .thld-scene {
+    opacity: 0;
+    animation-duration: 12s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  .thld-scene-safe   { animation-name: thld-scene-safe; }
+  .thld-scene-redact { animation-name: thld-scene-redact; }
+  .thld-scene-block  { animation-name: thld-scene-block; }
+
+  @keyframes thld-scene-safe {
+    0%, 2%   { opacity: 0; transform: translateY(4px); }
+    5%, 30%  { opacity: 1; transform: translateY(0); }
+    33%, 100% { opacity: 0; transform: translateY(-4px); }
+  }
+  @keyframes thld-scene-redact {
+    0%, 35%   { opacity: 0; transform: translateY(4px); }
+    38%, 63%  { opacity: 1; transform: translateY(0); }
+    66%, 100% { opacity: 0; transform: translateY(-4px); }
+  }
+  @keyframes thld-scene-block {
+    0%, 68%   { opacity: 0; transform: translateY(4px); }
+    71%, 96%  { opacity: 1; transform: translateY(0); }
+    100%      { opacity: 0; transform: translateY(-4px); }
+  }
+
+  /* Redact micro-animation: original word fades out, [PASSWORD] token slides in */
+  .thld-redact-original {
+    animation: thld-redact-original 12s ease-in-out infinite;
+  }
+  .thld-redact-token {
+    display: inline-block;
+    animation: thld-redact-token 12s ease-in-out infinite;
+  }
+  @keyframes thld-redact-original {
+    0%, 38%   { opacity: 0; }
+    42%, 50%  { opacity: 1; }
+    54%, 100% { opacity: 0.35; }
+  }
+  @keyframes thld-redact-token {
+    0%, 50%   { opacity: 0; transform: translateX(-6px) scale(0.7); }
+    54%, 63%  { opacity: 1; transform: translateX(0) scale(1); }
+    66%, 100% { opacity: 0; }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .thld-arrow-flow { animation: none; }
+    .thld-scene { animation: none; opacity: 1; }
+    .thld-scene-redact, .thld-scene-block { display: none; }
+    .thld-redact-original, .thld-redact-token { animation: none; opacity: 1; transform: none; }
   }
   @media (prefers-reduced-motion: reduce) {
     .thld-mock-content *,

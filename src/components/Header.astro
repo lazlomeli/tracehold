@@ -1,7 +1,10 @@
 ---
 ---
 
-<header class="sticky top-0 z-50 w-full border-b border-[var(--color-cloud)] bg-white/85 backdrop-blur-md">
+<header
+  id="site-header"
+  class="site-header sticky top-0 z-50 w-full border-b border-[var(--color-cloud)] bg-white/85 backdrop-blur-md"
+>
   <div class="container-x flex h-16 items-center justify-between">
     <a href="/" class="flex items-center" aria-label="Tracehold home">
       <img src="/logo-dark.svg" alt="Tracehold" class="h-7 w-auto" />
@@ -24,3 +27,43 @@
     </div>
   </div>
 </header>
+
+<style>
+  .site-header {
+    position: sticky;
+    --scroll-progress: 0;
+  }
+  .site-header::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    height: 1px;
+    width: calc(var(--scroll-progress) * 100%);
+    background-color: #7b36ff;
+    pointer-events: none;
+  }
+</style>
+
+<script>
+  const header = document.getElementById("site-header");
+  if (header) {
+    let ticking = false;
+    const update = () => {
+      const doc = document.documentElement;
+      const max = doc.scrollHeight - window.innerHeight;
+      const progress = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+      header.style.setProperty("--scroll-progress", String(progress));
+      ticking = false;
+    };
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(update);
+        ticking = true;
+      }
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+  }
+</script>

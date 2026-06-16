@@ -4,49 +4,53 @@
 
 <section class="bg-white py-16 md:py-24">
   <div class="container-x">
-    <div class="mx-auto max-w-[1200px]">
-      <div class="mb-6 flex items-end justify-between gap-6 lg:mb-8">
+    <div class="mx-auto max-w-[1140px]">
+      <!-- Header -->
+      <div
+        class="mb-2 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end md:gap-6"
+      >
         <div>
           <div
-            class="text-[11.5px] font-bold uppercase tracking-[0.14em] text-[var(--color-brand-purple)]"
+            class="mb-1.5 text-[11.5px] font-bold uppercase tracking-[0.14em] text-[#7b36ff]"
           >
             How Tracehold works
           </div>
-          <h2
-            class="mt-1.5 text-[22px] font-extrabold leading-[1.1] tracking-[-0.02em] text-[#0c1430] md:text-[28px] lg:text-[34px]"
+          <div
+            class="text-[22px] font-extrabold leading-[1.1] tracking-[-0.02em] text-[#0c1430] md:text-[25px]"
           >
             Sensitive data never leaves the device.
-          </h2>
-          <p
-            class="mt-1.5 text-[13px] font-medium text-[var(--color-graphite)] md:text-[15px]"
+          </div>
+          <div
+            class="mt-1.5 text-[13px] font-medium text-[#6e7180] md:text-[14px]"
           >
             Every AI prompt is inspected on the device, in browser and terminal,
             before it leaves.
-          </p>
+          </div>
         </div>
         <div
-          class="hidden shrink-0 items-center gap-2 whitespace-nowrap rounded-full border border-[#e0d4ff] bg-[#f2ecff] px-4 py-2.5 md:flex"
+          class="flex shrink-0 items-center gap-2.5 whitespace-nowrap rounded-[5px] border border-[#e0d4ff] bg-[#f2ecff] px-3.5 py-2.5"
         >
-          <span class="h-2 w-2 shrink-0 rounded-full bg-[#16956a]"></span>
+          <span class="block h-2 w-2 shrink-0 rounded-full bg-[#16956a]"></span>
           <span class="text-[13px] font-bold text-[#5b21d6]"
             >0 bytes of prompt leave</span
           >
         </div>
       </div>
 
-      <div class="pt-10 thld-diagram overflow-x-auto pb-10 lg:overflow-visible">
-        <div class="flex min-w-[1100px] items-start lg:min-w-0">
+      <!-- Diagram -->
+      <div class="overflow-x-auto pb-2">
+        <div class="flex min-w-[1040px] items-start pt-20">
           <!-- Employee device -->
           <div
-            class="min-w-0 rounded-[18px] border border-[#e7e9f0] bg-[#fafbfc] p-4 mt-[60px]"
+            class="mt-[64px] min-w-0 shrink-0 rounded-[5px] border border-[#e7e9f0] bg-[#fafbfc] p-4"
           >
-            <div class="mb-3 flex items-center gap-2">
+            <div class="mb-3 flex items-center gap-2.5">
               <svg
                 width="15"
                 height="15"
                 viewBox="0 0 24 24"
                 fill="none"
-                class="text-[var(--color-graphite)]"
+                style="color:#6e7180;"
               >
                 <rect
                   x="3"
@@ -63,22 +67,22 @@
                   stroke-linecap="round"></path>
               </svg>
               <span
-                class="text-[11px] font-bold uppercase tracking-[0.1em] text-[var(--color-graphite)]"
+                class="text-[11px] font-bold uppercase tracking-[0.1em] text-[#6e7180]"
                 >Employee device</span
               >
             </div>
             <div class="flex gap-3">
-              <!-- browser -->
               <div
-                class="rounded-xl border border-[#ecedf2] bg-white p-3 max-w-[170px]"
+                class="w-[165px] rounded-[5px] border border-[#ecedf2] bg-white p-3"
               >
-                <div class="mb-2.5 flex items-center gap-2">
+                <div class="mb-3 flex items-center gap-2">
                   <svg
                     width="14"
                     height="14"
                     viewBox="0 0 24 24"
                     fill="none"
-                    class="shrink-0 text-[var(--color-brand-purple)]"
+                    style="color:#7b36ff;"
+                    class="shrink-0"
                   >
                     <circle
                       cx="12"
@@ -92,20 +96,20 @@
                       stroke-width="1.5"></path>
                   </svg>
                   <span class="text-[12.5px] font-bold text-[#1d2433]"
-                    >Browser assistants</span
+                    >Browser</span
                   >
                 </div>
                 <div class="flex flex-wrap gap-1.5">
                   <span
-                    class="rounded-[7px] border border-[#e7e9f0] bg-[#f3f4f8] px-2 py-1 text-[11.5px] font-semibold text-[#3c4257]"
+                    class="rounded-[5px] border border-[#e7e9f0] bg-[#f3f4f8] px-2 py-1 text-[11.5px] font-semibold text-[#3c4257]"
                     >ChatGPT</span
                   >
                   <span
-                    class="rounded-[7px] border border-[#e7e9f0] bg-[#f3f4f8] px-2 py-1 text-[11.5px] font-semibold text-[#3c4257]"
+                    class="rounded-[5px] border border-[#e7e9f0] bg-[#f3f4f8] px-2 py-1 text-[11.5px] font-semibold text-[#3c4257]"
                     >Claude</span
                   >
                   <span
-                    class="rounded-[7px] border border-[#e7e9f0] bg-[#f3f4f8] px-2 py-1 text-[11.5px] font-semibold text-[#3c4257]"
+                    class="rounded-[5px] border border-[#e7e9f0] bg-[#f3f4f8] px-2 py-1 text-[11.5px] font-semibold text-[#3c4257]"
                     >Gemini</span
                   >
                   <span
@@ -114,18 +118,17 @@
                   >
                 </div>
               </div>
-
-              <!-- terminal -->
               <div
-                class="rounded-xl border border-[#ecedf2] bg-white p-3 max-w-[170px]"
+                class="w-[165px] rounded-[5px] border border-[#ecedf2] bg-white p-3"
               >
-                <div class="mb-2.5 flex items-center gap-2">
+                <div class="mb-3 flex items-center gap-2">
                   <svg
                     width="14"
                     height="14"
                     viewBox="0 0 24 24"
                     fill="none"
-                    class="shrink-0 text-[var(--color-brand-purple)]"
+                    style="color:#7b36ff;"
+                    class="shrink-0"
                   >
                     <rect
                       x="3"
@@ -143,20 +146,20 @@
                       stroke-linejoin="round"></path>
                   </svg>
                   <span class="text-[12.5px] font-bold text-[#1d2433]"
-                    >Terminal agents</span
+                    >Terminal</span
                   >
                 </div>
                 <div class="flex flex-wrap gap-1.5">
                   <span
-                    class="rounded-[7px] border border-[#e7e9f0] bg-[#f3f4f8] px-2 py-1 text-[11.5px] font-semibold text-[#3c4257]"
+                    class="rounded-[5px] border border-[#e7e9f0] bg-[#f3f4f8] px-2 py-1 text-[11.5px] font-semibold text-[#3c4257]"
                     >Claude Code</span
                   >
                   <span
-                    class="rounded-[7px] border border-[#e7e9f0] bg-[#f3f4f8] px-2 py-1 text-[11.5px] font-semibold text-[#3c4257]"
+                    class="rounded-[5px] border border-[#e7e9f0] bg-[#f3f4f8] px-2 py-1 text-[11.5px] font-semibold text-[#3c4257]"
                     >Codex</span
                   >
                   <span
-                    class="rounded-[7px] border border-[#e7e9f0] bg-[#f3f4f8] px-2 py-1 text-[11.5px] font-semibold text-[#3c4257]"
+                    class="rounded-[5px] border border-[#e7e9f0] bg-[#f3f4f8] px-2 py-1 text-[11.5px] font-semibold text-[#3c4257]"
                     >Aider</span
                   >
                 </div>
@@ -165,34 +168,26 @@
           </div>
 
           <!-- arrow in -->
-          <div
-            class="flex w-20 shrink-0 items-center mt-[140px]"
-          >
-            <svg height="14" viewBox="0 0 80 14" fill="none" preserveAspectRatio="none" class="w-full">
-              <path
-                class="thld-arrow-flow"
-                d="M0 7H80"
-                stroke="#9da2b3"
-                stroke-width="2"
-                stroke-linecap="round"></path>
-            </svg>
+          <div class="relative mt-[138px] h-[3px] w-16 shrink-0">
+            <div class="absolute inset-0 rounded-[3px] bg-[#d4d7df]"></div>
+            <div id="thld-fill-in" class="thld-fill-in"></div>
           </div>
 
-          <!-- Centered column: gate + metadata arrow + platform -->
-          <div class="flex w-[290px] shrink-0 flex-col items-stretch">
-            <!-- Tracehold gate -->
+          <!-- Center column -->
+          <div class="flex w-[300px] shrink-0 flex-col">
+            <!-- Tracehold gate (animated) -->
             <div
-              class="thld-gate flex flex-col rounded-[18px] p-4 text-white"
-              style="background: linear-gradient(165deg,#8a4bff,#6d22f0);"
+              class="flex flex-col rounded-[5px] p-4 text-white shadow-[0_14px_34px_-12px_rgba(123,54,255,0.5)]"
+              style="background:linear-gradient(165deg,#8a4bff,#6d22f0);"
             >
               <div class="mb-3 flex items-center gap-2.5">
                 <div
-                  class="flex h-8 w-8 shrink-0 items-center justify-center rounded-[9px] bg-white/[0.16]"
+                  class="flex h-8 w-8 shrink-0 items-center justify-center rounded-[5px] bg-white/[0.16]"
                 >
                   <img
                     src="/emblem-white.svg"
                     alt=""
-                    class="h-5 w-5 object-contain"
+                    class="h-[21px] w-[21px] object-contain"
                   />
                 </div>
                 <div class="leading-[1.15]">
@@ -204,138 +199,94 @@
                   </div>
                 </div>
               </div>
-              <p
-                class="mb-3 text-[12px] font-medium leading-[1.4] text-white/90"
-              >
-                Decides in real time: send, redact, or block.
-              </p>
-              <div class="flex flex-col gap-1.5">
-                <!-- safe -->
-                <div
-                  class="flex items-center gap-2.5 rounded-[10px] bg-white/[0.13] px-3 py-2"
-                >
-                  <span
-                    class="flex h-[19px] w-[19px] shrink-0 items-center justify-center rounded-full bg-[#1fc98a]"
-                  >
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
-                      ><path
-                        d="M5 12.5l4.2 4.2L19 7"
-                        stroke="#ffffff"
-                        stroke-width="3"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"></path></svg
-                    >
-                  </span>
-                  <span class="text-[12.5px] font-bold">Safe prompt · sent</span
-                  >
-                </div>
 
-                <!-- redacted -->
-                <div class="rounded-[10px] bg-white/[0.13] px-3 py-2">
-                  <div class="mb-1.5 flex items-center gap-2.5">
-                    <span
-                      class="flex h-[19px] w-[19px] shrink-0 items-center justify-center rounded-full bg-[#529dff]"
-                    >
-                      <svg
-                        width="13"
-                        height="13"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        ><rect
-                          x="3.5"
-                          y="9"
-                          width="17"
-                          height="6"
-                          rx="2.2"
-                          fill="#ffffff"></rect></svg
-                      >
-                    </span>
-                    <span class="text-[12.5px] font-bold"
-                      >Redacted, then sent</span
-                    >
-                  </div>
-                  <div class="flex items-center gap-2 pl-px">
-                    <span
-                      class="font-mono text-[11px] font-semibold text-[#ffc7c2] line-through"
-                      >my!ps4wr90d</span
-                    >
+              <!-- prompt stage -->
+              <div
+                class="relative mb-2.5 flex h-[42px] items-center overflow-hidden rounded-[5px] bg-black/[0.12] px-2.5"
+              >
+                <div id="thld-token" class="thld-token">
+                  <div
+                    class="inline-flex items-center gap-2 rounded-[5px] bg-white/[0.16] px-2.5 py-1.5"
+                  >
                     <svg
-                      width="16"
-                      height="10"
-                      viewBox="0 0 18 10"
+                      width="13"
+                      height="13"
+                      viewBox="0 0 24 24"
                       fill="none"
+                      style="color:rgba(255,255,255,0.85);"
                       class="shrink-0"
                     >
                       <path
-                        d="M1 5h13"
-                        stroke="rgba(255,255,255,0.6)"
-                        stroke-width="1.6"
-                        stroke-linecap="round"></path>
-                      <path
-                        d="M11 1l4 4-4 4"
-                        stroke="rgba(255,255,255,0.6)"
-                        stroke-width="1.6"
-                        stroke-linecap="round"
+                        d="M4 5h16v11H7l-3 3V5z"
+                        stroke="currentColor"
+                        stroke-width="1.8"
                         stroke-linejoin="round"></path>
                     </svg>
                     <span
-                      class="rounded-[5px] bg-[#7bf0c0] px-1.5 py-0.5 font-mono text-[11px] font-bold text-[#0c1430]"
-                      >[PASSWORD]</span
+                      class="whitespace-nowrap text-[12px] font-medium text-white"
+                      ><span id="thld-pre"></span><span id="thld-hl"
+                      ></span></span
                     >
                   </div>
                 </div>
+              </div>
 
-                <!-- blocked -->
-                <div
-                  class="flex items-center gap-2.5 rounded-[10px] bg-white/[0.13] px-3 py-2"
-                >
-                  <span
-                    class="flex h-[19px] w-[19px] shrink-0 items-center justify-center rounded-full bg-[#ff5a4d]"
-                  >
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none"
-                      ><path
-                        d="M6 6l12 12M18 6L6 18"
-                        stroke="#ffffff"
-                        stroke-width="3"
-                        stroke-linecap="round"></path></svg
-                    >
-                  </span>
-                  <span class="text-[12.5px] font-bold"
-                    >High-risk data · blocked</span
-                  >
-                </div>
+              <!-- verdict -->
+              <div
+                id="thld-verdict-wrap"
+                class="mb-3 flex h-4 items-center gap-1.5 transition-opacity duration-300"
+              >
+                <span
+                  id="thld-verdict-dot"
+                  class="block h-[7px] w-[7px] shrink-0 rounded-full"></span>
+                <span
+                  id="thld-verdict-text"
+                  class="text-[11.5px] font-semibold text-white/[0.92]"></span>
+              </div>
+
+              <!-- action buttons -->
+              <div class="flex gap-1.5">
+                <div id="thld-btn-send" class="thld-btn">Send</div>
+                <div id="thld-btn-redact" class="thld-btn">Redact</div>
+                <div id="thld-btn-block" class="thld-btn">Block</div>
               </div>
             </div>
 
-            <!-- metadata-only line (down) -->
-            <div class="relative flex justify-center" style="height: 90px;">
-              <svg width="14" height="90" viewBox="0 0 14 90" fill="none" preserveAspectRatio="none" class="h-full">
-                <path
-                  class="thld-arrow-flow"
-                  d="M7 0V90"
-                  stroke="#b89bff"
-                  stroke-width="2"
-                  stroke-linecap="round"></path>
-              </svg>
-              <span
-                class="absolute left-1/2 top-1/2 ml-3 -translate-y-1/2 whitespace-nowrap text-[10px] font-bold uppercase tracking-[0.02em] text-[var(--color-brand-purple)]"
-                >metadata only</span
+            <!-- metadata-only line -->
+            <div class="relative h-[84px]">
+              <div
+                class="absolute bottom-0 left-1/2 top-0 w-[3px] -translate-x-1/2 overflow-hidden rounded-[3px] bg-[#d4d7df]"
               >
+                <div id="thld-fill-meta" class="thld-fill-meta"></div>
+              </div>
+              <div id="thld-meta-box" class="thld-meta-box">
+                <span
+                  class="inline-flex items-center gap-1.5 whitespace-nowrap rounded-[5px] bg-[#7b36ff] px-2 py-[3px] text-[9.5px] font-bold tracking-[0.03em] text-white shadow-[0_5px_12px_-3px_rgba(123,54,255,0.6)]"
+                >
+                  <span class="block h-1 w-1 rounded-full bg-white"
+                  ></span>Metadata only
+                </span>
+              </div>
             </div>
 
             <!-- Tracehold Platform -->
-            <div class="flex flex-col rounded-[18px] bg-[#020e2d] p-3.5">
+            <div
+              id="thld-platform"
+              class="flex flex-col rounded-[5px] bg-[#020e2d] p-3.5"
+            >
               <div
                 class="text-[11px] font-bold uppercase tracking-[0.1em] text-[#a98bff]"
               >
                 Tracehold Platform
               </div>
-              <div class="mb-3 mt-0.5 text-[11.5px] font-medium text-[#7c89a8]">
+              <div
+                class="my-0.5 mb-2.5 text-[11.5px] font-medium text-[#7c89a8]"
+              >
                 0 bytes of prompt
               </div>
               <div class="flex gap-2.5">
                 <div
-                  class="flex-1 rounded-[11px] border border-white/[0.09] bg-white/5 px-3 py-2.5"
+                  class="flex-1 rounded-[5px] border border-white/[0.09] bg-white/[0.05] px-2.5 py-2.5"
                 >
                   <div class="mb-0.5 flex items-center gap-1.5">
                     <svg
@@ -343,7 +294,8 @@
                       height="13"
                       viewBox="0 0 24 24"
                       fill="none"
-                      class="shrink-0 text-[#c4a6ff]"
+                      style="color:#c4a6ff;"
+                      class="shrink-0"
                     >
                       <path
                         d="M4 19V9M10 19V4M16 19v-7M21 19H3"
@@ -362,7 +314,7 @@
                   </div>
                 </div>
                 <div
-                  class="flex-1 rounded-[11px] border border-white/[0.09] bg-white/5 px-3 py-2.5"
+                  class="flex-1 rounded-[5px] border border-white/[0.09] bg-white/[0.05] px-2.5 py-2.5"
                 >
                   <div class="mb-0.5 flex items-center gap-1.5">
                     <svg
@@ -370,7 +322,8 @@
                       height="13"
                       viewBox="0 0 24 24"
                       fill="none"
-                      class="shrink-0 text-[#c4a6ff]"
+                      style="color:#c4a6ff;"
+                      class="shrink-0"
                     >
                       <path
                         d="M8 6h11M8 12h11M8 18h11M4 6h.01M4 12h.01M4 18h.01"
@@ -393,48 +346,29 @@
             </div>
           </div>
 
-          <!-- safe prompts line → AI vendors -->
-          <div class="flex w-[110px] shrink-0 flex-col items-center pt-[110px]">
-            <span
-              class="text-[10px] font-bold tracking-[0.02em] text-[#16956a] uppercase"
-              >safe prompts</span
-            >
-            <svg
-              height="14"
-              viewBox="0 0 110 14"
-              fill="none"
-              preserveAspectRatio="none"
-              class="mt-1.5 w-full"
-            >
-              <path
-                class="thld-arrow-flow"
-                d="M0 7H110"
-                stroke="#1fc98a"
-                stroke-width="2"
-                stroke-linecap="round"></path>
-            </svg>
+          <!-- safe prompts line -->
+          <div class="mt-[128px] flex w-[104px] shrink-0 flex-col items-center">
+            <div class="relative h-[3px] w-full">
+              <div class="absolute inset-0 rounded-[3px] bg-[#d4d7df]"></div>
+              <div id="thld-fill-out" class="thld-fill-out"></div>
+            </div>
           </div>
 
           <!-- AI vendors -->
           <div
-            class="mt-[80px] w-[260px] shrink-0 rounded-[18px] border border-[#e7e9f0] bg-[#fafbfc] p-3.5"
+            id="thld-vendors"
+            class="mt-[80px] w-[262px] shrink-0 rounded-[5px] border border-[#e7e9f0] bg-[#fafbfc] p-3.5"
           >
             <div
-              class="mb-3 text-[11px] font-bold uppercase tracking-[0.1em] text-[var(--color-graphite)]"
+              class="mb-3 text-[11px] font-bold uppercase tracking-[0.1em] text-[#6e7180]"
             >
               AI vendors · safe prompts only
             </div>
             <div class="flex gap-2">
               <div
-                class="flex flex-1 flex-col items-center gap-1.5 rounded-[11px] border border-[#ecedf2] bg-white px-1.5 py-2.5"
+                class="flex flex-1 flex-col items-center gap-1.5 rounded-[5px] border border-[#ecedf2] bg-white px-1.5 py-2.5"
               >
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="#10a37f"
-                  aria-hidden="true"
-                >
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="#10a37f">
                   <path
                     d="M11 4C11.6487 4 12.2498 4.20569 12.7411 4.55646C11.4486 5.22914 10.2602 6.07623 8.99996 6.80385L9.99996 8.5359C11.575 7.62654 13.0517 6.48541 14.7608 5.83037C16.1134 5.31198 17.681 5.83976 18.4282 7.13398C18.7526 7.69582 18.8749 8.31917 18.8168 8.92006C17.588 8.13708 16.2602 7.53146 15 6.80385L14 8.5359C15.575 9.44525 17.3016 10.1536 18.7234 11.3061C19.8487 12.2183 20.1754 13.8398 19.4282 15.134C19.1037 15.696 18.6249 16.1137 18.0752 16.3638C18.1385 14.9081 18 13.4553 18 12H16C16 13.8184 16.2498 15.6685 15.9626 17.4758C15.7353 18.9063 14.4944 20 13 20C12.351 20 11.7498 19.7942 11.2584 19.4432C12.5508 18.7701 13.7396 17.9238 15 17.1962L14 15.4641C12.4252 16.3733 10.9478 17.5147 9.23912 18.1696C7.88657 18.688 6.31898 18.1602 5.57176 16.866C5.24729 16.304 5.12493 15.6805 5.18316 15.0794C6.41224 15.8621 7.73964 16.4685 8.99997 17.1962L9.99997 15.4641C8.42517 14.5549 6.69801 13.8462 5.27649 12.6939C4.15128 11.7817 3.82455 10.1602 4.57176 8.86602C4.89624 8.30402 5.37506 7.88628 5.9247 7.63618C5.86145 9.09192 5.99997 10.5447 5.99997 12H7.99997C7.99997 10.1816 7.75013 8.33148 8.03733 6.52422C8.26467 5.09369 9.50554 4 11 4ZM14.7925 3.74171C13.8765 2.67659 12.5176 2 11 2C8.7782 2 6.89621 3.44833 6.24435 5.45243C4.86393 5.71314 3.59851 6.55175 2.83971 7.86602C1.72883 9.79013 2.04213 12.1442 3.4518 13.7107C2.98737 15.0366 3.08092 16.5518 3.83971 17.866C4.95059 19.7901 7.14589 20.6958 9.20742 20.2583C10.1234 21.3234 11.4824 22 13 22C15.2217 22 17.1037 20.5517 17.7556 18.5476C19.136 18.2869 20.4014 17.4482 21.1602 16.134C22.2711 14.2099 21.9578 11.8559 20.5481 10.2893C21.0126 8.96345 20.919 7.44825 20.1602 6.13398C19.0493 4.20987 16.854 3.30419 14.7925 3.74171Z"
                   ></path>
@@ -444,15 +378,9 @@
                 >
               </div>
               <div
-                class="flex flex-1 flex-col items-center gap-1.5 rounded-[11px] border border-[#ecedf2] bg-white px-1.5 py-2.5"
+                class="flex flex-1 flex-col items-center gap-1.5 rounded-[5px] border border-[#ecedf2] bg-white px-1.5 py-2.5"
               >
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="#d97757"
-                  aria-hidden="true"
-                >
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="#d97757">
                   <path
                     d="M16.7645 5H13.4568L19.3799 20H22.6107L16.7645 5ZM7.22604 5L1.37988 20H4.68758L5.99527 16.8462H12.1491L13.3799 19.9231H16.6876L10.6876 5H7.30296H7.22604ZM6.91834 14.0769L8.91834 8.76923L10.9953 14.0769H6.99527H6.91834Z"
                   ></path>
@@ -462,15 +390,9 @@
                 >
               </div>
               <div
-                class="flex flex-1 flex-col items-center gap-1.5 rounded-[11px] border border-[#ecedf2] bg-white px-1.5 py-2.5"
+                class="flex flex-1 flex-col items-center gap-1.5 rounded-[5px] border border-[#ecedf2] bg-white px-1.5 py-2.5"
               >
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="#4285F4"
-                  aria-hidden="true"
-                >
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="#4285F4">
                   <path
                     d="M3.06364 7.50914C4.70909 4.24092 8.09084 2 12 2C14.6954 2 16.959 2.99095 18.6909 4.60455L15.8227 7.47274C14.7864 6.48185 13.4681 5.97727 12 5.97727C9.39542 5.97727 7.19084 7.73637 6.40455 10.1C6.2045 10.7 6.09086 11.3409 6.09086 12C6.09086 12.6591 6.2045 13.3 6.40455 13.9C7.19084 16.2636 9.39542 18.0227 12 18.0227C13.3454 18.0227 14.4909 17.6682 15.3864 17.0682C16.4454 16.3591 17.15 15.3 17.3818 14.05H12V10.1818H21.4181C21.5364 10.8363 21.6 11.5182 21.6 12.2273C21.6 15.2727 20.5091 17.8363 18.6181 19.5773C16.9636 21.1046 14.7 22 12 22C8.09084 22 4.70909 19.7591 3.06364 16.4909C2.38638 15.1409 2 13.6136 2 12C2 10.3864 2.38638 8.85911 3.06364 7.50914Z"
                   ></path>
@@ -486,36 +408,33 @@
 
       <!-- value points -->
       <div
-        class="mt-5 grid gap-5 border-t border-[#eef0f4] pt-4 md:grid-cols-3 md:gap-7"
+        class="mt-20 flex flex-col gap-5 border-t border-[#eef0f4] pt-4 md:flex-row md:gap-7"
       >
-        <div class="flex gap-3">
-          <span
-            class="shrink-0 font-mono text-[12px] font-bold text-[var(--color-brand-purple)]"
+        <div class="flex flex-1 gap-3">
+          <span class="shrink-0 font-mono text-[12px] font-bold text-[#7b36ff]"
             >01</span
           >
-          <span class="text-[13px] leading-[1.45] font-medium text-[#3c4257]">
+          <span class="text-[13px] font-medium leading-[1.45] text-[#3c4257]">
             <strong class="font-bold text-[#0c1430]"
               >One agent, +2,200 AI tools.</strong
             > Browser chatbots and terminal agents are all covered.
           </span>
         </div>
-        <div class="flex gap-3">
-          <span
-            class="shrink-0 font-mono text-[12px] font-bold text-[var(--color-brand-purple)]"
+        <div class="flex flex-1 gap-3">
+          <span class="shrink-0 font-mono text-[12px] font-bold text-[#7b36ff]"
             >02</span
           >
-          <span class="text-[13px] leading-[1.45] font-medium text-[#3c4257]">
+          <span class="text-[13px] font-medium leading-[1.45] text-[#3c4257]">
             <strong class="font-bold text-[#0c1430]"
               >Caught on the device.</strong
             > Sensitive data is sent clean, redacted, or blocked before it leaves.
           </span>
         </div>
-        <div class="flex gap-3">
-          <span
-            class="shrink-0 font-mono text-[12px] font-bold text-[var(--color-brand-purple)]"
+        <div class="flex flex-1 gap-3">
+          <span class="shrink-0 font-mono text-[12px] font-bold text-[#7b36ff]"
             >03</span
           >
-          <span class="text-[13px] leading-[1.45] font-medium text-[#3c4257]">
+          <span class="text-[13px] font-medium leading-[1.45] text-[#3c4257]">
             <strong class="font-bold text-[#0c1430]"
               >Only metadata leaves.</strong
             > Zero prompt content reaches Tracehold, built for compliance.
@@ -526,22 +445,348 @@
   </div>
 
   <style>
-    @keyframes thld-glow {
-      0%,
+    @keyframes thld-fillx {
+      0% {
+        transform: scaleX(0);
+        opacity: 1;
+      }
+      34% {
+        transform: scaleX(1);
+        opacity: 1;
+      }
+      78% {
+        transform: scaleX(1);
+        opacity: 1;
+      }
       100% {
-        box-shadow: 0 10px 30px -8px rgba(123, 54, 255, 0.45);
-      }
-      50% {
-        box-shadow: 0 12px 40px -6px rgba(123, 54, 255, 0.8);
+        transform: scaleX(1);
+        opacity: 0;
       }
     }
-    .thld-gate {
-      animation: thld-glow 3.4s ease-in-out infinite;
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .thld-gate {
-        animation: none;
+    @keyframes thld-filly {
+      0% {
+        transform: scaleY(0);
+        opacity: 1;
       }
+      34% {
+        transform: scaleY(1);
+        opacity: 1;
+      }
+      78% {
+        transform: scaleY(1);
+        opacity: 1;
+      }
+      100% {
+        transform: scaleY(1);
+        opacity: 0;
+      }
+    }
+    @keyframes thld-meta {
+      0% {
+        transform: translateX(-50%) translateY(-4px);
+        opacity: 0;
+      }
+      18% {
+        opacity: 1;
+      }
+      80% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(58px);
+      }
+      100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(58px);
+      }
+    }
+    @keyframes thld-pulse-meta {
+      0% {
+        box-shadow: 0 0 0 0 rgba(123, 54, 255, 0);
+        transform: scale(1);
+      }
+      40% {
+        box-shadow: 0 0 0 4px rgba(123, 54, 255, 0.16);
+        transform: scale(1.012);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(123, 54, 255, 0);
+        transform: scale(1);
+      }
+    }
+    @keyframes thld-pulse-vendor {
+      0% {
+        box-shadow: 0 0 0 0 rgba(31, 179, 128, 0);
+        transform: scale(1);
+      }
+      40% {
+        box-shadow: 0 0 0 4px rgba(31, 179, 128, 0.16);
+        transform: scale(1.012);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(31, 179, 128, 0);
+        transform: scale(1);
+      }
+    }
+
+    .thld-fill-in {
+      position: absolute;
+      inset: 0;
+      border-radius: 3px;
+      background: #7b36ff;
+      transform-origin: left;
+      transform: scaleX(0);
+    }
+    .thld-fill-out {
+      position: absolute;
+      inset: 0;
+      border-radius: 3px;
+      background: #1fb380;
+      transform-origin: left;
+      transform: scaleX(0);
+    }
+    .thld-fill-meta {
+      width: 100%;
+      height: 100%;
+      background: #7b36ff;
+      transform-origin: top;
+      transform: scaleY(0);
+    }
+    .thld-meta-box {
+      position: absolute;
+      left: 50%;
+      top: 2px;
+      transform: translateX(-50%) translateY(-4px);
+      opacity: 0;
+      z-index: 2;
+    }
+    .thld-token {
+      transform: translateX(-130%);
+      opacity: 0;
+      transition:
+        transform 0.85s cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 0.55s ease;
+      will-change: transform;
+    }
+    .thld-btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 5px;
+      padding: 7px 0;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      background: rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.55);
+      transform: scale(1);
+      transition:
+        background 0.35s ease,
+        color 0.35s ease,
+        box-shadow 0.35s ease,
+        transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .thld-hl-red {
+      background: rgba(255, 120, 110, 0.95);
+      color: #3d0a06;
+      border-radius: 4px;
+      padding: 1px 5px;
+      font-weight: 700;
+      transition:
+        background 0.4s ease,
+        color 0.4s ease;
+    }
+    .thld-hl-green {
+      background: #7bf0c0;
+      color: #04331f;
+      border-radius: 4px;
+      padding: 1px 5px;
+      font-weight: 700;
+      transition:
+        background 0.4s ease,
+        color 0.4s ease;
     }
   </style>
+
+  <script>
+    const scenarios = [
+      {
+        kind: "safe",
+        pre: "Summarize the Q2 board deck",
+        hl: "",
+        red: "",
+        detect: "No sensitive data",
+        outcome: "Safe, sent",
+        action: "send",
+      },
+      {
+        kind: "redact",
+        pre: "Deploy with ",
+        hl: "my!ps4wr90d",
+        red: "[PASSWORD]",
+        detect: "Credential detected",
+        outcome: "Sent redacted",
+        action: "redact",
+      },
+      {
+        kind: "block",
+        pre: "Share our full ",
+        hl: "client list",
+        red: "",
+        detect: "High-risk PII detected",
+        outcome: "Blocked, not sent",
+        action: "block",
+      },
+    ];
+    const seq = ["enter", "inspect", "act", "result", "exit", "gap"] as const;
+    type Phase = (typeof seq)[number];
+    const dur: Record<Phase, number> = {
+      enter: 850,
+      inspect: 1000,
+      act: 800,
+      result: 1100,
+      exit: 1100,
+      gap: 550,
+    };
+
+    const $ = (id: string) => document.getElementById(id);
+
+    function setBtn(id: string, active: boolean, color: string) {
+      const el = $(id);
+      if (!el) return;
+      if (active) {
+        el.style.background = color;
+        el.style.color = "#fff";
+        el.style.boxShadow = "0 0 0 2px rgba(255,255,255,0.4)";
+        el.style.transform = "scale(1.06)";
+      } else {
+        el.style.background = "rgba(255,255,255,0.10)";
+        el.style.color = "rgba(255,255,255,0.55)";
+        el.style.boxShadow = "none";
+        el.style.transform = "scale(1)";
+      }
+    }
+
+    function runAnim(id: string, value: string | null) {
+      const el = $(id);
+      if (!el) return;
+      el.style.animation = "none";
+      if (value) {
+        void el.offsetWidth;
+        el.style.animation = value;
+      }
+    }
+
+    function apply(si: number, phase: Phase) {
+      const sc = scenarios[si];
+      const swapped =
+        sc.kind === "redact" && (phase === "result" || phase === "exit");
+      const decided = phase === "act" || phase === "result" || phase === "exit";
+
+      const token = $("thld-token");
+      if (token) {
+        let tx = "0px",
+          op = 1;
+        if (phase === "gap") {
+          tx = "-130%";
+          op = 0;
+        } else if (phase === "enter") {
+          tx = "0px";
+          op = 1;
+        } else if (phase === "exit") {
+          if (sc.kind === "block") {
+            tx = "0px";
+            op = 0;
+          } else {
+            tx = "150%";
+            op = 0;
+          }
+        }
+        token.style.transform = `translateX(${tx})`;
+        token.style.opacity = String(op);
+      }
+
+      const pre = $("thld-pre");
+      if (pre) pre.textContent = sc.pre;
+
+      const hl = $("thld-hl");
+      if (hl) {
+        hl.textContent = swapped ? sc.red : sc.hl;
+        hl.className = "";
+        hl.removeAttribute("style");
+        if (!sc.hl) hl.style.padding = "0";
+        else if (swapped) hl.className = "thld-hl-green";
+        else hl.className = "thld-hl-red";
+      }
+
+      const showVerdict =
+        phase === "inspect" ||
+        phase === "act" ||
+        phase === "result" ||
+        phase === "exit";
+      const isOutcome = phase === "result" || phase === "exit";
+      const verdictText = $("thld-verdict-text");
+      if (verdictText)
+        verdictText.textContent = isOutcome ? sc.outcome : sc.detect;
+      const dotColor =
+        sc.kind === "safe"
+          ? "#7bf0c0"
+          : sc.kind === "redact"
+            ? "#ffce85"
+            : "#ff938a";
+      const dot = $("thld-verdict-dot");
+      if (dot) {
+        dot.style.background = dotColor;
+        dot.style.boxShadow = `0 0 8px ${dotColor}`;
+      }
+      const wrap = $("thld-verdict-wrap");
+      if (wrap) wrap.style.opacity = showVerdict ? "1" : "0";
+
+      setBtn("thld-btn-send", decided && sc.action === "send", "#27c08a");
+      setBtn("thld-btn-redact", decided && sc.action === "redact", "#4f93ec");
+      setBtn("thld-btn-block", decided && sc.action === "block", "#ef6a5e");
+
+      const fillIn = phase === "enter";
+      const fillOut = phase === "exit" && sc.kind !== "block";
+      const fillMeta = phase === "exit";
+      const pulsePlatform = phase === "exit";
+      const pulseVendors = phase === "exit" && sc.kind !== "block";
+
+      runAnim("thld-fill-in", fillIn ? "thld-fillx .8s ease forwards" : null);
+      runAnim("thld-fill-out", fillOut ? "thld-fillx 1s ease forwards" : null);
+      runAnim(
+        "thld-fill-meta",
+        fillMeta ? "thld-filly .95s ease forwards" : null,
+      );
+      runAnim(
+        "thld-meta-box",
+        fillMeta ? "thld-meta .95s ease forwards" : null,
+      );
+      runAnim(
+        "thld-platform",
+        pulsePlatform ? "thld-pulse-meta .55s ease .6s" : null,
+      );
+      runAnim(
+        "thld-vendors",
+        pulseVendors ? "thld-pulse-vendor .55s ease .6s" : null,
+      );
+    }
+
+    let si = 0;
+    let i = 0;
+
+    function tick() {
+      const phase = seq[i];
+      apply(si, phase);
+      setTimeout(() => {
+        i++;
+        if (i >= seq.length) {
+          i = 0;
+          si = (si + 1) % scenarios.length;
+        }
+        tick();
+      }, dur[phase]);
+    }
+
+    tick();
+  </script>
 </section>
