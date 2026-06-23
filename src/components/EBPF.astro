@@ -1,7 +1,7 @@
 ---
 ---
 
-<section id="ebpf" class="relative overflow-hidden bg-[var(--color-phantom)] py-24 text-white md:py-32">
+<section id="cli" class="relative overflow-hidden bg-[var(--color-phantom)] py-24 text-white md:py-32">
   <div class="absolute -right-40 top-0 h-[600px] w-[600px] rounded-full bg-[var(--color-brand-purple)] opacity-25 blur-[180px]" aria-hidden="true"></div>
   <div class="absolute -left-40 bottom-0 h-[400px] w-[400px] rounded-full bg-[var(--color-brand-blue)] opacity-15 blur-[160px]" aria-hidden="true"></div>
 
@@ -16,16 +16,16 @@
         <span class="block text-[var(--color-brand-purple)]">We're the only DLP that sees them.</span>
       </h2>
       <p class="body-lg mt-6 max-w-[560px] !text-[var(--color-steel)]">
-        Browser DLP solves chatbots. But AI now runs through CLI agents that talk straight to vendor APIs over TLS.
+        Browser DLP solves chatbots. But AI now runs through CLI agents that talk straight to vendor APIs.
         Tracehold ships an endpoint agent for <span class="font-semibold text-white">Windows, macOS and Linux</span>
-        that intercepts at the kernel level — before encryption, after the prompt forms.
+        that inspects AI egress on the device, before your data ever leaves the machine.
       </p>
 
       <div class="mt-8 grid gap-4 sm:grid-cols-2">
         <div class="surface-card-dark !p-5">
-          <p class="text-[12px] font-semibold uppercase tracking-[0.14em] text-[var(--color-brand-blue)]">No competitor</p>
+          <p class="text-[12px] font-semibold uppercase tracking-[0.14em] text-[var(--color-brand-blue)]">Built for CLI AI</p>
           <p class="mt-2 text-[14px] leading-snug text-white">
-            We are the only vendor with kernel-level visibility into CLI AI agents.
+            Coverage of terminal AI agents that most DLP tools simply don't have.
           </p>
         </div>
         <div class="surface-card-dark !p-5">
@@ -50,17 +50,17 @@
           <span class="h-2.5 w-2.5 rounded-full bg-[#ff5f57]"></span>
           <span class="h-2.5 w-2.5 rounded-full bg-[#febc2e]"></span>
           <span class="h-2.5 w-2.5 rounded-full bg-[#28c840]"></span>
-          <span class="ml-3 font-mono text-[11px] text-[var(--color-steel)]">~/proprietary-app — claude code</span>
+          <span class="ml-3 font-mono text-[11px] text-[var(--color-steel)]">~/proprietary-app · claude code</span>
         </div>
         <div class="space-y-2 p-6 font-mono text-[12.5px] leading-relaxed">
           <p class="text-[var(--color-steel)]"><span class="text-[var(--color-brand-blue)]">$</span> claude "refactor auth.ts and explain"</p>
           <p class="text-[var(--color-graphite)]">→ reading src/auth.ts (482 lines)</p>
           <p class="text-[var(--color-graphite)]">→ sending to api.anthropic.com…</p>
           <div class="mt-3 rounded-md border border-[var(--color-brand-purple)]/40 bg-[var(--color-brand-purple)]/10 p-3">
-            <p class="text-[var(--color-brand-purple)]">⚠ tracehold-ebpf: egress intercepted</p>
+            <p class="text-[var(--color-brand-purple)]">⚠ tracehold: egress intercepted</p>
             <p class="mt-1.5 text-white">detected: <span class="text-[var(--color-brand-blue)]">AWS_SECRET_KEY</span> in auth.ts:142</p>
             <p class="text-white">detected: <span class="text-[var(--color-brand-blue)]">internal_db_host</span> in auth.ts:18</p>
-            <p class="mt-2 text-[var(--color-danger)]">policy: BLOCK — egress halted before TLS handshake</p>
+            <p class="mt-2 text-[var(--color-danger)]">policy: BLOCK · stopped on the device before it left the machine</p>
           </div>
           <p class="text-[var(--color-graphite)]">→ event logged · org=acme · severity=critical</p>
           <p class="text-[var(--color-brand-blue)]">$ <span class="animate-pulse">▍</span></p>

@@ -2,7 +2,7 @@
 const faqs = [
   {
     q: "Does it slow employees down?",
-    a: "No. Scanning runs locally in the browser with zero network round-trip. Most prompts pass through unchanged — Tracehold only interrupts on a real finding, and the overlay disappears in under a second when the issue is resolved.",
+    a: "No. Scanning runs locally in the browser with zero network round-trip. Most prompts pass through unchanged; Tracehold only interrupts on a real finding, and the overlay disappears in under a second when the issue is resolved.",
   },
   {
     q: "What about AI tools that aren't in your catalog?",
@@ -10,11 +10,11 @@ const faqs = [
   },
   {
     q: "How do we deploy it?",
-    a: "Like any managed extension: push it via GPO on Windows, Intune on Microsoft 365, or Jamf on macOS. Average rollout is under a day for organizations under 1,000 users. No endpoint agent. No proxy. No certificate to install.",
+    a: "Like any managed extension: push it via GPO on Windows, Intune on Microsoft 365, or Jamf on macOS. Average rollout is under a day for organizations under 1,000 users. The browser layer installs cleanly with nothing for employees to configure; coverage for terminal AI tools is an optional add-on.",
   },
   {
     q: "What data hits your servers?",
-    a: "Only metadata: detection type (e.g. aws_access_key), severity, AI domain, timestamp, user ID. The prompt text and uploaded file contents never leave the device. For docx/xlsx files that browsers can't parse, the file is scanned server-side and the content discarded immediately — only findings are kept.",
+    a: "Only metadata: detection type (e.g. aws_access_key), severity, AI domain, timestamp, user ID. The prompt text and uploaded file contents never leave the device. For docx/xlsx files that browsers can't parse, the file is scanned server-side and the content discarded immediately; only findings are kept.",
   },
   {
     q: "What happens if the backend is unreachable?",
@@ -39,7 +39,7 @@ const faqs = [
           Questions worth answering up front.
         </h2>
         <p class="body-lg mt-5 max-w-[360px]">
-          Anything we miss? Email us — we keep this page short on purpose.
+          Anything we miss? Email us. We keep this page short on purpose.
         </p>
         <a href="mailto:hello@tracehold.com" class="btn-ghost mt-6 inline-flex">
           hello@tracehold.com

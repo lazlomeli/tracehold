@@ -1,54 +1,36 @@
 ---
 const plans = [
   {
-    name: "Starter",
-    seats: "Up to 50 users",
-    price: "€149",
-    cadence: "/ month",
-    summary: "For SMBs and pilots.",
+    name: "Free Extension",
+    seats: "For individuals & small teams",
+    price: "Free",
+    cadence: "",
+    summary: "On-device detection for AI chats.",
     features: [
       "Browser extension (Chrome / Edge / Firefox)",
-      "1,600+ DLP patterns, custom rules",
-      "Shadow AI detection",
-      "Dashboard + audit log",
-      "Email support",
+      "Catches secrets, credentials & PII before you send",
+      "Runs entirely on-device, no account needed",
+      "Inline warnings as you type",
     ],
-    cta: "Start trial",
+    cta: "Get the extension",
     featured: false,
   },
   {
-    name: "Business",
-    seats: "Up to 500 users",
-    price: "€599",
-    cadence: "/ month",
-    summary: "For mid-market teams.",
-    features: [
-      "Everything in Starter",
-      "SSO (OIDC + SAML)",
-      "LDAP / AD sync",
-      "Slack, Teams, webhook alerts",
-      "GPO / Intune / Jamf deployment",
-      "Priority support",
-    ],
-    cta: "Talk to sales",
-    featured: true,
-  },
-  {
-    name: "Enterprise",
-    seats: "Unlimited users",
+    name: "Teams & Enterprise",
+    seats: "For organizations & regulated industries",
     price: "Custom",
     cadence: "",
-    summary: "For regulated industries.",
+    summary: "The full platform, policies & coverage.",
     features: [
-      "Everything in Business",
-      "eBPF agent for CLI agents",
-      "SIEM: Splunk / Sentinel / CEF",
-      "Multi-tenant for MSPs / MSSPs",
-      "SLA + dedicated CSM",
-      "Custom DPA and on-prem option",
+      "Full 1,600+ pattern catalog + unlimited custom rules",
+      "Block & redact, admin dashboard + audit log",
+      "Endpoint agent for CLI AI tools (Claude Code, Codex)",
+      "SSO / LDAP, SIEM export, multi-tenant for MSPs",
+      "Deploy via GPO / Intune / Jamf",
+      "Free 2–4 week observe-only proof of concept",
     ],
     cta: "Contact sales",
-    featured: false,
+    featured: true,
   },
 ];
 ---
@@ -64,30 +46,28 @@ const plans = [
         <span class="inline-block h-px w-8 bg-[var(--color-brand-purple)]"></span>
       </div>
       <h2 class="h-section mt-5 text-[var(--color-phantom)]">
-        Simple plans. Predictable cost.
+        Start free. Scale when you're ready.
       </h2>
       <p class="body-lg mt-5">
-        Every plan ships a free 2–4 week proof of concept in observe-only mode — zero employee disruption.
+        Start free with the browser extension. For policies, the endpoint agent, dashboards and
+        compliance reporting, talk to us. We'll scope a proof of concept.
       </p>
     </div>
 
-    <div class="mt-16 grid gap-6 lg:grid-cols-3">
+    <div class="mx-auto mt-16 grid max-w-[840px] gap-6 sm:grid-cols-2">
       {plans.map((p) => (
         <article class={`relative flex flex-col rounded-2xl border p-8 transition ${p.featured ? "border-transparent bg-[var(--color-brand-navy)] text-white shadow-[0_30px_80px_-30px_rgba(123,54,255,0.55)]" : "border-[var(--color-cloud)] bg-white hover:border-[var(--color-phantom)]"}`}>
           {p.featured && (
-            <span class="absolute -top-3 left-8 inline-flex items-center rounded-full bg-[var(--color-brand-purple)] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-white">Most chosen</span>
+            <span class="absolute -top-3 left-8 inline-flex items-center rounded-full bg-[var(--color-brand-purple)] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-white">Recommended</span>
           )}
 
           <div>
-            <p class={`text-[12px] font-bold uppercase tracking-[0.18em] ${p.featured ? "text-[var(--color-brand-purple)]" : "text-[var(--color-brand-purple)]"}`}>{p.name}</p>
+            <p class="text-[12px] font-bold uppercase tracking-[0.18em] text-[var(--color-brand-purple)]">{p.name}</p>
             <p class={`mt-1 text-[13px] ${p.featured ? "text-[var(--color-steel)]" : "text-[var(--color-graphite)]"}`}>{p.seats}</p>
           </div>
 
           <div class="mt-6 flex items-end gap-1.5">
             <span class={`text-[42px] font-extrabold leading-none tracking-tight ${p.featured ? "text-white" : "text-[var(--color-phantom)]"}`}>{p.price}</span>
-            {p.cadence && (
-              <span class={`pb-1.5 text-[13px] ${p.featured ? "text-[var(--color-steel)]" : "text-[var(--color-graphite)]"}`}>{p.cadence}</span>
-            )}
           </div>
 
           <p class={`mt-2 text-[14px] ${p.featured ? "text-[var(--color-steel)]" : "text-[var(--color-graphite)]"}`}>{p.summary}</p>
@@ -95,7 +75,7 @@ const plans = [
           <ul class={`mt-7 space-y-3 border-t pt-7 ${p.featured ? "border-white/15" : "border-[var(--color-cloud)]"}`}>
             {p.features.map((f) => (
               <li class="flex gap-3 text-[13.5px] leading-snug">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" class={`mt-0.5 shrink-0 ${p.featured ? "text-[var(--color-brand-purple)]" : "text-[var(--color-brand-purple)]"}`} aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 shrink-0 text-[var(--color-brand-purple)]" aria-hidden="true">
                   <polyline points="20 6 9 17 4 12"/>
                 </svg>
                 <span class={p.featured ? "text-white" : "text-[var(--color-arsenic)]"}>{f}</span>

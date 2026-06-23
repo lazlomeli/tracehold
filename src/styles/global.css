@@ -2,7 +2,7 @@
 @import "@fontsource-variable/manrope";
 
 @theme {
-  /* Brand — primary palette from Tracehold guidelines */
+  /* Brand - primary palette from Tracehold guidelines */
   --color-brand-light: #f4f4f4;
   --color-brand-purple: #7b36ff;
   --color-brand-navy: #020e2d;
@@ -18,7 +18,7 @@
   --color-phantom: #1e1e24;
   --color-ink: #000000;
 
-  /* Semantic (added — not in original guidelines) */
+  /* Semantic (added - not in original guidelines) */
   --color-success: #22c55e;
   --color-warn: #f59e0b;
   --color-danger: #ef4444;
@@ -50,7 +50,7 @@
     color: white;
   }
 
-  /* Fluid product-mockup frame — scales fixed-px-width content to fit any container */
+  /* Fluid product-mockup frame - scales fixed-px-width content to fit any container */
   .thld-mock-frame {
     container-type: inline-size;
     width: 100%;
@@ -99,7 +99,7 @@
     animation: thld-arrow-flow 0.7s linear infinite;
   }
 
-  /* Tracehold gate scene cycle — 12s total, 4s per scenario */
+  /* Tracehold gate scene cycle - 12s total, 4s per scenario */
   .thld-scene {
     opacity: 0;
     animation-duration: 12s;

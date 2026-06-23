@@ -38,11 +38,13 @@
       </div>
 
       <!-- Diagram -->
-      <div class="overflow-x-auto pb-2">
-        <div class="flex min-w-[1040px] items-start pt-20">
+      <div class="overflow-visible pb-2 md:overflow-x-auto">
+        <div
+          class="flex flex-col items-stretch gap-2 pt-4 md:min-w-[1040px] md:flex-row md:items-start md:gap-0 md:pt-20"
+        >
           <!-- Employee device -->
           <div
-            class="mt-[64px] min-w-0 shrink-0 rounded-[5px] border border-[#e7e9f0] bg-[#fafbfc] p-4"
+            class="order-1 min-w-0 shrink-0 rounded-[5px] border border-[#e7e9f0] bg-[#fafbfc] p-4 md:order-none md:mt-[64px]"
           >
             <div class="mb-3 flex items-center gap-2.5">
               <svg
@@ -71,7 +73,7 @@
                 >Employee device</span
               >
             </div>
-            <div class="flex gap-3">
+            <div class="flex flex-wrap gap-3">
               <div
                 class="w-[165px] rounded-[5px] border border-[#ecedf2] bg-white p-3"
               >
@@ -160,7 +162,7 @@
                   >
                   <span
                     class="rounded-[5px] border border-[#e7e9f0] bg-[#f3f4f8] px-2 py-1 text-[11.5px] font-semibold text-[#3c4257]"
-                    >Aider</span
+                    >Cursor</span
                   >
                 </div>
               </div>
@@ -168,16 +170,18 @@
           </div>
 
           <!-- arrow in -->
-          <div class="relative mt-[138px] h-[3px] w-16 shrink-0">
+          <div
+            class="relative order-2 mx-auto h-9 w-[3px] shrink-0 md:order-none md:mx-0 md:mt-[138px] md:h-[3px] md:w-16"
+          >
             <div class="absolute inset-0 rounded-[3px] bg-[#d4d7df]"></div>
             <div id="thld-fill-in" class="thld-fill-in"></div>
           </div>
 
           <!-- Center column -->
-          <div class="flex w-[300px] shrink-0 flex-col">
+          <div class="contents md:flex md:w-[300px] md:shrink-0 md:flex-col">
             <!-- Tracehold gate (animated) -->
             <div
-              class="flex flex-col rounded-[5px] p-4 text-white shadow-[0_14px_34px_-12px_rgba(123,54,255,0.5)]"
+              class="order-3 flex flex-col rounded-[5px] p-4 text-white shadow-[0_14px_34px_-12px_rgba(123,54,255,0.5)] md:order-none"
               style="background:linear-gradient(165deg,#8a4bff,#6d22f0);"
             >
               <div class="mb-3 flex items-center gap-2.5">
@@ -253,7 +257,7 @@
             </div>
 
             <!-- metadata-only line -->
-            <div class="relative h-[84px]">
+            <div class="relative order-6 h-[60px] md:order-none md:h-[84px]">
               <div
                 class="absolute bottom-0 left-1/2 top-0 w-[3px] -translate-x-1/2 overflow-hidden rounded-[3px] bg-[#d4d7df]"
               >
@@ -272,7 +276,7 @@
             <!-- Tracehold Platform -->
             <div
               id="thld-platform"
-              class="flex flex-col rounded-[5px] bg-[#020e2d] p-3.5"
+              class="order-7 flex flex-col rounded-[5px] bg-[#020e2d] p-3.5 md:order-none"
             >
               <div
                 class="text-[11px] font-bold uppercase tracking-[0.1em] text-[#a98bff]"
@@ -347,17 +351,17 @@
           </div>
 
           <!-- safe prompts line -->
-          <div class="mt-[128px] flex w-[104px] shrink-0 flex-col items-center">
-            <div class="relative h-[3px] w-full">
-              <div class="absolute inset-0 rounded-[3px] bg-[#d4d7df]"></div>
-              <div id="thld-fill-out" class="thld-fill-out"></div>
-            </div>
+          <div
+            class="relative order-4 mx-auto h-9 w-[3px] shrink-0 md:order-none md:mx-0 md:mt-[128px] md:h-[3px] md:w-[104px]"
+          >
+            <div class="absolute inset-0 rounded-[3px] bg-[#d4d7df]"></div>
+            <div id="thld-fill-out" class="thld-fill-out"></div>
           </div>
 
           <!-- AI vendors -->
           <div
             id="thld-vendors"
-            class="mt-[80px] w-[262px] shrink-0 rounded-[5px] border border-[#e7e9f0] bg-[#fafbfc] p-3.5"
+            class="order-5 shrink-0 rounded-[5px] border border-[#e7e9f0] bg-[#fafbfc] p-3.5 md:order-none md:mt-[80px] md:w-[262px]"
           >
             <div
               class="mb-3 text-[11px] font-bold uppercase tracking-[0.1em] text-[#6e7180]"

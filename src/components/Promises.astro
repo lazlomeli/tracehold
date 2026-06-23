@@ -2,12 +2,12 @@
 const promises = [
   {
     title: "Detection runs on-device",
-    body: "The DLP engine executes entirely in the browser and on the endpoint. Prompt content never reaches our backend — only metadata (finding type, severity, AI domain, timestamp). Privacy by architecture, not policy.",
+    body: "The DLP engine executes entirely in the browser and on the endpoint. Prompt content never reaches our backend: only metadata (finding type, severity, AI domain, timestamp). Privacy by architecture, not policy.",
     icon: "lock",
   },
   {
-    title: "Kernel-level enforcement",
-    body: "Our endpoint agent hooks into the kernel itself, intercepting AI egress before TLS encrypts it and before it leaves the host. No browser bypass, no CLI escape hatch — and no competitor has it.",
+    title: "Enforcement beyond the browser",
+    body: "Our endpoint agent covers terminal AI tools like Claude Code and Codex on Windows, macOS and Linux, inspecting AI egress on the device before it leaves the host. No browser bypass, no CLI escape hatch.",
     icon: "chip",
   },
   {

@@ -13,7 +13,7 @@ import Footer from "../components/Footer.astro";
 ---
 
 <Layout
-  title="How Tracehold works — AI-native DLP for the browser"
+  title="How Tracehold works: AI-native DLP for the browser"
   description="Detection runs on-device, in browser and terminal, before sensitive data leaves the machine. Our endpoint agent works on Windows, macOS, and Linux."
 >
   <Header />
@@ -42,7 +42,7 @@ import Footer from "../components/Footer.astro";
             >
           </h1>
           <p class="body-lg mt-5">
-            Tracehold catches sensitive data at the source — before it reaches
+            Tracehold catches sensitive data at the source, before it reaches
             an AI vendor. Detection runs locally, decisions happen in
             milliseconds, and only metadata ever leaves the machine.
           </p>
@@ -53,17 +53,17 @@ import Footer from "../components/Footer.astro";
     <ArchDiagram />
 
     <FeatureShowcase
-      eyebrow="01 — Install"
+      eyebrow="01 · Install"
       title="One extension. Every browser."
-      body="Push Tracehold to every endpoint via GPO, Intune or Jamf. Chrome, Edge, Brave, Firefox — same install, same coverage. Employees never lift a finger."
+      body="Push Tracehold to every endpoint via GPO, Intune or Jamf. Chrome, Edge, Brave, Firefox. Same install, same coverage. Employees never lift a finger."
     >
       <MockExtension />
     </FeatureShowcase>
 
     <FeatureShowcase
-      eyebrow="02 — The engine"
+      eyebrow="02 · The engine"
       title="1,600+ detection patterns. All running on-device."
-      body="Secrets, credentials, PII, financial data, internal hostnames, code fingerprints. Every category covered out of the box, updated weekly without redeploying the extension."
+      body="Secrets, credentials, PII, financial data, internal hostnames, code fingerprints. Every category covered out of the box, updated continuously over-the-air, no extension redeploy."
       reverse={true}
       learnMoreHref="/platform"
     >
@@ -71,24 +71,24 @@ import Footer from "../components/Footer.astro";
     </FeatureShowcase>
 
     <FeatureShowcase
-      eyebrow="03 — Real-time text"
+      eyebrow="03 · Real-time text"
       title="Catches sensitive text the moment you type it."
-      body="Passwords, tokens, emails, account numbers — flagged inline as you type, before you hit send. Employees see a context-aware warning, not a silent block."
+      body="Passwords, tokens, emails, account numbers: flagged inline as you type, before you hit send. Employees see a context-aware warning, not a silent block."
     >
       <MockChatbotText />
     </FeatureShowcase>
 
     <FeatureShowcase
-      eyebrow="04 — File uploads"
+      eyebrow="04 · File uploads"
       title="Stops sensitive files before they upload."
-      body="When an employee attaches a .env, key file or config, Tracehold inspects it on-device first. Secrets are caught before the upload starts — not flagged in a post-mortem."
+      body="When an employee attaches a .env, key file or config, Tracehold inspects it on-device first. Secrets are caught before the upload starts, not flagged in a post-mortem."
       reverse={true}
     >
       <MockChatbotFile />
     </FeatureShowcase>
 
     <FeatureShowcase
-      eyebrow="05 — Custom policies"
+      eyebrow="05 · Custom policies"
       title="Tune detection to your business."
       body="Add project codenames, internal hostnames, unreleased product names, ID conventions. Block or redact each policy independently. Enforced on-device, so your conventions never leave your tenant."
     >
