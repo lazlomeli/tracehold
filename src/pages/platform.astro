@@ -3,18 +3,59 @@ import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import Detect from "../components/Detect.astro";
 import EBPF from "../components/EBPF.astro";
+import PlatformConsole from "../components/PlatformConsole.astro";
+import PlatformEnterprise from "../components/PlatformEnterprise.astro";
 import CTA from "../components/CTA.astro";
 import Footer from "../components/Footer.astro";
+
+const chips = ["Browser + terminal", "On-device detection", "Metadata-only"];
 ---
 
 <Layout
   title="Platform | Tracehold"
-  description="1,600+ DLP patterns out of the box, custom rules, and an endpoint agent that covers Claude Code, Codex and other terminal AI agents."
+  description="The Tracehold platform: on-device AI data-loss prevention across browser and terminal, an admin console for policies, exportable compliance reporting, SSO/LDAP, SIEM export and fleet deployment."
 >
   <Header />
   <main>
+    <section class="relative overflow-hidden bg-white pt-16 pb-8 md:pt-24 md:pb-12">
+      <div
+        class="pointer-events-none absolute -left-32 top-0 h-[420px] w-[420px] rounded-full opacity-[0.06]"
+        style="background: radial-gradient(circle, #7b36ff 0%, transparent 60%);"
+        aria-hidden="true"
+      >
+      </div>
+
+      <div class="container-x relative">
+        <div class="mx-auto max-w-[780px] text-center">
+          <p class="text-[12px] font-bold uppercase tracking-[0.18em] text-[var(--color-brand-purple)]">
+            Platform
+          </p>
+          <h1 class="h-section mt-4 text-[var(--color-phantom)]">
+            Everything you need to govern AI use.
+            <span class="block text-[var(--color-graphite)]">In one platform.</span>
+          </h1>
+          <p class="body-lg mt-5">
+            One platform across browser and terminal: on-device detection, an admin console for
+            policies, and exportable compliance evidence. Sensitive data is caught on the device;
+            only metadata ever reaches your security team.
+          </p>
+
+          <div class="mt-8 flex flex-wrap items-center justify-center gap-2.5">
+            {chips.map((c) => (
+              <span class="inline-flex items-center gap-2 rounded-full border border-[var(--color-cloud)] bg-white px-4 py-1.5 text-[13px] font-semibold text-[var(--color-phantom)]">
+                <span class="inline-block h-1.5 w-1.5 rounded-full bg-[var(--color-brand-purple)]"></span>
+                {c}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
     <Detect />
     <EBPF />
+    <PlatformConsole />
+    <PlatformEnterprise />
     <CTA />
   </main>
   <Footer />

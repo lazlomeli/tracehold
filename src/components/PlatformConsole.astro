@@ -1,0 +1,98 @@
+---
+const features = [
+  {
+    icon: "dashboard",
+    title: "Live detections dashboard",
+    body: "Every blocked attempt in real time, by AI tool, user, severity and finding type. Drill into any event, never the prompt text.",
+  },
+  {
+    icon: "policy",
+    title: "Custom policies & rulesets",
+    body: "Decide what blocks, warns or just logs. Group rules into rulesets and roll them out across the whole org.",
+  },
+  {
+    icon: "groups",
+    title: "Per-group & per-role rules",
+    body: "Different policies for Engineering, Finance, Legal or any team, with groups synced straight from your directory.",
+  },
+  {
+    icon: "exception",
+    title: "Exceptions & allowlists",
+    body: "Carve out known-safe content so trusted workflows never trip a false positive.",
+  },
+  {
+    icon: "simulator",
+    title: "Policy simulator",
+    body: "Test a rule against real traffic before it goes live, so nothing breaks on rollout.",
+  },
+  {
+    icon: "audit",
+    title: "Immutable audit log",
+    body: "Every detection recorded with finding type, severity, AI domain and timestamp. Exportable on demand.",
+  },
+];
+---
+
+<section id="console" class="bg-white py-24 md:py-32">
+  <div class="container-x">
+    <div class="grid items-end gap-8 lg:grid-cols-[1.2fr_1fr]">
+      <div>
+        <div class="eyebrow">
+          <span class="inline-block h-px w-8 bg-[var(--color-brand-purple)]"></span>
+          Console &amp; control
+        </div>
+        <h2 class="h-section mt-5 text-[var(--color-phantom)]">
+          The admin console your
+          <span class="text-[var(--color-graphite)]">security team runs on.</span>
+        </h2>
+      </div>
+      <p class="body-lg max-w-[440px] lg:justify-self-end">
+        See every detection, shape policy to your org, and prove it later. All without your security
+        team ever seeing prompt content.
+      </p>
+    </div>
+
+    <div class="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {features.map((f) => (
+        <div class="surface-card group flex flex-col">
+          <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-[var(--color-brand-purple)]/10 text-[var(--color-brand-purple)] transition group-hover:bg-[var(--color-brand-purple)] group-hover:text-white">
+            {f.icon === "dashboard" && (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 19V9M10 19V4M16 19v-7M21 19H3"/>
+              </svg>
+            )}
+            {f.icon === "policy" && (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="4" y1="7" x2="14" y2="7"/><line x1="18" y1="7" x2="20" y2="7"/><circle cx="16" cy="7" r="2"/>
+                <line x1="4" y1="12" x2="6" y2="12"/><line x1="10" y1="12" x2="20" y2="12"/><circle cx="8" cy="12" r="2"/>
+                <line x1="4" y1="17" x2="12" y2="17"/><line x1="16" y1="17" x2="20" y2="17"/><circle cx="14" cy="17" r="2"/>
+              </svg>
+            )}
+            {f.icon === "groups" && (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            )}
+            {f.icon === "exception" && (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/>
+              </svg>
+            )}
+            {f.icon === "simulator" && (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M9 3h6M10 3v6l-5 8.5A1.5 1.5 0 0 0 6.3 20h11.4a1.5 1.5 0 0 0 1.3-2.5L14 9V3"/><line x1="8" y1="15" x2="16" y2="15"/>
+              </svg>
+            )}
+            {f.icon === "audit" && (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M9 4H7a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/>
+              </svg>
+            )}
+          </div>
+          <h3 class="h-card mt-5 text-[var(--color-phantom)]">{f.title}</h3>
+          <p class="body mt-2.5">{f.body}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
