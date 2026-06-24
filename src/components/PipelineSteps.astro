@@ -169,7 +169,7 @@ const {
             {step.kind === "redact" && (
               <div class="r-wrap">
                 <div class="r-token">
-                  SSN 482-19-7710
+                  TK 482-193
                   <div class="r-cover">
                     <span>redacted</span>
                   </div>
@@ -541,21 +541,24 @@ const {
   /* REDACT */
   .r-wrap {
     position: absolute;
-    left: 2px;
+    left: 50%;
     top: calc(18px + 23px);
-    transform: translateY(-50%);
+    transform: translate(-50%, -50%);
     display: flex;
     align-items: center;
     gap: 8px;
   }
   .r-token {
     position: relative;
+    display: inline-flex;
+    align-items: center;
+    height: 22px;
     font-family: var(--th-mono);
     font-size: 12px;
     font-weight: 600;
     color: var(--th-danger-ink);
     background: var(--th-danger-soft);
-    padding: 4px 8px;
+    padding: 0 8px;
     border-radius: 6px;
     letter-spacing: 0.02em;
   }
