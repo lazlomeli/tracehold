@@ -1,0 +1,798 @@
+---
+// PipelineSteps.astro - Tracehold "Allow / Observe / Redact / Block" section.
+// Four cards, each with a looping micro-animation, plus an infinite
+// sequential highlight wave across the cards.
+//
+// Usage:
+//   import PipelineSteps from "../components/PipelineSteps.astro";
+//   <PipelineSteps />
+//
+// Optional props:
+//   interval  - ms between highlight steps (default 1600)
+//   steps     - override the four cards' { kind, title, desc } (kind drives
+//               the icon + micro-animation: "allow" | "observe" | "redact" | "block")
+
+interface Step {
+  kind: "allow" | "observe" | "redact" | "block";
+  title: string;
+  desc: string;
+}
+
+interface Props {
+  interval?: number;
+  steps?: Step[];
+}
+
+const {
+  interval = 1600,
+  steps = [
+    {
+      kind: "allow",
+      title: "Allow",
+      desc: "Clean prompts pass straight through.",
+    },
+    {
+      kind: "observe",
+      title: "Observe",
+      desc: "Flagged content is logged for visibility, without interrupting anyone.",
+    },
+    {
+      kind: "redact",
+      title: "Redact",
+      desc: "Sensitive details are swapped for placeholders, then sent.",
+    },
+    {
+      kind: "block",
+      title: "Block",
+      desc: "Risky sends are stopped, with a clear reason.",
+    },
+  ] as Step[],
+} = Astro.props;
+---
+
+<section class="th-pipeline" data-interval={interval}>
+  <div class="grid">
+    {
+      steps.map((step) => (
+        <article class="card" data-screen-label={step.title}>
+          <div class="icon">
+            {step.kind === "allow" && (
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                <path
+                  d="M5 11.5 9 15.5 17 6.5"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            )}
+            {step.kind === "observe" && (
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                <path
+                  d="M2 11S5.4 5 11 5s9 6 9 6-3.4 6-9 6-9-6-9-6Z"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linejoin="round"
+                />
+                <circle
+                  cx="11"
+                  cy="11"
+                  r="2.6"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                />
+              </svg>
+            )}
+            {step.kind === "redact" && (
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                <path
+                  d="M4 6.5h14M4 11h9M4 15.5h11"
+                  stroke="currentColor"
+                  stroke-width="2.1"
+                  stroke-linecap="round"
+                />
+              </svg>
+            )}
+            {step.kind === "block" && (
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                <circle
+                  cx="11"
+                  cy="11"
+                  r="7.5"
+                  stroke="currentColor"
+                  stroke-width="2"
+                />
+                <path
+                  d="M5.7 5.7l10.6 10.6"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+              </svg>
+            )}
+          </div>
+
+          <h3 class="title">{step.title}</h3>
+          <p class="desc">{step.desc}</p>
+
+          <div class="anim" aria-hidden="true">
+            {step.kind === "allow" && (
+              <>
+                <div class="a-track" />
+                <div class="chip a-chip">
+                  <span class="dot" style="background: var(--th-purple);" />
+                  prompt
+                </div>
+                <div class="a-gate">
+                  <svg viewBox="0 0 14 14" fill="none">
+                    <path
+                      d="M3 7.2 5.6 9.8 11 4"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+              </>
+            )}
+
+            {step.kind === "observe" && (
+              <>
+                <div class="o-rows">
+                  <div class="o-row" />
+                  <div class="o-row" />
+                  <div class="o-row" />
+                </div>
+                <div class="o-scan" />
+                <div class="o-eye">
+                  <svg viewBox="0 0 22 22" fill="none">
+                    <path
+                      d="M2 11S5.4 5 11 5s9 6 9 6-3.4 6-9 6-9-6-9-6Z"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linejoin="round"
+                    />
+                    <circle
+                      cx="11"
+                      cy="11"
+                      r="2.4"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                    />
+                  </svg>
+                </div>
+              </>
+            )}
+
+            {step.kind === "redact" && (
+              <div class="r-wrap">
+                <div class="r-token">
+                  SSN 482-19-7710
+                  <div class="r-cover">
+                    <span>redacted</span>
+                  </div>
+                </div>
+                <div class="r-send">
+                  <svg viewBox="0 0 14 14" fill="none">
+                    <path
+                      d="M7 11.5V3M7 3 3.5 6.5M7 3l3.5 3.5"
+                      stroke="currentColor"
+                      stroke-width="1.7"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+              </div>
+            )}
+
+            {step.kind === "block" && (
+              <>
+                <div class="chip b-chip">
+                  <span class="dot" style="background: var(--th-danger);" />
+                  send
+                </div>
+                <div class="b-bar" />
+                <div class="b-stop">
+                  <svg viewBox="0 0 22 22" fill="none">
+                    <circle
+                      cx="11"
+                      cy="11"
+                      r="7.5"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    />
+                    <path
+                      d="M5.7 5.7l10.6 10.6"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </div>
+              </>
+            )}
+          </div>
+        </article>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .th-pipeline {
+    --th-purple: #7b36ff;
+    --th-purple-deep: #5b1fd6;
+    --th-purple-soft: #f1ebff;
+    --th-ink: #1b1c1f;
+    --th-ink-soft: #5c6069;
+    --th-ink-faint: #8a8f98;
+    --th-line: #e7e7ec;
+    --th-line-soft: #f0f0f3;
+    --th-panel: #f7f7f8;
+    --th-white: #ffffff;
+    --th-green: #1fa855;
+    --th-green-ink: #147a3d;
+    --th-green-soft: rgba(31, 168, 85, 0.12);
+    --th-danger: #e0463e;
+    --th-danger-ink: #c13129;
+    --th-danger-soft: rgba(224, 70, 62, 0.1);
+    --th-sans: "Manrope Variable", ui-sans-serif, system-ui, sans-serif;
+    --th-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+
+    display: block;
+    font-family: var(--th-sans);
+    color: var(--th-ink);
+  }
+  .th-pipeline * {
+    box-sizing: border-box;
+  }
+
+  .grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  @media (max-width: 1040px) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 560px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .card {
+    background: var(--th-white);
+    border: 1px solid var(--th-line);
+    border-radius: 18px;
+    padding: 26px 26px 24px;
+    display: flex;
+    flex-direction: column;
+    transition:
+      transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1),
+      box-shadow 0.45s ease,
+      border-color 0.45s ease;
+    box-shadow: 0 1px 2px rgba(20, 20, 40, 0.03);
+    will-change: transform;
+  }
+  .card.is-active {
+    transform: translateY(-8px);
+    border-color: rgba(123, 54, 255, 0.35);
+    box-shadow:
+      0 22px 44px -22px rgba(123, 54, 255, 0.45),
+      0 4px 14px -8px rgba(20, 20, 40, 0.1);
+  }
+
+  .icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 13px;
+    background: var(--th-purple-soft);
+    color: var(--th-purple);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+      background 0.45s ease,
+      color 0.45s ease;
+  }
+  .card.is-active .icon {
+    background: var(--th-purple);
+    color: #fff;
+  }
+
+  .title {
+    font-size: 23px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 20px 0 8px;
+    color: var(--th-ink);
+  }
+  .desc {
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--th-ink-soft);
+    margin: 0;
+    text-wrap: pretty;
+    min-height: 66px;
+  }
+
+  /* micro-animation stage */
+  .anim {
+    position: relative;
+    height: 66px;
+    margin-top: 20px;
+    padding-top: 18px;
+    border-top: 1px solid var(--th-line-soft);
+    overflow: hidden;
+  }
+
+  .chip {
+    height: 22px;
+    border-radius: 7px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 0 9px;
+    font-family: var(--th-mono);
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  /* ALLOW */
+  .a-track {
+    position: absolute;
+    left: 4px;
+    right: 30px;
+    top: calc(18px + 23px);
+    border-top: 2px dashed var(--th-line);
+    transform: translateY(-1px);
+  }
+  .a-chip {
+    position: absolute;
+    top: calc(18px + 23px);
+    left: 0;
+    transform: translateY(-50%);
+    background: var(--th-purple-soft);
+    color: var(--th-purple-deep);
+    animation: a-travel 3.2s cubic-bezier(0.55, 0.1, 0.3, 1) infinite;
+  }
+  .a-gate {
+    position: absolute;
+    right: 2px;
+    top: calc(18px + 23px);
+    transform: translateY(-50%);
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: 2px solid var(--th-line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--th-ink-faint);
+    animation: a-gate 3.2s ease infinite;
+  }
+  .a-gate svg {
+    width: 13px;
+    height: 13px;
+  }
+  @keyframes a-travel {
+    0% {
+      left: 0;
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    62% {
+      left: calc(100% - 80px);
+      opacity: 1;
+    }
+    80% {
+      left: calc(100% - 30px);
+      opacity: 1;
+    }
+    92% {
+      left: calc(100% - 18px);
+      opacity: 0;
+    }
+    100% {
+      left: calc(100% - 18px);
+      opacity: 0;
+    }
+  }
+  @keyframes a-gate {
+    0%,
+    70% {
+      border-color: var(--th-line);
+      color: var(--th-ink-faint);
+      background: transparent;
+    }
+    80%,
+    94% {
+      border-color: var(--th-green);
+      color: #fff;
+      background: var(--th-green);
+    }
+    100% {
+      border-color: var(--th-line);
+      color: var(--th-ink-faint);
+      background: transparent;
+    }
+  }
+
+  /* OBSERVE */
+  .o-rows {
+    position: absolute;
+    left: 2px;
+    right: 38px;
+    top: calc(18px + 23px);
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .o-row {
+    height: 6px;
+    border-radius: 3px;
+    background: var(--th-line);
+  }
+  .o-row:nth-child(1) {
+    width: 86%;
+  }
+  .o-row:nth-child(2) {
+    width: 64%;
+  }
+  .o-row:nth-child(3) {
+    width: 74%;
+  }
+  .o-scan {
+    position: absolute;
+    top: 20px;
+    bottom: 2px;
+    width: 46px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(123, 54, 255, 0.22),
+      transparent
+    );
+    animation: o-scan 3s ease-in-out infinite;
+  }
+  .o-eye {
+    position: absolute;
+    right: 2px;
+    top: calc(18px + 23px);
+    transform: translateY(-50%);
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--th-purple-soft);
+    color: var(--th-purple);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .o-eye svg {
+    width: 15px;
+    height: 15px;
+  }
+  .o-eye::after {
+    content: "";
+    position: absolute;
+    right: -1px;
+    top: -1px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--th-purple);
+    border: 2px solid var(--th-white);
+    transform: scale(0);
+    animation: o-ping 3s ease-in-out infinite;
+  }
+  @keyframes o-scan {
+    0% {
+      left: 0;
+      opacity: 0;
+    }
+    12% {
+      opacity: 1;
+    }
+    70% {
+      left: calc(100% - 84px);
+      opacity: 1;
+    }
+    82% {
+      left: calc(100% - 84px);
+      opacity: 0;
+    }
+    100% {
+      left: calc(100% - 84px);
+      opacity: 0;
+    }
+  }
+  @keyframes o-ping {
+    0%,
+    72% {
+      transform: scale(0);
+    }
+    80% {
+      transform: scale(1.25);
+    }
+    90%,
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  /* REDACT */
+  .r-wrap {
+    position: absolute;
+    left: 2px;
+    top: calc(18px + 23px);
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .r-token {
+    position: relative;
+    font-family: var(--th-mono);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--th-danger-ink);
+    background: var(--th-danger-soft);
+    padding: 4px 8px;
+    border-radius: 6px;
+    letter-spacing: 0.02em;
+  }
+  .r-cover {
+    position: absolute;
+    inset: 0;
+    border-radius: 6px;
+    background: var(--th-green);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--th-mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    transform-origin: left center;
+    animation: r-cover 3.6s cubic-bezier(0.6, 0, 0.2, 1) infinite;
+  }
+  .r-cover span {
+    opacity: 0;
+    animation: r-label 3.6s ease infinite;
+  }
+  .r-send {
+    width: 24px;
+    height: 24px;
+    border-radius: 7px;
+    background: var(--th-ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    opacity: 0;
+    transform: translateX(-4px);
+    animation: r-send 3.6s ease infinite;
+  }
+  .r-send svg {
+    width: 12px;
+    height: 12px;
+  }
+  @keyframes r-cover {
+    0%,
+    6% {
+      transform: scaleX(0);
+    }
+    26% {
+      transform: scaleX(1);
+    }
+    82% {
+      transform: scaleX(1);
+    }
+    92%,
+    100% {
+      transform: scaleX(1);
+    }
+  }
+  @keyframes r-label {
+    0%,
+    18% {
+      opacity: 0;
+    }
+    30%,
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes r-send {
+    0%,
+    34% {
+      opacity: 0;
+      transform: translateX(-4px);
+    }
+    46%,
+    86% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    96%,
+    100% {
+      opacity: 0;
+      transform: translateX(-4px);
+    }
+  }
+
+  /* BLOCK */
+  .b-chip {
+    position: absolute;
+    top: calc(18px + 23px);
+    left: 0;
+    transform: translateY(-50%);
+    background: var(--th-panel);
+    color: var(--th-ink-soft);
+    border: 1px solid var(--th-line);
+    animation: b-travel 3s cubic-bezier(0.5, 0.2, 0.3, 1) infinite;
+  }
+  .b-bar {
+    position: absolute;
+    right: 30px;
+    top: 24px;
+    bottom: 6px;
+    width: 3px;
+    border-radius: 3px;
+    background: var(--th-danger);
+    animation: b-bar 3s ease infinite;
+  }
+  .b-stop {
+    position: absolute;
+    right: 2px;
+    top: calc(18px + 23px);
+    transform: translateY(-50%);
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--th-danger-soft);
+    color: var(--th-danger);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: b-stop 3s ease infinite;
+  }
+  .b-stop svg {
+    width: 15px;
+    height: 15px;
+  }
+  @keyframes b-travel {
+    0% {
+      left: 0;
+      opacity: 0;
+    }
+    12% {
+      opacity: 1;
+    }
+    46% {
+      left: calc(100% - 84px);
+      opacity: 1;
+    }
+    54% {
+      left: calc(100% - 78px);
+    }
+    58% {
+      left: calc(100% - 84px);
+    }
+    62% {
+      left: calc(100% - 80px);
+    }
+    72% {
+      left: 8px;
+      opacity: 1;
+    }
+    86% {
+      left: 0;
+      opacity: 0;
+    }
+    100% {
+      left: 0;
+      opacity: 0;
+    }
+  }
+  @keyframes b-bar {
+    0%,
+    40% {
+      transform: scaleY(0.4);
+      opacity: 0.4;
+    }
+    50%,
+    62% {
+      transform: scaleY(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scaleY(0.4);
+      opacity: 0.4;
+    }
+  }
+  @keyframes b-stop {
+    0%,
+    42% {
+      transform: translateY(-50%) scale(0.85);
+      opacity: 0.55;
+    }
+    52% {
+      transform: translateY(-50%) scale(1.12);
+      opacity: 1;
+    }
+    64%,
+    100% {
+      transform: translateY(-50%) scale(1);
+      opacity: 0.8;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .a-chip,
+    .a-gate,
+    .o-scan,
+    .o-eye::after,
+    .r-cover,
+    .r-cover span,
+    .r-send,
+    .b-chip,
+    .b-bar,
+    .b-stop {
+      animation: none !important;
+    }
+    .r-cover {
+      transform: scaleX(1);
+    }
+    .r-cover span {
+      opacity: 1;
+    }
+    .card {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  // Infinite sequential highlight wave. Supports multiple instances per page.
+  function initPipeline(section: HTMLElement) {
+    const cards = Array.from(section.querySelectorAll<HTMLElement>(".card"));
+    if (!cards.length) return;
+    const reduce =
+      window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) return;
+
+    const interval = Number(section.dataset.interval) || 1600;
+    let i = 0;
+
+    function tick() {
+      cards.forEach((c, k) => c.classList.toggle("is-active", k === i));
+      i = (i + 1) % cards.length;
+    }
+
+    tick();
+    window.setInterval(tick, interval);
+  }
+
+  document.querySelectorAll<HTMLElement>(".th-pipeline").forEach(initPipeline);
+</script>
