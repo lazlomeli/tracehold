@@ -14,15 +14,15 @@ const faqs = [
   },
   {
     q: "What data hits your servers?",
-    a: "Only metadata: detection type (e.g. aws_access_key), severity, AI domain, timestamp, user ID. The prompt text and uploaded file contents never leave the device. For docx/xlsx files that browsers can't parse, the file is scanned server-side and the content discarded immediately; only findings are kept.",
+    a: "Only metadata: detection type (e.g. aws_access_key), severity, AI domain, timestamp, user ID. The prompt text and uploaded file contents never leave the device. For Office documents and scanned PDFs the browser can't parse, the file is scanned server-side and the content discarded immediately; only findings are kept.",
   },
   {
     q: "What happens if the backend is unreachable?",
-    a: "Fail-open by default in the MVP, configurable per policy in Enterprise. Your employees keep working; events queue locally and flush when connectivity returns.",
+    a: "Fail-open by default, so a backend outage never blocks your team. Detection keeps running on the device, events queue locally, and they flush when connectivity returns.",
   },
   {
     q: "Do you support multi-tenant for MSPs?",
-    a: "Yes. The Enterprise plan ships a hierarchical multi-tenant model with strict row-level isolation in PostgreSQL. MSPs and MSSPs can manage hundreds of customer organizations from a single root tenant, with cross-tenant read-only views and per-tenant policy autonomy.",
+    a: "Yes. The Enterprise plan ships a hierarchical multi-tenant model with strict tenant isolation. MSPs and MSSPs can manage hundreds of customer organizations from a single root tenant, with cross-tenant read-only views and per-tenant policy autonomy.",
   },
 ];
 ---
